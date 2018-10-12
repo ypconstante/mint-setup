@@ -26,5 +26,5 @@ gsettings set org.cinnamon enabled-applets "[
 echo "done: $STEP"
 
 STEP="modify background"
-gsettings set org.cinnamon.desktop.background picture-uri "'file:///usr/share/backgrounds/linuxmint-tara/whmii_toy_store.jpg'
+gsettings set org.cinnamon.desktop.background picture-uri "'file:///usr/share/backgrounds/linuxmint-tara/whmii_toy_store.jpg'"
 echo "done: $STEP"
