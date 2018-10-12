@@ -26,7 +26,7 @@ sed -i 's/\$HOME\/Videos/\$HOME\/Media/' ~/.config/user-dirs.dirs
 xdg-user-dirs-update
 echo "done: $STEP"
 
-STEP="make folders lower case"
+STEP="make home folders lower case"
 mv ~/Desktop   ~/desktop
 mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
