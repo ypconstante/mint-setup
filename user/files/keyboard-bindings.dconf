@@ -3,13 +3,34 @@ binding=['<Control><Shift>Escape']
 command='gnome-system-monitor'
 name='gnome-system-monitor'
 
+[custom-keybindings/custom1]
+binding=['Print']
+command='flameshot full -c'
+name='screenshot current screen - needs v0.6.0'
+
+[custom-keybindings/custom2]
+binding=['<Alt>Print']
+command='flameshot full -c'
+name='screenshot all screens'
+
+[custom-keybindings/custom3]
+binding=['<Control>Print']
+command='flameshot gui'
+name='screenshot gui'
+
 [/]
 looking-glass-keybinding=@as []
-custom-list=['custom0']
+custom-list=['custom0', 'custom1', 'custom2', 'custom3']
 magnifier-zoom-in=@as []
 magnifier-zoom-out=@as []
 
 [media-keys]
+area-screenshot=@as []
+area-screenshot-clip=@as []
+screenshot=@as []
+screenshot-clip=@as []
+window-screenshot=@as []
+window-screenshot-clip=@as []
 screensaver=['<Super>l', 'XF86ScreenSaver']
 
 [wm]

@@ -7,6 +7,7 @@ fi
 
 cd "$(dirname "$0")"
 
+./apps.sh
 ./desktop.sh
 ./filesystem.sh
 ./peripherals.sh
