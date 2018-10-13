@@ -9,4 +9,5 @@ cd "$(dirname "$0")"
 
 ./desktop.sh
 ./filesystem.sh
+./peripherals.sh
 ./sound.sh
