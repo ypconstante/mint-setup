@@ -13,7 +13,7 @@ apt autoremove --purge -y -qq pix
 apt autoremove --purge -y -qq rhythmbox*
 apt autoremove --purge -y -qq thunderbird
 apt autoremove --purge -y -qq xserver-xorg-video-intel
-rm -rf /usr/lib/mono
+sudo rm -rf /usr/lib/mono
 echo "done: $STEP"
 
 
