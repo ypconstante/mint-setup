@@ -16,14 +16,15 @@ gsettings set org.cinnamon panels-height "['1:40']"
 gsettings set org.cinnamon panels-scale-text-icons "['1:false']"
 # taskbar elements
 gsettings set org.cinnamon enabled-applets "[
- 'panel1:left:0:menu@cinnamon.org:1',
- 'panel1:left:3:window-list@cinnamon.org:4',
- 'panel1:right:0:systray@cinnamon.org:0',
- 'panel1:right:2:network@cinnamon.org:9',
- 'panel1:right:3:sound@cinnamon.org:13',
- 'panel1:right:4:power@cinnamon.org:11',
- 'panel1:right:5:notifications@cinnamon.org:6',
- 'panel1:right:6:calendar@cinnamon.org:12'
+ 'panel1:left:0:menu@cinnamon.org',
+ 'panel1:left:3:window-list@cinnamon.org',
+ 'panel1:right:0:workspace-switcher@cinnamon.org',
+ 'panel1:right:1:systray@cinnamon.org',
+ 'panel1:right:2:network@cinnamon.org',
+ 'panel1:right:3:sound@cinnamon.org',
+ 'panel1:right:4:power@cinnamon.org',
+ 'panel1:right:5:notifications@cinnamon.org',
+ 'panel1:right:6:calendar@cinnamon.org'
 ]"
 echo "done: $STEP"
 
