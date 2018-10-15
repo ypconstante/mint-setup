@@ -11,5 +11,6 @@ cd "$(dirname "$0")"
 ./packages.sh
 ./desktop.sh
 ./filesystem.sh
+./git.sh
 ./peripherals.sh
 ./sound.sh
