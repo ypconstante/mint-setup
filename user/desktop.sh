@@ -6,6 +6,12 @@ dconf write /org/nemo/desktop/computer-icon-visible false
 dconf write /org/nemo/desktop/volumes-visible false
 echo "done: $STEP"
 
+STEP="change theme"
+dconf write /org/cinnamon/desktop/wm/preferences/theme "'Mint-Y-Dark'"
+dconf write /org/cinnamon/desktop/interface/gtk-theme "'Mint-Y-Darker'"
+dconf write /org/cinnamon/theme/name "'Mint-Y'"
+echo "done: $STEP"
+
 STEP="modify taskbar"
 # position
 dconf write /org/cinnamon/panels-enabled "['1:0:right']"
