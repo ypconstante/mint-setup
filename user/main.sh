@@ -14,3 +14,4 @@ cd "$(dirname "$0")"
 ./git.sh
 ./peripherals.sh
 ./sound.sh
+./update-manager.sh
