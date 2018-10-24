@@ -25,15 +25,22 @@ magnifier-zoom-in=@as []
 magnifier-zoom-out=@as []
 
 [media-keys]
+screensaver=['<Super>l', 'XF86ScreenSaver']
+terminal=['<Super>t']
 area-screenshot=@as []
 area-screenshot-clip=@as []
 screenshot=@as []
 screenshot-clip=@as []
 window-screenshot=@as []
 window-screenshot-clip=@as []
-screensaver=['<Super>l', 'XF86ScreenSaver']
 
 [wm]
+close=['<Alt>F4', '<Super>q']
+panel-run-dialog=['<Alt>F2', '<Super>r']
+
+minimize=['<Super>d']
+show-desktop=@as []
+
 switch-to-workspace-left=['<Control><Super>Left']
 switch-to-workspace-right=['<Control><Super>Right']
 switch-to-workspace-1=['<Super>1']
