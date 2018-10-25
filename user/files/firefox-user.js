@@ -13,6 +13,20 @@ user_pref("privacy.trackingprotection.introCount", 20);
 // restore previous session
 user_pref("browser.startup.page", 3);
 
+// put tabs in titlebar
+// allow titlebar to be hidden via css
+user_pref("browser.tabs.drawInTitlebar", true);
+
+// theme
+user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org");
+
+// toolbar
+user_pref("browser.uidensity", 1);
+user_pref(
+	"browser.uiCustomization.state",
+	'{"placements":{"widget-overflow-fixed-list":[],"PersonalToolbar":["personal-bookmarks"],"nav-bar":["back-button","forward-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","downloads-button","bookmarks-menu-button","sync-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button"]},"seen":["developer-button","treestyletab_piro_sakura_ne_jp-browser-action","_testpilot-containers-browser-action"],"dirtyAreaCache":[],"currentVersion":14,"newElementCount":0}'
+);   
+
 // customize new tab page
 user_pref("browser.newtabpage.activity-stream.showSearch", false);
 user_pref("browser.newtabpage.activity-stream.topSitesRows", 2);

@@ -1,0 +1,16 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* hide titlebar */
+#titlebar {
+  visibility: collapse !important;
+}
+
+/* hide tabs */
+#TabsToolbar {
+   visibility: collapse !important;
+}
+
+/* hide sidebar header */
+#sidebar-header {
+   visibility: collapse !important;
+}
