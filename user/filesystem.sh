@@ -49,3 +49,7 @@ STEP="temporary files only in memory"
 sudo cp /usr/share/systemd/tmp.mount /etc/systemd/system/
 sudo systemctl enable tmp.mount
 echo "done: $STEP"
+
+STEP="filesystem kernel parameters"
+sudo cp ./files/filesystem-sysctl.conf /etc/sysctl.d/98-filesystem.conf
+echo "done: $STEP"
