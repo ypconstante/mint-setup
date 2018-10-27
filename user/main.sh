@@ -6,6 +6,10 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 set -x
+set -e
+sudo true
+set +e
+
 cd "$(dirname "$0")"
 
 ./prepare.sh
