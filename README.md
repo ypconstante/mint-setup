@@ -10,7 +10,9 @@ find ./mint-setup/. -name "*.sh" -exec chmod +x {} \;
 ```
 
 Update kernel
-Reset
+Restart computer
+Choose drivers
+
 
 ```sh
 ./mint-setup/system/main.sh
