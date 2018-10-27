@@ -11,6 +11,9 @@ user_pref("browser.newtabpage.activity-stream.migrationExpired", true);
 user_pref("browser.urlbar.timesBeforeHidingSuggestionsHint", 0);
 user_pref("privacy.trackingprotection.introCount", 20);
 
+// increase interval between session storing to reduce disk usage
+user_pref("browser.sessionstore.interval", 120000);
+
 // restore previous session
 user_pref("browser.startup.page", 3);
 
