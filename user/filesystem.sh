@@ -42,7 +42,3 @@ echo "file://$HOME/documents Documents" >> ~/.config/gtk-3.0/bookmarks
 echo "file://$HOME/downloads Downloads" >> ~/.config/gtk-3.0/bookmarks
 echo "file://$HOME/projects Projects" >> ~/.config/gtk-3.0/bookmarks
 echo "done: $STEP"
-
-STEP="hide snaps folder"
-echo snap >> ~/.hidden
-echo "done: $STEP"

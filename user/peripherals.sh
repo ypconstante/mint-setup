@@ -1,8 +1,6 @@
 #!/bin/bash
 
 STEP="modify mouse and touchpad settings"
-# rename with double click
-dconf write /org/nemo/preferences/quick-renames-with-pause-in-between true
 # locate cursor with ctrl
 dconf write /org/cinnamon/settings-daemon/peripherals/mouse/locate-pointer false
 # disable left+right click to middle click

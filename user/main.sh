@@ -10,6 +10,7 @@ cd "$(dirname "$0")"
 ./prepare.sh
 ./packages.sh
 ./desktop.sh
+./file-manager.sh
 ./filesystem.sh
 ./git.sh
 ./peripherals.sh
