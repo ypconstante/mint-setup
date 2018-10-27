@@ -18,6 +18,7 @@ cd "$(dirname "$0")"
 ./file-manager.sh
 ./filesystem.sh
 ./git.sh
+./network.sh
 ./peripherals.sh
 ./sound.sh
 ./update-manager.sh
