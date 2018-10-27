@@ -14,6 +14,7 @@ cd "$(dirname "$0")"
 
 ./prepare.sh
 ./packages.sh
+./browsers.sh
 ./desktop.sh
 ./file-manager.sh
 ./filesystem.sh
