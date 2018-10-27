@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 STEP="modify mouse and touchpad settings"
 # locate cursor with ctrl
 dconf write /org/cinnamon/settings-daemon/peripherals/mouse/locate-pointer false

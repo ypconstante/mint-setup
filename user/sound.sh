@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 STEP="disable system sounds"
 dconf write /org/cinnamon/sounds/login-enabled false
 dconf write /org/cinnamon/sounds/logout-enabled false

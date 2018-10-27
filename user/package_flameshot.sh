@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 STEP="install flameshot"
 apt install flameshot -y -qq
 flameshot config -t false

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 STEP="modify update manager settings"
 dconf write /com/linuxmint/updates/hide-window-after-update true
 dconf write /com/linuxmint/updates/hide-systray true

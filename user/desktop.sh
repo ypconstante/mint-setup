@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 STEP="hide desktop icons"
 dconf write /org/nemo/desktop/home-icon-visible false
 dconf write /org/nemo/desktop/computer-icon-visible false

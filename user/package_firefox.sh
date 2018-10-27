@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 get_profile_dir() {
 	find ~/.mozilla/firefox -maxdepth 1 -name '*.default' | head -n 1
 }

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 STEP="close nemo"
 nemo -q
 echo "done: $STEP"

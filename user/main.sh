@@ -5,6 +5,7 @@ if [[ $EUID -eq 0 ]]; then
   exit 1
 fi
 
+set -x
 cd "$(dirname "$0")"
 
 ./prepare.sh

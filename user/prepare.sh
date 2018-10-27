@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 STEP="remove unused packages"
 apt autoremove -y -qq
 apt autoremove --purge -y -qq gimp

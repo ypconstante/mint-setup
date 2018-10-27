@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 STEP="install tig"
 apt install -y -qq tig
 echo "done: $STEP"
