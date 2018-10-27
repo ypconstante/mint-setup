@@ -44,3 +44,8 @@ echo "file://$HOME/documents Documents" >> ~/.config/gtk-3.0/bookmarks
 echo "file://$HOME/downloads Downloads" >> ~/.config/gtk-3.0/bookmarks
 echo "file://$HOME/projects Projects" >> ~/.config/gtk-3.0/bookmarks
 echo "done: $STEP"
+
+STEP="temporary files only in memory"
+sudo cp /usr/share/systemd/tmp.mount /etc/systemd/system/
+sudo systemctl enable tmp.mount
+echo "done: $STEP"
