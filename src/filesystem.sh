@@ -53,3 +53,7 @@ echo "done: $STEP"
 STEP="filesystem kernel parameters"
 sudo cp ./files/filesystem-sysctl.conf /etc/sysctl.d/98-filesystem.conf
 echo "done: $STEP"
+
+STEP="disable writing file access time"
+sudo sed -i '/noatime/!s/\(\/ *\w* * [^ ]*\)/\1,noatime/' /etc/fstab
+echo "done: $STEP"
