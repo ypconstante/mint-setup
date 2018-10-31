@@ -1,9 +1,11 @@
 
 user_pref("accessibility.force_disabled", 1);
 user_pref("browser.startup.homepage", "about:newtab");
-user_pref("dom.webnotifications.enabled", false);
 user_pref("dom.event.clipboardevents.enabled", false);
 user_pref("general.warnOnAboutConfig", false);
+
+// disable notifications
+user_pref("permissions.default.desktop-notification", 2);
 
 // hide how to use browser instructions
 user_pref("browser.onboarding.enabled", false);
