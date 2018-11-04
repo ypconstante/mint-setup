@@ -34,8 +34,22 @@ dconf write /org/cinnamon/enabled-applets "[
  'panel1:right:5:notifications@cinnamon.org',
  'panel1:right:6:calendar@cinnamon.org'
 ]"
+# hide taskbar
+dconf write /org/cinnamon/panels-autohide "['1:intel']"
+
 echo "done: $STEP"
 
 STEP="modify background"
 dconf write /org/cinnamon/desktop/background/picture-uri "'file:///usr/share/backgrounds/linuxmint-tara/whmii_toy_store.jpg'"
+echo "done: $STEP"
+
+STEP="modify windows"
+dconf write /org/cinnamon/desktop/wm/preferences/focus-mode "'sloppy'"
+dconf write /org/cinnamon/desktop/wm/preferences/button-layout "':minimize,close'"
+dconf write /org/cinnamon/desktop/wm/preferences/auto-raise true
+echo "done: $STEP"
+
+STEP="modify alt tab switcher"
+dconf write /org/cinnamon/alttab-switcher-style "'icons+preview'"
+dconf write /org/cinnamon/alttab-minimized-aware true
 echo "done: $STEP"
