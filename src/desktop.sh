@@ -36,7 +36,11 @@ dconf write /org/cinnamon/enabled-applets "[
 ]"
 # hide taskbar
 dconf write /org/cinnamon/panels-autohide "['1:intel']"
+echo "done: $STEP"
 
+STEP="allow path in menu search"
+MENU_CONFIG_FILE=$(find ~/.cinnamon/configs/menu@cinnamon.org -name '*.json' -exec ls -1t "{}" + | head -n 1)
+perl -i -p0e 's/("search-filesystem":.*?"value": ?)[a-z]+/$1."true"/se' $MENU_CONFIG_FILE
 echo "done: $STEP"
 
 STEP="modify background"
