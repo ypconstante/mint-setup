@@ -22,4 +22,5 @@ cd "$(dirname "$0")"
 ./network.sh
 ./peripherals.sh
 ./sound.sh
+./system-monitor.sh
 ./update-manager.sh
