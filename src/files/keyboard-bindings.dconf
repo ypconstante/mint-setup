@@ -25,6 +25,7 @@ magnifier-zoom-in=@as []
 magnifier-zoom-out=@as []
 
 [media-keys]
+next=['XF86AudioNext', '<Primary>AudioPlay']
 screensaver=['<Super>l', 'XF86ScreenSaver']
 terminal=['<Super>t']
 area-screenshot=@as []
