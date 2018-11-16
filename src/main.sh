@@ -23,4 +23,5 @@ cd "$(dirname "$0")"
 ./peripherals.sh
 ./sound.sh
 ./system-monitor.sh
+./terminal.sh
 ./update-manager.sh
