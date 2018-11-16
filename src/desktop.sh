@@ -56,4 +56,5 @@ echo "done: $STEP"
 STEP="modify alt tab switcher"
 dconf write /org/cinnamon/alttab-switcher-style "'icons+preview'"
 dconf write /org/cinnamon/alttab-minimized-aware true
+dconf write /org/cinnamon/alttab-switcher-enforce-primary-monitor true
 echo "done: $STEP"
