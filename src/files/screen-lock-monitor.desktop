@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Bluetooth Disabler
-Comment=Disable bluetooth at login and at screen lock
+Name=Screen Lock Disabler
+Comment=Close unnecessary stuff on screen lock
 Terminal=false
 X-GNOME-Autostart-enabled=true
 X-GNOME-Autostart-Delay=5

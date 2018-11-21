@@ -6,12 +6,16 @@ disable_bluetooth() {
 	rfkill block bluetooth
 }
 
-disable_bluetooth
+run() {
+	disable_bluetooth
+}
+
+run
 
 dbus-monitor --session "type='signal',interface='org.cinnamon.ScreenSaver'" |
 	while read x; do
 		case "$x" in 
 			*"boolean true"*)
-				disable_bluetooth;;
+				run;;
     	esac
   	done

@@ -21,6 +21,7 @@ cd "$(dirname "$0")"
 ./git.sh
 ./network.sh
 ./peripherals.sh
+./screen-lock-monitor.sh
 ./sound.sh
 ./system-monitor.sh
 ./terminal.sh

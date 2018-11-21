@@ -16,11 +16,3 @@ echo "done: $STEP"
 STEP="disable bluetooth automatic power on"
 dconf write /org/blueman/plugins/powermanager/auto-power-on false
 echo "done: $STEP"
-
-STEP="disable bluetooth at login and at screen lock"
-mkdir -p ~/.local/scripts
-cp files/bluetooth-disabler.sh ~/.local/scripts/
-chmod +x ~/.local/scripts/bluetooth-disabler.sh
-cp files/bluetooth-disabler.desktop ~/.config/autostart/
-echo 'Exec="'$HOME'/.local/scripts/bluetooth-disabler.sh"' >> ~/.config/autostart/bluetooth-disabler.desktop
-echo "done: $STEP"
