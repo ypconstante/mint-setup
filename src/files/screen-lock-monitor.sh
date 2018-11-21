@@ -6,8 +6,13 @@ disable_bluetooth() {
 	rfkill block bluetooth
 }
 
+close_jetbrains_toolbox() {
+	pkill jetbrains-toolb
+}
+
 run() {
 	disable_bluetooth
+	close_jetbrains_toolbox
 }
 
 run
