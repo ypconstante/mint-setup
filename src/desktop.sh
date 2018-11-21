@@ -2,6 +2,8 @@
 
 set -x
 
+MENU_CONFIG_FILE=$(find ~/.cinnamon/configs/menu@cinnamon.org -name '*.json' -exec ls -1t "{}" + | head -n 1)
+
 STEP="hide desktop icons"
 dconf write /org/nemo/desktop/home-icon-visible false
 dconf write /org/nemo/desktop/computer-icon-visible false
@@ -36,11 +38,16 @@ dconf write /org/cinnamon/enabled-applets "[
 ]"
 # hide taskbar
 dconf write /org/cinnamon/panels-autohide "['1:intel']"
+
+# change menu icon
+mkdir -p ~/.var/icons
+cp files/desktop-menu.svg ~/.var/icons/menu.svg
+perl -i -p0e 's/("menu-icon-custom":.*?"value": ?)[^\n,]*/$1."true"/se' $MENU_CONFIG_FILE
+perl -i -p0e 's/("menu-icon":.*?"value": ?)[^\n,]*/$1."\"'"${HOME//\//\\/}"'\/.var\/icons\/menu.svg\""/se' $MENU_CONFIG_FILE
 echo "done: $STEP"
 
 STEP="allow path in menu search"
-MENU_CONFIG_FILE=$(find ~/.cinnamon/configs/menu@cinnamon.org -name '*.json' -exec ls -1t "{}" + | head -n 1)
-perl -i -p0e 's/("search-filesystem":.*?"value": ?)[a-z]+/$1."true"/se' $MENU_CONFIG_FILE
+perl -i -p0e 's/("search-filesystem":.*?"value": ?)[^\n,]*/$1."true"/se' $MENU_CONFIG_FILE
 echo "done: $STEP"
 
 STEP="modify background"
