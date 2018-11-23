@@ -48,8 +48,10 @@ STEP="install zsh"
 apt install zsh -y -qq
 echo "done: $STEP"
 
+export ZDOTDIR=$HOME/.local/share/zsh
+
 STEP="install zgen"
-git clone https://github.com/tarjoilija/zgen.git $HOME/.zgen
+git clone https://github.com/tarjoilija/zgen.git $ZDOTDIR/zgen
 echo "done: $STEP"
 
 STEP="install additional cli tools"
@@ -59,7 +61,8 @@ echo "done: $STEP"
 STEP="configure zsh"
 which zsh | sudo tee -a /etc/shells
 sudo chsh -s $(which zsh) $USER
-cp files/.zshrc ~/.zshrc
+cp files/terminal.zshrc $ZDOTDIR/.zshrc
+echo "ZDOTDIR=$ZDOTDIR" > $HOME/.pam_environment
 echo "done: $STEP"
 
 STEP="install zsh plugins"
@@ -67,5 +70,5 @@ zsh -i -c true
 echo "done: $STEP"
 
 STEP="compile zsh plugins"
-find ~/.zgen -name "*.zsh" -exec zsh -i -c "zcompile {}" \;
+find $ZDOTDIR -name "*.zsh" -not -path "*test-data*" -not -path "*/tests/*" -exec zsh -i -c "zcompile {}" \;
 echo "done: $STEP"

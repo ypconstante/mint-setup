@@ -5,6 +5,8 @@ if [[ $PROFILE_STARTUP == true ]]; then
 fi
 
 ##################################### ZGEN ####################################
+export ZGEN_DIR="$ZDOTDIR/zgen"
+
 # nvm
 export NVM_DIR="$HOME/.config/nvm"
 export NVM_LAZY_LOAD=true
@@ -26,8 +28,8 @@ export SPACESHIP_GIT_STATUS_AHEAD='Λ'
 export SPACESHIP_GIT_STATUS_BEHIND='V'
 export SPACESHIP_GIT_STATUS_DIVERGED='ΛV'
 
-if ! source $HOME/.zgen/init.zsh; then
-	source $HOME/.zgen/zgen.zsh
+if ! source $ZGEN_DIR/init.zsh; then
+	source $ZGEN_DIR/zgen.zsh
 
 	zgen reset
 
@@ -65,7 +67,7 @@ if ! source $HOME/.zgen/init.zsh; then
 
 	zgen save
 
-	zcompile $HOME/.zshrc
+	zcompile $ZDOTDIR/.zshrc
 
 	zgen init
 fi
@@ -106,7 +108,7 @@ zstyle ':completion:*' list-dirs-first true
 # history
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+HISTFILE="$ZDOTDIR/.zsh_history"
 
 setopt hist_ignore_all_dups	# ignore duplicated commands history list
 setopt hist_ignore_space	# ignore commands that start with space
