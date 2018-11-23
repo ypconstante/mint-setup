@@ -55,7 +55,8 @@ git clone https://github.com/tarjoilija/zgen.git $ZDOTDIR/zgen
 echo "done: $STEP"
 
 STEP="install additional cli tools"
-apt install autojump
+apt install autojump -y -qq
+apt install jq -y -qq
 echo "done: $STEP"
 
 STEP="configure zsh"
