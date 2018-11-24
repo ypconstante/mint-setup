@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+source "$(dirname "$0")/_base.sh"
 
 STEP="install tig"
 apt install -y -qq tig

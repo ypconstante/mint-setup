@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+source "$(dirname "$0")/_base.sh"
 
 STEP="replace blueberry with blueman"
 apt autoremove blueberry -y -qq --purge

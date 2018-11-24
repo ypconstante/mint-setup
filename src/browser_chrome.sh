@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+source "$(dirname "$0")/_base.sh"
 
 STEP="install chrome"
 curl -sS https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -

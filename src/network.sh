@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+source "$(dirname "$0")/_base.sh"
 
 STEP="network kernel parameters"
 sudo cp ./files/network-sysctl.conf /etc/sysctl.d/98-network.conf

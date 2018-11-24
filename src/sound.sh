@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+source "$(dirname "$0")/_base.sh"
 
 STEP="disable system sounds"
 dconf write /org/cinnamon/sounds/login-enabled false

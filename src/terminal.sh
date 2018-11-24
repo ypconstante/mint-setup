@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "$(dirname "$0")/_base.sh"
+
 STEP="configure terminal theme"
 dset() {
     local key="$1"; shift

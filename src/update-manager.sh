@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+source "$(dirname "$0")/_base.sh"
 
 STEP="modify update manager settings"
 dconf write /com/linuxmint/updates/hide-window-after-update true

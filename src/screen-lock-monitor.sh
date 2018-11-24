@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "$(dirname "$0")/_base.sh"
+
 STEP="add screen lock monitor"
 mkdir -p ~/.var/scripts
 cp files/screen-lock-monitor.sh ~/.var/scripts/

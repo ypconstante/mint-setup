@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+source "$(dirname "$0")/_base.sh"
 
 STEP="modify mouse and touchpad settings"
 # locate cursor with ctrl

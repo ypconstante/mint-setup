@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+source "$(dirname "$0")/_base.sh"
 
 MENU_CONFIG_FILE=$(find ~/.cinnamon/configs/menu@cinnamon.org -name '*.json' -exec ls -1t "{}" + | head -n 1)
 
