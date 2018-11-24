@@ -50,7 +50,6 @@ if ! source $ZGEN_DIR/init.zsh; then
 	# 
 	zgen load zsh-users/zsh-autosuggestions
 	zgen load zsh-users/zsh-completions src
-	zgen load zsh-users/zsh-syntax-highlighting
 	zgen load zsh-users/zsh-history-substring-search
 
 	zgen oh-my-zsh plugins/autojump
@@ -66,6 +65,7 @@ if ! source $ZGEN_DIR/init.zsh; then
 
 	zgen load twang817/zsh-clipboard
 	zgen load MichaelAquilina/zsh-you-should-use
+	zgen load zdharma/fast-syntax-highlighting
 
 	zgen save
 
