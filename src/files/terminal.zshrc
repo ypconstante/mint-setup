@@ -118,6 +118,9 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+# remove paste text delay
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+
 # Keep directories and files separated
 zstyle ':completion:*' list-dirs-first true
 
