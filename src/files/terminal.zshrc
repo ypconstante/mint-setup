@@ -8,7 +8,7 @@ fi
 export ZGEN_DIR="$ZDOTDIR/zgen"
 
 # nvm
-export NVM_DIR="$HOME/.config/nvm"
+export NVM_DIR="$HOME/.local/share/nvm"
 export NVM_LAZY_LOAD=true
 export NVM_NO_USE=true
 export NVM_AUTO_USE=true
