@@ -10,6 +10,7 @@ export ZGEN_DIR="$ZDOTDIR/zgen"
 # nvm
 export NVM_DIR="$HOME/.config/nvm"
 export NVM_LAZY_LOAD=true
+export NVM_NO_USE=true
 export NVM_AUTO_USE=true
 
 # autosuggestions
@@ -37,13 +38,13 @@ if ! source $ZGEN_DIR/init.zsh; then
 
 	# base
 	zgen oh-my-zsh
+	zgen load mafredri/zsh-async
 
 	# theme 
 	zgen load denysdovhan/spaceship-prompt spaceship
 
 	# nvm
-	zgen load lukechilds/zsh-nvm
-	zgen oh-my-zsh plugins/nvm
+	zgen load ypconstante/zsh-nvm
 
 	# 
 	zgen load zsh-users/zsh-autosuggestions
@@ -72,6 +73,20 @@ if ! source $ZGEN_DIR/init.zsh; then
 	zgen init
 fi
 ################################### END ZGEN ###################################
+
+# load nvm async to keep startup fast
+function load_nvm() {
+	perl -i -p0e 's/(\n(nvm_die_on_prefix|nvm_ensure_version_installed)\(\) ?\{)[^}].+?\n\}/$1."}"/seg' $NVM_DIR/nvm.sh
+	sed -i '/#/!s/\(nvm_echo "Found\)/# \1/g' $NVM_DIR/nvm.sh
+	sed -i '/#/!s/\(.*\s\(compinit\)\)/# \1/' $NVM_DIR/bash_completion
+	source $NVM_DIR/nvm.sh
+	source $NVM_DIR/bash_completion
+	_zsh_nvm_auto_use
+}
+
+async_start_worker nvm_worker -n
+async_register_callback nvm_worker load_nvm
+async_job nvm_worker sleep .1
 
 # alias
 alias ls='ls --color'
