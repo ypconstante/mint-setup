@@ -5,7 +5,7 @@ source "$(dirname "$0")/_base.sh"
 STEP="replace blueberry with blueman"
 apt autoremove blueberry -y -qq --purge
 apt autoremove gnome-bluetooth -y -qq --purge
-apt install blueman -y -qq
+my_apt_install blueman
 echo "done: $STEP"
 
 STEP="disable blueman applet startup"

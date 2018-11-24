@@ -47,7 +47,7 @@ dconf write /org/gnome/terminal/legacy/keybindings/prev-tab "'<Primary><Shift>Ta
 echo "done: $STEP"
 
 STEP="install zsh"
-apt install zsh -y -qq
+my_apt_install zsh
 echo "done: $STEP"
 
 export ZDOTDIR=$HOME/.local/share/zsh
@@ -57,8 +57,8 @@ git clone https://github.com/tarjoilija/zgen.git $ZDOTDIR/zgen
 echo "done: $STEP"
 
 STEP="install additional cli tools"
-apt install autojump -y -qq
-apt install jq -y -qq
+my_apt_install autojump
+my_apt_install jq
 echo "done: $STEP"
 
 STEP="configure zsh"
@@ -69,9 +69,11 @@ echo "ZDOTDIR=$ZDOTDIR" > $HOME/.pam_environment
 echo "done: $STEP"
 
 STEP="install zsh plugins"
+echo "starting: $STEP"
 zsh -i -c true
 echo "done: $STEP"
 
 STEP="compile zsh plugins"
+echo "starting: $STEP"
 find $ZDOTDIR -name "*.zsh" -not -path "*test-data*" -not -path "*/tests/*" -exec zsh -i -c "zcompile {}" \;
 echo "done: $STEP"

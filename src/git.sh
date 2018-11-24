@@ -3,7 +3,7 @@
 source "$(dirname "$0")/_base.sh"
 
 STEP="install tig"
-apt install -y -qq tig
+my_apt_install tig
 echo "done: $STEP"
 
 STEP="create ssh folder"
