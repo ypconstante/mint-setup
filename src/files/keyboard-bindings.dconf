@@ -18,9 +18,14 @@ binding=['<Control>Print']
 command='flameshot gui'
 name='screenshot gui'
 
+[custom-keybindings/custom4]
+binding=['<Control>q']
+command='true'
+name='disable shortcuts'
+
 [/]
 looking-glass-keybinding=@as []
-custom-list=['custom0', 'custom1', 'custom2', 'custom3']
+custom-list=['custom0', 'custom1', 'custom2', 'custom3', 'custom4']
 magnifier-zoom-in=@as []
 magnifier-zoom-out=@as []
 
