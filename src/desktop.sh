@@ -55,9 +55,9 @@ dconf write /org/cinnamon/desktop/background/picture-uri "'file:///usr/share/bac
 echo "done: $STEP"
 
 STEP="modify windows"
-dconf write /org/cinnamon/desktop/wm/preferences/focus-mode "'sloppy'"
 dconf write /org/cinnamon/desktop/wm/preferences/button-layout "':minimize,close'"
-dconf write /org/cinnamon/desktop/wm/preferences/auto-raise true
+dconf write /org/cinnamon/desktop/wm/preferences/focus-mode "'sloppy'"
+dconf write /org/cinnamon/desktop/wm/preferences/auto-raise false
 echo "done: $STEP"
 
 STEP="modify alt tab switcher"
