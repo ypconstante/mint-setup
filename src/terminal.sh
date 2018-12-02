@@ -4,12 +4,8 @@ source "$(dirname "$0")/_base.sh"
 
 STEP="configure terminal theme"
 dset() {
-    local key="$1"; shift
-    local val="$1"; shift
-
-    if [[ "$type" == "string" ]]; then
-        val="'$val'"
-    fi
+    local key="$1"
+    local val="$2"
 
     gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE_ID/" $key "$val"
 }
@@ -22,11 +18,11 @@ dset palette "['#2b2b2b', '#ff5c57', '#5af78e', '#f3f99d', '#57c7ff', '#ff6ac1',
 dset background-color "'#2b2b2b'"
 dset foreground-color "'#eff0eb'"
 dset bold-color "'#eff0eb'"
-dset bold-color-same-as-fg "true"
-dset cursor-colors-set "true"
+dset bold-color-same-as-fg true
+dset cursor-colors-set true
 dset cursor-background-color "'#eff0eb'"
 dset cursor-foreground-color "'#2b2b2b'"
-dset use-theme-colors "false"
+dset use-theme-colors false
 dset use-theme-transparency false
 dset use-transparent-background false
 

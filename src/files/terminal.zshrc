@@ -149,8 +149,8 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-li
 KEYTIMEOUT=1
 bindkey -v
 
-bindkey '\eOA' history-substring-search-up
-bindkey '\eOB' history-substring-search-down
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
