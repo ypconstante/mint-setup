@@ -155,6 +155,8 @@ bindkey '^[OB' history-substring-search-down
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
+bindkey '^R' history-incremental-search-backward
+
 if [[ $PROFILE_STARTUP == true ]]; then
 	zprof
 fi
