@@ -155,6 +155,9 @@ bindkey '^H' backward-kill-word
 bindkey "^[[3~" delete-char
 bindkey "^[[3;5~" kill-word
 
+# go back in menu on shift+tab
+bindkey '^[[Z' reverse-menu-complete
+
 # search on up and down arrow
 bindkey '^[OA' history-substring-search-up
 bindkey '^[OB' history-substring-search-down
