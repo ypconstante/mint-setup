@@ -149,12 +149,21 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-li
 KEYTIMEOUT=1
 bindkey -v
 
+# delete on delete or backspace
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-kill-word
+bindkey "^[[3~" delete-char
+bindkey "^[[3;5~" kill-word
+
+# search on up and down arrow
 bindkey '^[OA' history-substring-search-up
 bindkey '^[OB' history-substring-search-down
 
+# go to previous or next word on ctrl+arrow
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
+# search on ctrl+r
 bindkey '^R' history-incremental-search-backward
 
 if [[ $PROFILE_STARTUP == true ]]; then
