@@ -68,8 +68,3 @@ STEP="install zsh plugins"
 echo "starting: $STEP"
 zsh -i -c true
 echo "done: $STEP"
-
-STEP="compile zsh plugins"
-echo "starting: $STEP"
-find $ZDOTDIR -name "*.zsh" -not -path "*test-data*" -not -path "*/tests/*" -exec zsh -i -c "zcompile {}" \;
-echo "done: $STEP"

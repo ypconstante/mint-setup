@@ -4,6 +4,20 @@ if [[ $PROFILE_STARTUP == true ]]; then
 	zmodload zsh/zprof
 fi
 
+################################## FUNCTIONS ##################################
+zrecompile() {
+	if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
+		zcompile ${1}
+	fi
+}
+
+batch_zrecompile() {
+	while read file; do
+		zrecompile "$file"
+	done
+}
+################################ END FUNCTIONS ################################
+
 ##################################### ZGEN ####################################
 export ZGEN_DIR="$ZDOTDIR/zgen"
 
@@ -69,11 +83,21 @@ if ! source $ZGEN_DIR/init.zsh; then
 
 	zgen save
 
-	zcompile $ZDOTDIR/.zshrc
-
 	zgen init
+
+	find $ZDOTDIR -type f \
+		-name "*.zsh" \
+		-not -path "*.git*" -not -path "*test-data*" -not -path "*/tests/*" \
+		| batch_zrecompile
+	find $ZDOTDIR -type f \
+		-not -name "*.*" -not -name "README" -not -name "LICENSE" -not -name "chucknorris" \
+		-not -path "*.git*" -not -path "*test-data*" -not -path "*/tests/*" \
+		| batch_zrecompile
 fi
-################################### END ZGEN ###################################
+################################### END ZGEN ##################################
+
+zrecompile $ZDOTDIR/.zshrc
+find $ZDOTDIR -maxdepth 1 -name "*.zcomp*" -not -path "*.zwc" | batch_zrecompile
 
 # load nvm async to keep startup fast
 function load_nvm() {
