@@ -77,7 +77,6 @@ step_zgen__config() {
 
 	zgen oh-my-zsh plugins/autojump
 	zgen oh-my-zsh plugins/colored-man-pages
-	zgen oh-my-zsh plugins/git
 	zgen oh-my-zsh plugins/gitfast
 	zgen oh-my-zsh plugins/npm
 	zgen oh-my-zsh plugins/yarn
