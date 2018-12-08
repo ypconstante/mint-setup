@@ -61,7 +61,6 @@ step_zgen__config() {
 	echo "Creating a zgen save"
 
 	# base
-	zgen oh-my-zsh
 	zgen load mafredri/zsh-async
 
 	# theme 
