@@ -205,7 +205,6 @@ step_keybinding() {
 
 #################################### START ####################################
 step_zgen
-step_compile_zsh_files
 step_alias
 step_zstyle
 step_history
@@ -214,6 +213,7 @@ step_keybinding
 async_start_worker setup_worker -n
 async_register_callback setup_worker step_load_nvm
 async_register_callback setup_worker step_completion
+async_register_callback setup_worker step_compile_zsh_files
 async_job setup_worker sleep .1
 
 # completion
