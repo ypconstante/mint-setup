@@ -79,9 +79,6 @@ step_zgen__config() {
 	zgen oh-my-zsh plugins/colored-man-pages
 	zgen oh-my-zsh plugins/git
 	zgen oh-my-zsh plugins/gitfast
-	zgen oh-my-zsh plugins/git_remote_branch
-	zgen oh-my-zsh plugins/gradle
-	zgen oh-my-zsh plugins/mvn
 	zgen oh-my-zsh plugins/npm
 	zgen oh-my-zsh plugins/yarn
 
