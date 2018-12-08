@@ -104,12 +104,6 @@ step_compile_zsh_files() {
 }
 
 step_load_nvm() {
-	async_start_worker nvm_worker -n
-	async_register_callback nvm_worker step_load_nvm__load
-	async_job nvm_worker sleep .1
-}
-
-step_load_nvm__load() {
 	perl -i -p0e 's/(\n(nvm_die_on_prefix|nvm_ensure_version_installed)\(\) ?\{)[^}].+?\n\}/$1."}"/seg' $NVM_DIR/nvm.sh
 	sed -i '/#/!s/\(nvm_echo "Found\)/# \1/g' $NVM_DIR/nvm.sh
 	sed -i '/#/!s/\(.*\s\(compinit\)\)/# \1/' $NVM_DIR/bash_completion
@@ -207,11 +201,14 @@ step_keybinding() {
 #################################### START ####################################
 step_zgen
 step_compile_zsh_files
-step_load_nvm
 step_alias
 step_zstyle
 step_history
 step_keybinding
+
+async_start_worker setup_worker -n
+async_register_callback setup_worker step_load_nvm
+async_job setup_worker sleep .1
 
 # completion
 setopt listpacked # make completion columns with different widths 
