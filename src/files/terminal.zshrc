@@ -100,7 +100,7 @@ step_zgen__config() {
 
 step_compile_zsh_files() {
 	zrecompile $ZDOTDIR/.zshrc
-	find $ZDOTDIR -maxdepth 1 -name "*.zcomp*" -not -path "*.zwc" | batch_zrecompile
+	zrecompile $ZDOTDIR/.zcompdump
 }
 
 step_load_nvm() {
