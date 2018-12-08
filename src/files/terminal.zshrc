@@ -71,7 +71,7 @@ step_zgen__config() {
 
 	# 
 	zgen load zsh-users/zsh-autosuggestions
-	zgen load zsh-users/zsh-completions src
+	zgen load zsh-users/zsh-completions
 	zgen load zsh-users/zsh-history-substring-search
 
 	zgen oh-my-zsh plugins/autojump
@@ -157,6 +157,11 @@ step_zstyle() {
 	zstyle ':completion:*' list-dirs-first true
 }
 
+step_completion() {
+	autoload -Uz compinit
+	compinit
+}
+
 step_history() {
 	HISTSIZE=1000
 	SAVEHIST=1000
@@ -208,6 +213,7 @@ step_keybinding
 
 async_start_worker setup_worker -n
 async_register_callback setup_worker step_load_nvm
+async_register_callback setup_worker step_completion
 async_job setup_worker sleep .1
 
 # completion
