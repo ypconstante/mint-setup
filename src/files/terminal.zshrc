@@ -83,7 +83,6 @@ step_zgen__config() {
 	zgen oh-my-zsh plugins/gradle
 	zgen oh-my-zsh plugins/mvn
 	zgen oh-my-zsh plugins/npm
-	zgen oh-my-zsh plugins/tig
 	zgen oh-my-zsh plugins/yarn
 
 	zgen load twang817/zsh-clipboard
@@ -128,13 +127,20 @@ step_alias() {
 	alias ls='ls --color'
 	alias ll='ls --color=auto -lh'
 	alias lla='ls --color=auto -lha'
+
 	alias ..='cd ..'
 	alias ...='cd ../..'
 	alias ....='cd ../../..'
 	alias ~='cd ~'
 	alias -- -='cd -'
+
 	alias d='dirs -v | head -10'
+
 	alias -- g-='git checkout -'
+
+	alias tis='tig status'
+	alias til='tig log'
+	alias tib='tig blame -C'
 }
 
 step_zstyle() {
