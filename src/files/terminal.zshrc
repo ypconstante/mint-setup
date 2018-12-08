@@ -17,6 +17,11 @@ batch_zrecompile() {
 	done
 }
 
+zgen() {
+	source $ZGEN_DIR/zgen.zsh
+	zgen $@
+}
+
 #################################### STEPS ####################################
 step_zgen() {
 	export ZGEN_DIR="$ZDOTDIR/zgen"
@@ -54,8 +59,6 @@ step_zgen__source() {
 }
 
 step_zgen__config() {
-	source $ZGEN_DIR/zgen.zsh
-
 	zgen reset
 
 	echo "Creating a zgen save"
