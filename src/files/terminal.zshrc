@@ -55,7 +55,12 @@ step_zgen() {
 }
 
 step_zgen__source() {
-	source $ZGEN_DIR/init.zsh
+	if [[ -s $ZDOTDIR/.zshrc.zwc && $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]]; then
+		return -1		
+	fi
+
+	source $ZGEN_DIR/init.zsh || return -1
+	return 0
 }
 
 step_zgen__config() {
