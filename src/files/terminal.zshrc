@@ -4,6 +4,10 @@ if [[ $PROFILE_STARTUP == true ]]; then
 	zmodload zsh/zprof
 fi
 
+
+################################## VARIABLES ##################################
+local ZSH_COMPDUMP_CUSTOM="$ZDOTDIR/.zcompdump-custom"
+
 ################################## FUNCTIONS ##################################
 zrecompile() {
 	if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
@@ -167,7 +171,30 @@ step_zstyle() {
 
 step_completion() {
 	autoload -Uz compinit
-	compinit
+	fpath=($ZGEN_DIR $fpath)
+
+	if step_completion__is_cache_outdated; then
+		compinit -d $ZSH_COMPDUMP_CUSTOM
+
+		# if file isn't modified, update modified time so the check doesn't run every time
+		if [[ step_completion__is_cache_outdated ]]; then
+			touch -d 'now' $ZSH_COMPDUMP_CUSTOM
+		else
+			zrecompile $ZSH_COMPDUMP_CUSTOM
+		fi
+	else
+		compinit -C -d $ZSH_COMPDUMP_CUSTOM
+	fi
+}
+
+step_completion__is_cache_outdated() {
+	local max_cache_file_time=$(date -d '12 hours ago' +%s)
+	local file_time=$(date -r $ZSH_COMPDUMP_CUSTOM +%s)
+	if (( $file_time < $max_cache_file_time )); then 
+		return 0
+	else 
+		return -1
+	fi
 }
 
 step_history() {
@@ -213,7 +240,6 @@ step_keybinding() {
 
 step_async_load() {
 	step_load_nvm
-	step_completion
 	step_compile_zsh_files
 }
 
@@ -223,6 +249,7 @@ step_alias
 step_zstyle
 step_history
 step_keybinding
+step_completion
 
 async_start_worker setup_worker -n
 async_register_callback setup_worker step_async_load
