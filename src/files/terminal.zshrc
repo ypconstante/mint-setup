@@ -211,6 +211,12 @@ step_keybinding() {
 	bindkey '^R' history-incremental-search-backward
 }
 
+step_async_load() {
+	step_load_nvm
+	step_completion
+	step_compile_zsh_files
+}
+
 #################################### START ####################################
 step_zgen
 step_alias
@@ -219,9 +225,7 @@ step_history
 step_keybinding
 
 async_start_worker setup_worker -n
-async_register_callback setup_worker step_load_nvm
-async_register_callback setup_worker step_completion
-async_register_callback setup_worker step_compile_zsh_files
+async_register_callback setup_worker step_async_load
 async_job setup_worker sleep .1
 
 # completion
