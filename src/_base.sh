@@ -18,6 +18,6 @@ my_indent() {
 }
 
 my_apt_install() {
-	echo "Installing '$0'"
+	echo "Installing '$1'"
 	my_indent sudo apt-get install -y -qq -o=Dpkg::Use-Pty=0 "$@"
 }
