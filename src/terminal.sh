@@ -54,6 +54,7 @@ echo "done: $STEP"
 
 STEP="install additional cli tools"
 my_apt_install autojump
+my_apt_install inotify-tools
 my_apt_install jq
 echo "done: $STEP"
 
