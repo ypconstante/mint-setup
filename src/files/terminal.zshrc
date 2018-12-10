@@ -13,7 +13,7 @@ zrecompile() {
 
 batch_zrecompile() {
 	while read file; do
-		zrecompile "$file"
+		zrecompile $file
 	done
 }
 
@@ -35,8 +35,6 @@ step_plugins() {
 
 	__config() {
 		zgen reset
-
-		echo "Creating a zgen save"
 
 		# base
 		zgen load mafredri/zsh-async
@@ -67,19 +65,19 @@ step_plugins() {
 		zgen init
 
 		find $ZDOTDIR -type f \
-			-name "*.zsh" \
-			-not -path "*.git*" -not -path "*test-data*" -not -path "*/tests/*" \
+			-name '*.zsh' \
+			-not -path '*.git*' -not -path '*test-data*' -not -path '*/tests/*' \
 			| batch_zrecompile
 		find $ZDOTDIR -type f \
-			-not -name "*.*" -not -name "README" -not -name "LICENSE" -not -name "chucknorris" \
-			-not -path "*.git*" -not -path "*test-data*" -not -path "*/tests/*" \
+			-not -name '*.*' -not -name 'README' -not -name 'LICENSE' -not -name 'chucknorris' \
+			-not -path '*.git*' -not -path '*test-data*' -not -path '*/tests/*' \
 			| batch_zrecompile
 	}
 
-	export ZGEN_DIR="$ZDOTDIR/zgen"
+	export ZGEN_DIR=$ZDOTDIR/zgen
 
 	# nvm
-	export NVM_DIR="$HOME/.local/share/nvm"
+	export NVM_DIR=$HOME/.local/share/nvm
 	export NVM_LAZY_LOAD=true
 	export NVM_NO_USE=true
 	export NVM_AUTO_USE=true
@@ -154,7 +152,7 @@ step_style() {
 step_history() {
 	HISTSIZE=1000
 	SAVEHIST=1000
-	HISTFILE="$ZDOTDIR/.zsh_history"
+	HISTFILE=$ZDOTDIR/.zsh_history
 
 	setopt hist_ignore_all_dups	# ignore duplicated commands history list
 	setopt hist_ignore_space	# ignore commands that start with space
@@ -174,8 +172,8 @@ step_keybinding() {
 	# delete on delete or backspace
 	bindkey '^?' backward-delete-char
 	bindkey '^H' backward-kill-word
-	bindkey "^[[3~" delete-char
-	bindkey "^[[3;5~" kill-word
+	bindkey '^[[3~' delete-char
+	bindkey '^[[3;5~' kill-word
 
 	# go back in menu on shift+tab
 	bindkey '^[[Z' reverse-menu-complete
@@ -193,7 +191,7 @@ step_keybinding() {
 }
 
 step_completion() {
-	local ZSH_COMPDUMP_CUSTOM="$ZDOTDIR/.zcompdump-custom"
+	local ZSH_COMPDUMP_CUSTOM=$ZDOTDIR/.zcompdump-custom
 
 	__is_cache_outdated() {
 		local max_cache_file_time=$(date -d '12 hours ago' +%s)
