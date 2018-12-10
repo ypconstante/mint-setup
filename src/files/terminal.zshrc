@@ -4,10 +4,6 @@ if [[ $PROFILE_STARTUP == true ]]; then
 	zmodload zsh/zprof
 fi
 
-
-################################## VARIABLES ##################################
-local ZSH_COMPDUMP_CUSTOM="$ZDOTDIR/.zcompdump-custom"
-
 ################################## FUNCTIONS ##################################
 zrecompile() {
 	if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
@@ -28,6 +24,58 @@ zgen() {
 
 #################################### STEPS ####################################
 step_zgen() {
+	__source() {
+		if [[ -s $ZDOTDIR/.zshrc.zwc && $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]]; then
+			return -1		
+		fi
+
+		source $ZGEN_DIR/init.zsh || return -1
+		return 0
+	}
+
+	__config() {
+		zgen reset
+
+		echo "Creating a zgen save"
+
+		# base
+		zgen load mafredri/zsh-async
+
+		# theme 
+		zgen load denysdovhan/spaceship-prompt spaceship
+
+		# nvm
+		zgen load ypconstante/zsh-nvm
+
+		# 
+		zgen load zsh-users/zsh-autosuggestions
+		zgen load zsh-users/zsh-completions
+		zgen load zsh-users/zsh-history-substring-search
+
+		zgen oh-my-zsh plugins/autojump
+		zgen oh-my-zsh plugins/colored-man-pages
+		zgen oh-my-zsh plugins/gitfast
+		zgen oh-my-zsh plugins/npm
+		zgen oh-my-zsh plugins/yarn
+
+		zgen load twang817/zsh-clipboard
+		zgen load MichaelAquilina/zsh-you-should-use
+		zgen load zdharma/fast-syntax-highlighting
+
+		zgen save
+
+		zgen init
+
+		find $ZDOTDIR -type f \
+			-name "*.zsh" \
+			-not -path "*.git*" -not -path "*test-data*" -not -path "*/tests/*" \
+			| batch_zrecompile
+		find $ZDOTDIR -type f \
+			-not -name "*.*" -not -name "README" -not -name "LICENSE" -not -name "chucknorris" \
+			-not -path "*.git*" -not -path "*test-data*" -not -path "*/tests/*" \
+			| batch_zrecompile
+	}
+
 	export ZGEN_DIR="$ZDOTDIR/zgen"
 
 	# nvm
@@ -53,62 +101,11 @@ step_zgen() {
 	export SPACESHIP_PACKAGE_SHOW=false
 	export SPACESHIP_VI_MODE_SHOW=false
 
-	if ! step_zgen__source; then
-		step_zgen__config
+	if ! __source; then
+		__config
 	fi
 }
 
-step_zgen__source() {
-	if [[ -s $ZDOTDIR/.zshrc.zwc && $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]]; then
-		return -1		
-	fi
-
-	source $ZGEN_DIR/init.zsh || return -1
-	return 0
-}
-
-step_zgen__config() {
-	zgen reset
-
-	echo "Creating a zgen save"
-
-	# base
-	zgen load mafredri/zsh-async
-
-	# theme 
-	zgen load denysdovhan/spaceship-prompt spaceship
-
-	# nvm
-	zgen load ypconstante/zsh-nvm
-
-	# 
-	zgen load zsh-users/zsh-autosuggestions
-	zgen load zsh-users/zsh-completions
-	zgen load zsh-users/zsh-history-substring-search
-
-	zgen oh-my-zsh plugins/autojump
-	zgen oh-my-zsh plugins/colored-man-pages
-	zgen oh-my-zsh plugins/gitfast
-	zgen oh-my-zsh plugins/npm
-	zgen oh-my-zsh plugins/yarn
-
-	zgen load twang817/zsh-clipboard
-	zgen load MichaelAquilina/zsh-you-should-use
-	zgen load zdharma/fast-syntax-highlighting
-
-	zgen save
-
-	zgen init
-
-	find $ZDOTDIR -type f \
-		-name "*.zsh" \
-		-not -path "*.git*" -not -path "*test-data*" -not -path "*/tests/*" \
-		| batch_zrecompile
-	find $ZDOTDIR -type f \
-		-not -name "*.*" -not -name "README" -not -name "LICENSE" -not -name "chucknorris" \
-		-not -path "*.git*" -not -path "*test-data*" -not -path "*/tests/*" \
-		| batch_zrecompile
-}
 
 step_compile_zsh_files() {
 	zrecompile $ZDOTDIR/.zshrc
@@ -170,10 +167,22 @@ step_zstyle() {
 }
 
 step_completion() {
+	local ZSH_COMPDUMP_CUSTOM="$ZDOTDIR/.zcompdump-custom"
+
+	__is_cache_outdated() {
+		local max_cache_file_time=$(date -d '12 hours ago' +%s)
+		local file_time=$(date -r $ZSH_COMPDUMP_CUSTOM +%s)
+		if (( $file_time < $max_cache_file_time )); then 
+			return 0
+		else 
+			return -1
+		fi
+	}
+
 	autoload -Uz compinit
 	fpath=($ZGEN_DIR $fpath)
 
-	if step_completion__is_cache_outdated; then
+	if __is_cache_outdated; then
 		compinit -d $ZSH_COMPDUMP_CUSTOM
 
 		# if file isn't modified, update modified time so the check doesn't run every time
@@ -184,16 +193,6 @@ step_completion() {
 		fi
 	else
 		compinit -C -d $ZSH_COMPDUMP_CUSTOM
-	fi
-}
-
-step_completion__is_cache_outdated() {
-	local max_cache_file_time=$(date -d '12 hours ago' +%s)
-	local file_time=$(date -r $ZSH_COMPDUMP_CUSTOM +%s)
-	if (( $file_time < $max_cache_file_time )); then 
-		return 0
-	else 
-		return -1
 	fi
 }
 
