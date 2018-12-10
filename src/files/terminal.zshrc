@@ -126,7 +126,7 @@ step_alias() {
 	alias tib='tig blame -C'
 }
 
-step_zstyle() {
+step_style() {
 	zstyle ':completion:*' auto-description 'specify: %d'
 	zstyle ':completion:*' completer _expand _complete _correct _approximate
 	zstyle ':completion:*' group-name ''
@@ -244,7 +244,7 @@ step_load_nvm() {
 #################################### START ####################################
 step_plugins
 step_alias
-step_zstyle
+step_style
 step_history
 step_keybinding
 step_completion
