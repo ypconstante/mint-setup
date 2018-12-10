@@ -87,6 +87,7 @@ step_plugins() {
 	export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 	# theme
+	export SPACESHIP_ROOT=$ZGEN_DIR/denysdovhan/spaceship-prompt-master
 	export SPACESHIP_CHAR_SYMBOL='❯ '
 	export SPACESHIP_CHAR_SYMBOL_ROOT='# '
 	export SPACESHIP_CHAR_SYMBOL_SECONDARY='$ '
