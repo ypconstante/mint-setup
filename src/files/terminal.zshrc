@@ -97,8 +97,18 @@ step_plugins() {
 	export SPACESHIP_GIT_STATUS_AHEAD='Λ'
 	export SPACESHIP_GIT_STATUS_BEHIND='V'
 	export SPACESHIP_GIT_STATUS_DIVERGED='ΛV'
-	export SPACESHIP_PACKAGE_SHOW=false
-	export SPACESHIP_VI_MODE_SHOW=false
+	export SPACESHIP_PROMPT_ORDER=(
+		user		# Username section
+		dir			# Current directory section
+		host		# Hostname section
+		git			# Git section (git_branch + git_status)
+		node		# Node.js section
+		exec_time	# Execution time
+		line_sep	# Line break
+		jobs		# Background jobs indicator
+		exit_code	# Exit code section
+		char		# Prompt character
+	)
 
 	if ! __source; then
 		__config
