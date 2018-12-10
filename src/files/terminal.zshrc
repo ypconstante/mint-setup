@@ -23,7 +23,7 @@ zgen() {
 }
 
 #################################### STEPS ####################################
-step_zgen() {
+step_plugins() {
 	__source() {
 		if [[ -s $ZDOTDIR/.zshrc.zwc && $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]]; then
 			return -1		
@@ -243,7 +243,7 @@ step_async_load() {
 }
 
 #################################### START ####################################
-step_zgen
+step_plugins
 step_alias
 step_zstyle
 step_history
