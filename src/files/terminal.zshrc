@@ -56,6 +56,7 @@ step_plugins() {
 		zgen oh-my-zsh plugins/npm
 		zgen oh-my-zsh plugins/yarn
 
+		zgen load mollifier/cd-gitroot
 		zgen load twang817/zsh-clipboard
 		zgen load MichaelAquilina/zsh-you-should-use
 		zgen load zdharma/fast-syntax-highlighting
@@ -124,6 +125,9 @@ step_alias() {
 	alias ....='cd ../../..'
 	alias ~='cd ~'
 	alias -- -='cd -'
+
+	alias cdg='cd-gitroot'
+	alias cdf='cd-gitroot'
 
 	alias d='dirs -v | head -10'
 
