@@ -106,21 +106,6 @@ step_plugins() {
 	fi
 }
 
-
-step_compile_zsh_files() {
-	zrecompile $ZDOTDIR/.zshrc
-	zrecompile $ZDOTDIR/.zcompdump
-}
-
-step_load_nvm() {
-	perl -i -p0e 's/(\n(nvm_die_on_prefix|nvm_ensure_version_installed)\(\) ?\{)[^}].+?\n\}/$1."}"/seg' $NVM_DIR/nvm.sh
-	sed -i '/#/!s/\(nvm_echo "Found\)/# \1/g' $NVM_DIR/nvm.sh
-	sed -i '/#/!s/\(.*\s\(compinit\)\)/# \1/' $NVM_DIR/bash_completion
-	source $NVM_DIR/nvm.sh
-	source $NVM_DIR/bash_completion
-	_zsh_nvm_auto_use
-}
-
 step_alias() {
 	alias ls='ls --color'
 	alias ll='ls --color=auto -lh'
@@ -166,36 +151,6 @@ step_zstyle() {
 	zstyle ':completion:*' list-dirs-first true
 }
 
-step_completion() {
-	local ZSH_COMPDUMP_CUSTOM="$ZDOTDIR/.zcompdump-custom"
-
-	__is_cache_outdated() {
-		local max_cache_file_time=$(date -d '12 hours ago' +%s)
-		local file_time=$(date -r $ZSH_COMPDUMP_CUSTOM +%s)
-		if (( $file_time < $max_cache_file_time )); then 
-			return 0
-		else 
-			return -1
-		fi
-	}
-
-	autoload -Uz compinit
-	fpath=($ZGEN_DIR $fpath)
-
-	if __is_cache_outdated; then
-		compinit -d $ZSH_COMPDUMP_CUSTOM
-
-		# if file isn't modified, update modified time so the check doesn't run every time
-		if [[ step_completion__is_cache_outdated ]]; then
-			touch -d 'now' $ZSH_COMPDUMP_CUSTOM
-		else
-			zrecompile $ZSH_COMPDUMP_CUSTOM
-		fi
-	else
-		compinit -C -d $ZSH_COMPDUMP_CUSTOM
-	fi
-}
-
 step_history() {
 	HISTSIZE=1000
 	SAVEHIST=1000
@@ -237,9 +192,53 @@ step_keybinding() {
 	bindkey '^R' history-incremental-search-backward
 }
 
+step_completion() {
+	local ZSH_COMPDUMP_CUSTOM="$ZDOTDIR/.zcompdump-custom"
+
+	__is_cache_outdated() {
+		local max_cache_file_time=$(date -d '12 hours ago' +%s)
+		local file_time=$(date -r $ZSH_COMPDUMP_CUSTOM +%s)
+		if (( $file_time < $max_cache_file_time )); then 
+			return 0
+		else 
+			return -1
+		fi
+	}
+
+	autoload -Uz compinit
+	fpath=($ZGEN_DIR $fpath)
+
+	if __is_cache_outdated; then
+		compinit -d $ZSH_COMPDUMP_CUSTOM
+
+		# if file isn't modified, update modified time so the check doesn't run every time
+		if [[ step_completion__is_cache_outdated ]]; then
+			touch -d 'now' $ZSH_COMPDUMP_CUSTOM
+		else
+			zrecompile $ZSH_COMPDUMP_CUSTOM
+		fi
+	else
+		compinit -C -d $ZSH_COMPDUMP_CUSTOM
+	fi
+}
+
 step_async_load() {
 	step_load_nvm
 	step_compile_zsh_files
+}
+
+step_compile_zsh_files() {
+	zrecompile $ZDOTDIR/.zshrc
+	zrecompile $ZDOTDIR/.zcompdump
+}
+
+step_load_nvm() {
+	perl -i -p0e 's/(\n(nvm_die_on_prefix|nvm_ensure_version_installed)\(\) ?\{)[^}].+?\n\}/$1."}"/seg' $NVM_DIR/nvm.sh
+	sed -i '/#/!s/\(nvm_echo "Found\)/# \1/g' $NVM_DIR/nvm.sh
+	sed -i '/#/!s/\(.*\s\(compinit\)\)/# \1/' $NVM_DIR/bash_completion
+	source $NVM_DIR/nvm.sh
+	source $NVM_DIR/bash_completion
+	_zsh_nvm_auto_use
 }
 
 #################################### START ####################################
