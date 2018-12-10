@@ -194,6 +194,10 @@ step_completion() {
 	local ZSH_COMPDUMP_CUSTOM=$ZDOTDIR/.zcompdump-custom
 
 	__is_cache_outdated() {
+		if [[ ! -f $ZSH_COMPDUMP_CUSTOM ]]; then 
+			return 0
+		fi
+
 		local max_cache_file_time=$(date -d '12 hours ago' +%s)
 		local file_time=$(date -r $ZSH_COMPDUMP_CUSTOM +%s)
 		if (( $file_time < $max_cache_file_time )); then 
