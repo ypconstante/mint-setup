@@ -54,6 +54,7 @@ step_plugins() {
 		zgen oh-my-zsh plugins/colored-man-pages
 		zgen oh-my-zsh plugins/gitfast
 		zgen oh-my-zsh plugins/npm
+		zgen oh-my-zsh plugins/thefuck
 		zgen oh-my-zsh plugins/yarn
 
 		zgen load mollifier/cd-gitroot
@@ -113,6 +114,11 @@ step_plugins() {
 	if ! __source; then
 		__config
 	fi
+}
+
+step_thefuck() {
+	export THEFUCK_HISTORY_LIMIT=5
+	export THEFUCK_WAIT_COMMAND=2
 }
 
 step_alias() {
@@ -182,6 +188,9 @@ step_keybinding() {
 
 	KEYTIMEOUT=1
 	bindkey -v
+
+	# run thefuck on esc
+	bindkey '^[' fuck-command-line
 
 	# delete on delete or backspace
 	bindkey '^?' backward-delete-char
@@ -259,8 +268,8 @@ step_load_nvm() {
 
 #################################### START ####################################
 step_plugins
+step_thefuck
 step_alias
-step_style
 step_history
 step_keybinding
 step_completion
@@ -271,9 +280,6 @@ async_job setup_worker sleep .1
 
 # completion
 setopt listpacked # make completion columns with different widths 
-
-# io
-setopt correct # suggest fix on command with error
 
 if [[ $PROFILE_STARTUP == true ]]; then
 	zprof

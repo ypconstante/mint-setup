@@ -58,6 +58,11 @@ my_apt_install inotify-tools
 my_apt_install jq
 echo "done: $STEP"
 
+STEP="install thefuck"
+my_apt_install python3-dev python3-pip python3-setuptools
+sudo pip3 install thefuck
+echo "done: $STEP"
+
 STEP="configure zsh"
 which zsh | sudo tee -a /etc/shells
 sudo chsh -s $(which zsh) $USER
