@@ -25,5 +25,8 @@ git config --global core.fileMode false
 git config --global diff.mnemonicprefix true
 git config --global diff.algorithm patience
 git config --global diff.compactionHeuristic true
+git config --global fetch.prune true
+git config --global fetch.pruneTags true
+git config --global pull.rebase true
 git config --global rerere.enabled true
 echo "done: $STEP"
