@@ -17,6 +17,16 @@ dconf write /org/cinnamon/theme/name "'Mint-Y'"
 echo "done: $STEP"
 
 STEP="modify taskbar"
+# change menu icon
+mkdir -p ~/.var/icons
+cp $ASSETS/desktop--menu-icon.svg ~/.var/icons/menu.svg
+perl -i -p0e 's/("menu-icon-custom":.*?"value": ?)[^\n,]*/$1."true"/se' $MENU_CONFIG_FILE
+perl -i -p0e 's/("menu-icon":.*?"value": ?)[^\n,]*/$1."\"'"${HOME//\//\\/}"'\/.var\/icons\/menu.svg\""/se' $MENU_CONFIG_FILE
+echo "done: $STEP"
+
+STEP="allow path in menu search"
+perl -i -p0e 's/("search-filesystem":.*?"value": ?)[^\n,]*/$1."true"/se' $MENU_CONFIG_FILE
+
 # position
 dconf write /org/cinnamon/panels-enabled "['1:0:right']"
 # size
@@ -38,16 +48,6 @@ dconf write /org/cinnamon/enabled-applets "[
 ]"
 # hide taskbar
 dconf write /org/cinnamon/panels-autohide "['1:intel']"
-
-# change menu icon
-mkdir -p ~/.var/icons
-cp $ASSETS/desktop--menu-icon.svg ~/.var/icons/menu.svg
-perl -i -p0e 's/("menu-icon-custom":.*?"value": ?)[^\n,]*/$1."true"/se' $MENU_CONFIG_FILE
-perl -i -p0e 's/("menu-icon":.*?"value": ?)[^\n,]*/$1."\"'"${HOME//\//\\/}"'\/.var\/icons\/menu.svg\""/se' $MENU_CONFIG_FILE
-echo "done: $STEP"
-
-STEP="allow path in menu search"
-perl -i -p0e 's/("search-filesystem":.*?"value": ?)[^\n,]*/$1."true"/se' $MENU_CONFIG_FILE
 echo "done: $STEP"
 
 STEP="modify background"
