@@ -35,3 +35,7 @@ apt clean -y -qq
 apt update -y -qq
 apt full-upgrade -y -qq
 echo "done: $STEP"
+
+STEP="create autostart folder"
+mkdir -p ~/.config/autostart/
+echo "done: $STEP"
