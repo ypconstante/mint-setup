@@ -60,7 +60,8 @@ echo "done: $STEP"
 
 STEP="install thefuck"
 my_apt_install python3-dev python3-pip python3-setuptools
-sudo pip3 install thefuck
+my_pip_install wheel
+my_pip_install thefuck
 echo "done: $STEP"
 
 STEP="configure zsh"

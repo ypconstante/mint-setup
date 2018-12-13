@@ -23,3 +23,8 @@ my_apt_install() {
 	echo "Installing '$1'"
 	my_indent sudo apt-get install -y -qq -o=Dpkg::Use-Pty=0 "$@"
 }
+
+my_pip_install() {
+	echo "Installing '$1'"
+	my_indent pip3 install --user "$@"
+}
