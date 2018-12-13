@@ -3,8 +3,8 @@
 source "$(dirname "$0")/_base.sh"
 
 ./prepare.sh
-./packages.sh
 ./browsers.sh
+./utilities.sh
 ./desktop.sh
 ./file-manager.sh
 ./filesystem.sh
