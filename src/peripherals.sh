@@ -15,5 +15,5 @@ echo "done: $STEP"
 
 STEP="modify keyboard settings"
 dconf write /org/gnome/libgnomekbd/keyboard/options "['caps\tcaps:none']"
-dconf load /org/cinnamon/desktop/keybindings/ < files/keyboard-bindings.dconf
+dconf load /org/cinnamon/desktop/keybindings/ < $ASSETS/peripherals--keyboard-bindings.dconf
 echo "done: $STEP"

@@ -3,7 +3,7 @@
 source "$(dirname "$0")/_base.sh"
 
 STEP="network kernel parameters"
-sudo cp ./files/network-sysctl.conf /etc/sysctl.d/98-network.conf
+sudo cp $ASSETS/network--kernel-parameters.conf /etc/sysctl.d/98-network.conf
 echo "done: $STEP"
 
 STEP="disable wifi power management"

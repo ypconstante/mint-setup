@@ -41,7 +41,7 @@ dconf write /org/cinnamon/panels-autohide "['1:intel']"
 
 # change menu icon
 mkdir -p ~/.var/icons
-cp files/desktop-menu.svg ~/.var/icons/menu.svg
+cp $ASSETS/desktop--menu-icon.svg ~/.var/icons/menu.svg
 perl -i -p0e 's/("menu-icon-custom":.*?"value": ?)[^\n,]*/$1."true"/se' $MENU_CONFIG_FILE
 perl -i -p0e 's/("menu-icon":.*?"value": ?)[^\n,]*/$1."\"'"${HOME//\//\\/}"'\/.var\/icons\/menu.svg\""/se' $MENU_CONFIG_FILE
 echo "done: $STEP"
