@@ -52,6 +52,7 @@ echo "done: $STEP"
 
 STEP="filesystem kernel parameters"
 sudo cp $ASSETS/filesystem--kernel-parameters.conf /etc/sysctl.d/98-filesystem.conf
+sudo chmod 644 /etc/sysctl.d/98-filesystem.conf
 echo "done: $STEP"
 
 STEP="disable writing file access time"
