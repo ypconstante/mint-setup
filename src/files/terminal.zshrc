@@ -138,6 +138,7 @@ step_alias() {
 	alias d='dirs -v | head -10'
 
 	alias -- g-='git checkout -'
+	alias -- gco-='git checkout -'
 
 	alias tis='tig status'
 	alias til='tig log'
