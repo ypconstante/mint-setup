@@ -271,6 +271,7 @@ step_load_nvm() {
 step_plugins
 step_thefuck
 step_alias
+step_style
 step_history
 step_keybinding
 step_completion
