@@ -261,9 +261,7 @@ step_compile_zsh_files() {
 step_load_nvm() {
 	perl -i -p0e 's/(\n(nvm_die_on_prefix|nvm_ensure_version_installed)\(\) ?\{)[^}].+?\n\}/$1."}"/seg' $NVM_DIR/nvm.sh
 	sed -i '/#/!s/\(nvm_echo "Found\)/# \1/g' $NVM_DIR/nvm.sh
-	sed -i '/#/!s/\(.*\s\(compinit\)\)/# \1/' $NVM_DIR/bash_completion
 	source $NVM_DIR/nvm.sh
-	source $NVM_DIR/bash_completion
 	_zsh_nvm_auto_use
 }
 
