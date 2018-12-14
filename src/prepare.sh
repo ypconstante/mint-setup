@@ -4,23 +4,23 @@ source "$(dirname "$0")/_base.sh"
 
 STEP="remove unused packages"
 apt autoremove -y -qq
-apt autoremove --purge -y -qq gimp
-apt autoremove --purge -y -qq gnome-accessibility-themes
-apt autoremove --purge -y -qq gnome-calendar
-apt autoremove --purge -y -qq gnome-orca
-apt autoremove --purge -y -qq hexchat
-apt autoremove --purge -y -qq mono-*
-apt autoremove --purge -y -qq ndiswrappe*
-apt autoremove --purge -y -qq pix
-apt autoremove --purge -y -qq rhythmbox*
-apt autoremove --purge -y -qq thunderbird
-apt autoremove --purge -y -qq xserver-xorg-video-intel
+my_apt_uninstall gimp
+my_apt_uninstall gnome-accessibility-themes
+my_apt_uninstall gnome-calendar
+my_apt_uninstall gnome-orca
+my_apt_uninstall hexchat
+my_apt_uninstall mono-*
+my_apt_uninstall ndiswrappe*
+my_apt_uninstall pix
+my_apt_uninstall rhythmbox*
+my_apt_uninstall thunderbird
+my_apt_uninstall xserver-xorg-video-intel
 sudo rm -rf /usr/lib/mono
 echo "done: $STEP"
 
 
 STEP="remove asian fonts"
-apt autoremove --purge -y -qq \
+my_apt_uninstall \
 	fonts-kacst* fonts-khmeros* fonts-lklug-sinhala fonts-guru-extra \
 	fonts-nanum* fonts-noto-cjk fonts-takao* fonts-tibetan-machine fonts-lao \
 	fonts-sil-padauk fonts-sil-abyssinica fonts-tlwg-* fonts-lohit-* \
