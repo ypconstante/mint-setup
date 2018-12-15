@@ -17,6 +17,22 @@ batch_zrecompile() {
 	done
 }
 
+############################## EXPOSED FUNCTIONS ##############################
+man() {
+	env \
+		LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+		LESS_TERMCAP_md=$(printf "\e[1;36m") \
+		LESS_TERMCAP_me=$(printf "\e[0m") \
+		LESS_TERMCAP_se=$(printf "\e[0m") \
+		LESS_TERMCAP_so=$(printf "\e[1;30;40m") \
+		LESS_TERMCAP_ue=$(printf "\e[0m") \
+		LESS_TERMCAP_us=$(printf "\e[1;32m") \
+		PAGER="${commands[less]:-$PAGER}" \
+		_NROFF_U=1 \
+		PATH="$HOME/bin:$PATH" \
+			man "$@"
+}
+
 zgen() {
 	source $ZGEN_DIR/zgen.zsh
 	zgen $@
@@ -51,7 +67,6 @@ step_plugins() {
 		zgen load zsh-users/zsh-history-substring-search
 
 		zgen oh-my-zsh plugins/autojump
-		zgen oh-my-zsh plugins/colored-man-pages
 		zgen oh-my-zsh plugins/gitfast
 		zgen oh-my-zsh plugins/npm
 		zgen oh-my-zsh plugins/thefuck
