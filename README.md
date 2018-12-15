@@ -18,3 +18,7 @@ Choose drivers
 ./mint-setup/src/main.sh
 rm -rf mint-setup
 ```
+
+Sign in or add license to:
+- Chrome
+- Firefox
