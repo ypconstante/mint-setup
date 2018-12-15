@@ -13,15 +13,27 @@ dset() {
 PROFILE_ID=$(gsettings get org.gnome.Terminal.ProfilesList default)
 PROFILE_ID=${PROFILE_ID:1:-1}
 
-# colors from snazzy and darcula
-dset palette "['#2b2b2b', '#ff5c57', '#5af78e', '#f3f99d', '#57c7ff', '#ff6ac1', '#9aedfe', '#f1f1f0', '#686868', '#ff5c57', '#5af78e', '#f3f99d', '#57c7ff', '#ff6ac1', '#9aedfe', '#eff0eb']"
-dset background-color "'#2b2b2b'"
-dset foreground-color "'#eff0eb'"
-dset bold-color "'#eff0eb'"
+# colors from darcula and one dark syntax
+color_background="'#1b1b1b'"
+color_foreground="'#bbbbbb'"
+color_red="'#be5046'"
+color_green="'#98c379'"
+color_yellow="'#d19a66'"
+color_blue="'#61afef'"
+color_pink="'#c678dd'"
+color_cyan="'#56b6c2'"
+color_light_gray="'#d0d0d0'"
+color_medium_gray="'#808080'"
+color_white="'#ffffff'"
+
+dset palette "[$color_background, $color_red, $color_green, $color_yellow, $color_blue, $color_pink, $color_cyan, $color_light_gray, $color_medium_gray, $color_red, $color_green, $color_yellow, $color_blue, $color_pink, $color_cyan, $color_white]"
+dset background-color "$color_background"
+dset foreground-color "$color_foreground"
+dset bold-color "$color_foreground"
 dset bold-color-same-as-fg true
 dset cursor-colors-set true
-dset cursor-background-color "'#eff0eb'"
-dset cursor-foreground-color "'#2b2b2b'"
+dset cursor-background-color "$color_foreground"
+dset cursor-foreground-color "$color_background"
 dset use-theme-colors false
 dset use-theme-transparency false
 dset use-transparent-background false
