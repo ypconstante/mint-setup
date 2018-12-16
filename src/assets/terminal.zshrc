@@ -258,6 +258,7 @@ step_completion() {
 		fi
 	else
 		compinit -C -d $ZSH_COMPDUMP_CUSTOM
+		zrecompile $ZSH_COMPDUMP_CUSTOM
 	fi
 }
 
