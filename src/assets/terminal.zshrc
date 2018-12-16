@@ -265,6 +265,7 @@ step_completion() {
 
 step_async_load() {
 	step_load_nvm
+	step_load_sdkman
 	step_compile_zsh_files
 }
 
@@ -278,6 +279,13 @@ step_load_nvm() {
 	sed -i '/#/!s/\(nvm_echo "Found\)/# \1/g' $NVM_DIR/nvm.sh
 	source $NVM_DIR/nvm.sh
 	_zsh_nvm_auto_use
+}
+
+step_load_sdkman() {
+	export SDKMAN_DIR="$HOME/.local/share/sdkman"
+	if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
+		source "$SDKMAN_DIR/bin/sdkman-init.sh"
+	fi
 }
 
 #################################### START ####################################
