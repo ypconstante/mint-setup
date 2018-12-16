@@ -69,7 +69,6 @@ step_plugins() {
 		zgen oh-my-zsh plugins/autojump
 		zgen oh-my-zsh plugins/gitfast
 		zgen oh-my-zsh plugins/npm
-		zgen oh-my-zsh plugins/thefuck
 		zgen oh-my-zsh plugins/yarn
 
 		zgen load mollifier/cd-gitroot
@@ -129,11 +128,6 @@ step_plugins() {
 	if ! __source; then
 		__config
 	fi
-}
-
-step_thefuck() {
-	export THEFUCK_HISTORY_LIMIT=5
-	export THEFUCK_WAIT_COMMAND=2
 }
 
 step_alias() {
@@ -265,6 +259,7 @@ step_completion() {
 
 step_async_load() {
 	step_load_nvm
+	step_load_thefuck
 	step_load_sdkman
 	step_compile_zsh_files
 }
@@ -281,6 +276,12 @@ step_load_nvm() {
 	_zsh_nvm_auto_use
 }
 
+step_load_thefuck() {
+	export THEFUCK_HISTORY_LIMIT=5
+	export THEFUCK_WAIT_COMMAND=2
+	source $ZGEN_DIR/robbyrussell/oh-my-zsh-master/plugins/thefuck/thefuck.plugin.zsh
+}
+
 step_load_sdkman() {
 	export SDKMAN_DIR="$HOME/.local/share/sdkman"
 	if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
@@ -290,7 +291,6 @@ step_load_sdkman() {
 
 #################################### START ####################################
 step_plugins
-step_thefuck
 step_alias
 step_style
 step_history
