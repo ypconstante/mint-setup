@@ -304,6 +304,12 @@ async_job setup_worker sleep .1
 # completion
 setopt listpacked # make completion columns with different widths 
 
+# changing directories
+# enable 'cd -N' commands
+setopt auto_pushd
+setopt pushd_minus
+setopt pushd_silent
+
 if [[ $PROFILE_STARTUP == true ]]; then
 	zprof
 fi
