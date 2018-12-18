@@ -51,7 +51,7 @@ sudo systemctl enable tmp.mount
 echo "done: $STEP"
 
 STEP="filesystem kernel parameters"
-sudo cp $ASSETS/filesystem--kernel-parameters.conf /etc/sysctl.d/98-filesystem.conf
+sudo cp $ASSETS_DIR/filesystem--kernel-parameters.conf /etc/sysctl.d/98-filesystem.conf
 sudo chmod 644 /etc/sysctl.d/98-filesystem.conf
 echo "done: $STEP"
 

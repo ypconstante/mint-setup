@@ -13,7 +13,7 @@ set +e
 
 cd "$(dirname "$0")"
 
-ASSETS=$(realpath assets)
+ASSETS_DIR=$(realpath assets)
 
 my_indent() {
 	stdbuf -oL -eL $@ | stdbuf -oL -eL sed 's/^/> /g' | sed 's/$//g'

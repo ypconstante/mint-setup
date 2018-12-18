@@ -3,7 +3,7 @@
 source "$(dirname "$0")/_base.sh"
 
 STEP="network kernel parameters"
-sudo cp $ASSETS/network--kernel-parameters.conf /etc/sysctl.d/98-network.conf
+sudo cp $ASSETS_DIR/network--kernel-parameters.conf /etc/sysctl.d/98-network.conf
 sudo chmod 644 /etc/sysctl.d/98-network.conf
 echo "done: $STEP"
 
