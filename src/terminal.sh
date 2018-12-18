@@ -77,7 +77,7 @@ my_pip_install thefuck
 echo "done: $STEP"
 
 STEP="configure zsh"
-which zsh | sudo tee -a /etc/shells
+my_append_to_file_if_not_contains /etc/shells $(which zsh)
 sudo chsh -s $(which zsh) $USER
 cp $ASSETS_DIR/terminal.zshrc $ZDOTDIR/.zshrc
 cp $ASSETS_DIR/terminal.zshenv $ZDOTDIR/.zshenv
