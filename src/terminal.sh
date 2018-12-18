@@ -80,6 +80,7 @@ STEP="configure zsh"
 which zsh | sudo tee -a /etc/shells
 sudo chsh -s $(which zsh) $USER
 cp $ASSETS_DIR/terminal.zshrc $ZDOTDIR/.zshrc
+cp $ASSETS_DIR/terminal.zshenv $ZDOTDIR/.zshenv
 echo "ZDOTDIR=$ZDOTDIR" > $HOME/.pam_environment
 echo "done: $STEP"
 

@@ -93,7 +93,7 @@ step_plugins() {
 	export ZGEN_DIR=$ZDOTDIR/zgen
 
 	# nvm
-	export NVM_DIR=$HOME/.local/share/nvm
+	export NVM_DIR=$XDG_DATA_HOME/nvm
 	export NVM_LAZY_LOAD=true
 	export NVM_NO_USE=true
 	export NVM_AUTO_USE=true
@@ -288,9 +288,9 @@ step_load_thefuck() {
 }
 
 step_load_sdkman() {
-	export SDKMAN_DIR="$HOME/.local/share/sdkman"
-	if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
-		source "$SDKMAN_DIR/bin/sdkman-init.sh"
+	export SDKMAN_DIR=$XDG_DATA_HOME/sdkman
+	if [[ -s $SDKMAN_DIR/bin/sdkman-init.sh ]]; then
+		source $SDKMAN_DIR/bin/sdkman-init.sh
 	fi
 }
 
