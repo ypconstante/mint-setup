@@ -58,7 +58,7 @@ STEP="install zsh"
 my_apt_install zsh
 echo "done: $STEP"
 
-export ZDOTDIR=$HOME/.local/share/zsh
+export ZDOTDIR=$XDG_DATA_HOME/zsh
 
 STEP="install zgen"
 git clone https://github.com/tarjoilija/zgen.git $ZDOTDIR/zgen

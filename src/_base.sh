@@ -15,6 +15,10 @@ cd "$(dirname "$0")"
 
 ASSETS_DIR=$(realpath assets)
 
+XDG_CACHE_HOME="$HOME/.cache"
+XDG_CONFIG_HOME="$HOME/.config"
+XDG_DATA_HOME="$HOME/.local/share"
+
 my_indent() {
 	stdbuf -oL -eL $@ | stdbuf -oL -eL sed 's/^/> /g' | sed 's/$//g'
 }

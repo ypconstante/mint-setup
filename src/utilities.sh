@@ -9,5 +9,5 @@ my_apt_uninstall gnome-screenshot
 echo "done: $STEP"
 
 STEP="config redshift"
-cp $ASSETS_DIR/utilities--redshift.conf ~/.config/redshift.conf
+cp $ASSETS_DIR/utilities--redshift.conf $XDG_CONFIG_HOME/redshift.conf
 echo "done: $STEP"

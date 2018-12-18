@@ -37,5 +37,5 @@ apt full-upgrade -y -qq
 echo "done: $STEP"
 
 STEP="create autostart folder"
-mkdir -p ~/.config/autostart/
+mkdir -p $XDG_CONFIG_HOME/autostart/
 echo "done: $STEP"

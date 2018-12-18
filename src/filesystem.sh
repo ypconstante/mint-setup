@@ -13,7 +13,7 @@ echo "done: $STEP"
 
 STEP="rename templates to projects"
 mv ~/Templates ~/Projects
-sed -i 's/\$HOME\/Templates/\$HOME\/Projects/' ~/.config/user-dirs.dirs
+sed -i 's/\$HOME\/Templates/\$HOME\/Projects/' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
 echo "done: $STEP"
 
@@ -22,9 +22,9 @@ mkdir ~/Media
 rm -rf ~/Videos
 rm -rf ~/Music
 rm -rf ~/Pictures
-sed -i 's/\$HOME\/Music/\$HOME\/Media/' ~/.config/user-dirs.dirs
-sed -i 's/\$HOME\/Pictures/\$HOME\/Media/' ~/.config/user-dirs.dirs
-sed -i 's/\$HOME\/Videos/\$HOME\/Media/' ~/.config/user-dirs.dirs
+sed -i 's/\$HOME\/Music/\$HOME\/Media/' $XDG_CONFIG_HOME/user-dirs.dirs
+sed -i 's/\$HOME\/Pictures/\$HOME\/Media/' $XDG_CONFIG_HOME/user-dirs.dirs
+sed -i 's/\$HOME\/Videos/\$HOME\/Media/' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
 echo "done: $STEP"
 
@@ -34,15 +34,15 @@ mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
 mv ~/Media     ~/media
 mv ~/Projects  ~/projects
-sed -i 's/\$HOME\/\(.\)/\$HOME\/\L\1/' ~/.config/user-dirs.dirs
+sed -i 's/\$HOME\/\(.\)/\$HOME\/\L\1/' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
 echo "done: $STEP"
 
 STEP="create bookmark"
-: > ~/.config/gtk-3.0/bookmarks
-echo "file://$HOME/documents Documents" >> ~/.config/gtk-3.0/bookmarks
-echo "file://$HOME/downloads Downloads" >> ~/.config/gtk-3.0/bookmarks
-echo "file://$HOME/projects Projects" >> ~/.config/gtk-3.0/bookmarks
+: > $XDG_CONFIG_HOME/gtk-3.0/bookmarks
+echo "file://$HOME/documents Documents" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
+echo "file://$HOME/downloads Downloads" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
+echo "file://$HOME/projects Projects" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
 echo "done: $STEP"
 
 STEP="temporary files only in memory"
