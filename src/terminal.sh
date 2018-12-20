@@ -13,20 +13,19 @@ dset() {
 PROFILE_ID=$(gsettings get org.gnome.Terminal.ProfilesList default)
 PROFILE_ID=${PROFILE_ID:1:-1}
 
-# colors from darcula and one dark syntax
-color_background="'#1b1b1b'"
-color_foreground="'#bbbbbb'"
-color_red="'#be5046'"
-color_green="'#98c379'"
-color_yellow="'#d19a66'"
-color_blue="'#61afef'"
-color_pink="'#c678dd'"
-color_cyan="'#56b6c2'"
-color_light_gray="'#d0d0d0'"
-color_medium_gray="'#808080'"
-color_white="'#ffffff'"
+# colors from darcula and monokai
+color_red="'#ff6188'"
+color_green="'#a9dc76'"
+color_yellow="'#ffd866'"
+color_blue="'#66d9ef'"
+color_purple="'#ab9df2'"
+color_cyan="'#78dce8'"
+color_completion="'#9e9c8b'"
+color_white="'#f8f8f2'"
+color_background="'#2b2b2b'"
+color_foreground="$color_white"
 
-dset palette "[$color_background, $color_red, $color_green, $color_yellow, $color_blue, $color_pink, $color_cyan, $color_light_gray, $color_medium_gray, $color_red, $color_green, $color_yellow, $color_blue, $color_pink, $color_cyan, $color_white]"
+dset palette "[$color_background, $color_red, $color_green, $color_yellow, $color_blue, $color_purple, $color_cyan, $color_white, $color_completion, $color_red, $color_green, $color_yellow, $color_blue, $color_purple, $color_cyan, $color_white]"
 dset background-color "$color_background"
 dset foreground-color "$color_foreground"
 dset bold-color "$color_foreground"
