@@ -30,7 +30,7 @@ user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org
 user_pref("browser.uidensity", 1);
 user_pref(
 	"browser.uiCustomization.state",
-	'{"placements":{"widget-overflow-fixed-list":[],"PersonalToolbar":["personal-bookmarks"],"nav-bar":["back-button","forward-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","downloads-button","bookmarks-menu-button","sync-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button"]},"seen":["developer-button","treestyletab_piro_sakura_ne_jp-browser-action","_testpilot-containers-browser-action"],"dirtyAreaCache":[],"currentVersion":14,"newElementCount":0}'
+	'{"placements":{"widget-overflow-fixed-list":[],"PersonalToolbar":["personal-bookmarks"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","ublock0_raymondhill_net-browser-action","firefox_tampermonkey_net-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","downloads-button","bookmarks-menu-button","sync-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button"]},"seen":["_c28e42b2-28b5-45f0-bdc8-6989ae7e6a7e_-browser-action","developer-button","treestyletab_piro_sakura_ne_jp-browser-action","_testpilot-containers-browser-action"],"dirtyAreaCache":[],"currentVersion":14,"newElementCount":0}'
 );   
 
 // customize new tab page
