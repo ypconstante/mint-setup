@@ -2,15 +2,31 @@
 
 /* hide titlebar */
 #titlebar {
-  visibility: collapse !important;
+	visibility: collapse !important;
 }
 
 /* hide tabs */
 #TabsToolbar {
-   visibility: collapse !important;
+	visibility: collapse !important;
 }
 
 /* hide sidebar header */
-#sidebar-header {
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
    visibility: collapse !important;
+}
+
+/* hide resizer */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
+    display: none !important;
+}
+
+/* sidebar fixed width */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+    min-width: 250px !important;
+    max-width: 250px !important;
+}
+
+/* hide tree tab when only one tab open on window */
+#main-window[titlepreface="[1] "] #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+	visibility: collapse !important;
 }
