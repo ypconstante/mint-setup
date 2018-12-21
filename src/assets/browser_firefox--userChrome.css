@@ -20,6 +20,10 @@
     display: none !important;
 }
 
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+    border-right: 1px solid ThreeDShadow;
+}
+
 /* sidebar fixed width */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
     min-width: 250px !important;
