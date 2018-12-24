@@ -4,6 +4,9 @@ user_pref("browser.startup.homepage", "about:newtab");
 user_pref("dom.event.clipboardevents.enabled", false);
 user_pref("general.warnOnAboutConfig", false);
 
+// ctrl+tab by tab order
+user_pref("browser.ctrlTab.recentlyUsedOrder", false);
+
 // disable notifications
 user_pref("permissions.default.desktop-notification", 2);
 
