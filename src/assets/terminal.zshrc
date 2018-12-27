@@ -17,6 +17,11 @@ batch_zrecompile() {
 	done
 }
 
+fuck-command-line() {
+	echo 'fuck not loaded'
+}
+zle -N fuck-command-line fuck-command-line
+
 ############################## EXPOSED FUNCTIONS ##############################
 man() {
 	env \
@@ -296,6 +301,7 @@ step_load_sdkman() {
 }
 
 #################################### START ####################################
+source "$ZDOTDIR/.zshenv"
 step_plugins
 step_alias
 step_style
