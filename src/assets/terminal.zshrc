@@ -127,6 +127,7 @@ step_plugins() {
 		node		# Node.js section
 		exec_time	# Execution time
 		jobs		# Background jobs indicator
+		line_sep	# Line break
 		exit_code	# Exit code section
 		char		# Prompt character
 	)
