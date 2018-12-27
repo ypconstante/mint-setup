@@ -66,6 +66,7 @@ step_plugins() {
 		zgen load zsh-users/zsh-completions
 		zgen load zsh-users/zsh-history-substring-search
 
+		zgen oh-my-zsh lib/git.zsh
 		zgen oh-my-zsh plugins/autojump
 		zgen oh-my-zsh plugins/gitfast
 		zgen oh-my-zsh plugins/npm
