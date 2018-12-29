@@ -2,17 +2,17 @@
 
 source "$(dirname "$0")/_base.sh"
 
-STEP="replace blueberry with blueman"
+my_step_begin "replace blueberry with blueman"
 my_apt_uninstall blueberry
 my_apt_uninstall gnome-bluetooth
 my_apt_install blueman
-echo "done: $STEP"
+my_step_end
 
-STEP="disable blueman applet startup"
+my_step_begin "disable blueman applet startup"
 cp /etc/xdg/autostart/blueman.desktop $XDG_CONFIG_HOME/autostart/
 echo 'X-GNOME-Autostart-enabled=false' >> $XDG_CONFIG_HOME/autostart/blueman.desktop
-echo "done: $STEP"
+my_step_end
 
-STEP="disable bluetooth automatic power on"
+my_step_begin "disable bluetooth automatic power on"
 dconf write /org/blueman/plugins/powermanager/auto-power-on false
-echo "done: $STEP"
+my_step_end

@@ -2,7 +2,7 @@
 
 source "$(dirname "$0")/_base.sh"
 
-STEP="modify mouse and touchpad settings"
+my_step_begin "modify mouse and touchpad settings"
 # locate cursor with ctrl
 dconf write /org/cinnamon/settings-daemon/peripherals/mouse/locate-pointer false
 # disable left+right click to middle click
@@ -11,9 +11,9 @@ dconf write /org/cinnamon/settings-daemon/peripherals/mouse/middle-button-enable
 dconf write /org/cinnamon/settings-daemon/peripherals/touchpad/tap-to-click false
 # scroll two fingers
 dconf write /org/cinnamon/settings-daemon/peripherals/touchpad/scrolling-method 1
-echo "done: $STEP"
+my_step_end
 
-STEP="modify keyboard settings"
+my_step_begin "modify keyboard settings"
 dconf write /org/gnome/libgnomekbd/keyboard/options "['caps\tcaps:none']"
 dconf load /org/cinnamon/desktop/keybindings/ < $ASSETS_DIR/peripherals--keyboard-bindings.dconf
-echo "done: $STEP"
+my_step_end

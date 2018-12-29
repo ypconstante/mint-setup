@@ -2,7 +2,7 @@
 
 source "$(dirname "$0")/_base.sh"
 
-STEP="configure terminal theme"
+my_step_begin "configure terminal theme"
 dset() {
     local key="$1"
     local val="$2"
@@ -38,9 +38,9 @@ dset use-theme-transparency false
 dset use-transparent-background false
 
 dconf write /org/gnome/terminal/legacy/default-show-menubar false
-echo "done: $STEP"
+my_step_end
 
-STEP="configure terminal shortcuts"
+my_step_begin "configure terminal shortcuts"
 dconf write /org/gnome/terminal/legacy/keybindings/new-tab "'<Primary>t'"
 dconf write /org/gnome/terminal/legacy/keybindings/new-window "'<Primary>n'"
 dconf write /org/gnome/terminal/legacy/keybindings/close-tab "'<Primary>w'"
@@ -51,39 +51,38 @@ dconf write /org/gnome/terminal/legacy/keybindings/find-previous "'<Primary>h'"
 dconf write /org/gnome/terminal/legacy/keybindings/find-clear "'<Primary>j'"
 dconf write /org/gnome/terminal/legacy/keybindings/next-tab "'<Primary>Tab'"
 dconf write /org/gnome/terminal/legacy/keybindings/prev-tab "'<Primary><Shift>Tab'"
-echo "done: $STEP"
+my_step_end
 
-STEP="install zsh"
+my_step_begin "install zsh"
 my_apt_install zsh
-echo "done: $STEP"
+my_step_end
 
 export ZDOTDIR=$XDG_DATA_HOME/zsh
 
-STEP="install zgen"
+my_step_begin "install zgen"
 git clone https://github.com/tarjoilija/zgen.git $ZDOTDIR/zgen
-echo "done: $STEP"
+my_step_end
 
-STEP="install additional cli tools"
+my_step_begin "install additional cli tools"
 my_apt_install autojump
 my_apt_install inotify-tools
 my_apt_install jq
-echo "done: $STEP"
+my_step_end
 
-STEP="install thefuck"
+my_step_begin "install thefuck"
 my_apt_install python3-dev python3-pip python3-setuptools
 my_pip_install wheel
 my_pip_install thefuck
-echo "done: $STEP"
+my_step_end
 
-STEP="configure zsh"
+my_step_begin "configure zsh"
 my_append_to_file_if_not_contains /etc/shells $(which zsh)
 sudo chsh -s $(which zsh) $USER
 cp $ASSETS_DIR/terminal.zshrc $ZDOTDIR/.zshrc
 cp $ASSETS_DIR/terminal.zshenv $ZDOTDIR/.zshenv
 echo "ZDOTDIR=$ZDOTDIR" > $HOME/.pam_environment
-echo "done: $STEP"
+my_step_end
 
-STEP="install zsh plugins"
-echo "starting: $STEP"
+my_step_begin "install zsh plugins"
 zsh -i -c true
-echo "done: $STEP"
+my_step_end

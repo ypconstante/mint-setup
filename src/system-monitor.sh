@@ -2,7 +2,7 @@
 
 source "$(dirname "$0")/_base.sh"
 
-STEP="configure system monitor"
+my_step_begin "configure system monitor"
 dconf write /org/gnome/gnome-system-monitor/show-whose-processes "'all'"
 dconf write /org/gnome/gnome-system-monitor/proctree/sort-col 15
-echo "done: $STEP"
+my_step_end

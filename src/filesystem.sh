@@ -2,22 +2,22 @@
 
 source "$(dirname "$0")/_base.sh"
 
-STEP="close nemo"
+my_step_begin "close nemo"
 nemo -q
-echo "done: $STEP"
+my_step_end
 
-STEP="remove non used folders"
+my_step_begin "remove non used folders"
 rm -rf ~/Public
 xdg-user-dirs-update
-echo "done: $STEP"
+my_step_end
 
-STEP="rename templates to projects"
+my_step_begin "rename templates to projects"
 mv ~/Templates ~/Projects
 sed -i 's/\$HOME\/Templates/\$HOME\/Projects/' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
-echo "done: $STEP"
+my_step_end
 
-STEP="create media folder"
+my_step_begin "create media folder"
 mkdir ~/Media
 rm -rf ~/Videos
 rm -rf ~/Music
@@ -26,9 +26,9 @@ sed -i 's/\$HOME\/Music/\$HOME\/Media/' $XDG_CONFIG_HOME/user-dirs.dirs
 sed -i 's/\$HOME\/Pictures/\$HOME\/Media/' $XDG_CONFIG_HOME/user-dirs.dirs
 sed -i 's/\$HOME\/Videos/\$HOME\/Media/' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
-echo "done: $STEP"
+my_step_end
 
-STEP="make home folders lower case"
+my_step_begin "make home folders lower case"
 mv ~/Desktop   ~/desktop
 mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
@@ -36,25 +36,25 @@ mv ~/Media     ~/media
 mv ~/Projects  ~/projects
 sed -i 's/\$HOME\/\(.\)/\$HOME\/\L\1/' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
-echo "done: $STEP"
+my_step_end
 
-STEP="create bookmark"
+my_step_begin "create bookmark"
 : > $XDG_CONFIG_HOME/gtk-3.0/bookmarks
 echo "file://$HOME/documents Documents" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
 echo "file://$HOME/downloads Downloads" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
 echo "file://$HOME/projects Projects" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
-echo "done: $STEP"
+my_step_end
 
-STEP="temporary files only in memory"
+my_step_begin "temporary files only in memory"
 sudo cp /usr/share/systemd/tmp.mount /etc/systemd/system/
 sudo systemctl enable tmp.mount
-echo "done: $STEP"
+my_step_end
 
-STEP="filesystem kernel parameters"
+my_step_begin "filesystem kernel parameters"
 sudo cp $ASSETS_DIR/filesystem--kernel-parameters.conf /etc/sysctl.d/98-filesystem.conf
 sudo chmod 644 /etc/sysctl.d/98-filesystem.conf
-echo "done: $STEP"
+my_step_end
 
-STEP="disable writing file access time"
+my_step_begin "disable writing file access time"
 sudo sed -i '/noatime/!s/\(\/ *\w* * [^ ]*\)/\1,noatime/' /etc/fstab
-echo "done: $STEP"
+my_step_end

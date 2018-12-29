@@ -4,23 +4,23 @@ source "$(dirname "$0")/_base.sh"
 
 MENU_CONFIG_FILE=$(find ~/.cinnamon/configs/menu@cinnamon.org -name '*.json' -exec ls -1t "{}" + | head -n 1)
 
-STEP="hide desktop icons"
+my_step_begin "hide desktop icons"
 dconf write /org/nemo/desktop/home-icon-visible false
 dconf write /org/nemo/desktop/computer-icon-visible false
 dconf write /org/nemo/desktop/volumes-visible false
-echo "done: $STEP"
+my_step_end
 
-STEP="change theme"
+my_step_begin "change theme"
 dconf write /org/cinnamon/desktop/wm/preferences/theme "'Mint-Y-Dark'"
 dconf write /org/cinnamon/desktop/interface/gtk-theme "'Mint-Y-Darker'"
 dconf write /org/cinnamon/theme/name "'Mint-Y'"
-echo "done: $STEP"
+my_step_end
 
-STEP="allow path in menu search"
+my_step_begin "allow path in menu search"
 perl -i -p0e 's/("search-filesystem":.*?"value": ?)[^\n,]*/$1."true"/se' $MENU_CONFIG_FILE
-echo "done: $STEP"
+my_step_end
 
-STEP="modify taskbar"
+my_step_begin "modify taskbar"
 # change menu icon
 mkdir -p ~/.var/icons
 cp $ASSETS_DIR/desktop--menu-icon.svg ~/.var/icons/menu.svg
@@ -48,20 +48,20 @@ dconf write /org/cinnamon/enabled-applets "[
 ]"
 # hide taskbar
 dconf write /org/cinnamon/panels-autohide "['1:intel']"
-echo "done: $STEP"
+my_step_end
 
-STEP="modify background"
+my_step_begin "modify background"
 dconf write /org/cinnamon/desktop/background/picture-uri "'file:///usr/share/backgrounds/linuxmint-tara/whmii_toy_store.jpg'"
-echo "done: $STEP"
+my_step_end
 
-STEP="modify windows"
+my_step_begin "modify windows"
 dconf write /org/cinnamon/desktop/wm/preferences/button-layout "':minimize,close'"
 dconf write /org/cinnamon/desktop/wm/preferences/focus-mode "'sloppy'"
 dconf write /org/cinnamon/desktop/wm/preferences/auto-raise false
-echo "done: $STEP"
+my_step_end
 
-STEP="modify alt tab switcher"
+my_step_begin "modify alt tab switcher"
 dconf write /org/cinnamon/alttab-switcher-style "'icons+preview'"
 dconf write /org/cinnamon/alttab-minimized-aware true
 dconf write /org/cinnamon/alttab-switcher-enforce-primary-monitor true
-echo "done: $STEP"
+my_step_end

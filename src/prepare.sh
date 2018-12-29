@@ -2,7 +2,7 @@
 
 source "$(dirname "$0")/_base.sh"
 
-STEP="remove unused packages"
+my_step_begin "remove unused packages"
 apt autoremove -y -qq
 my_apt_uninstall gimp
 my_apt_uninstall gnome-accessibility-themes
@@ -16,10 +16,10 @@ my_apt_uninstall rhythmbox*
 my_apt_uninstall thunderbird
 my_apt_uninstall xserver-xorg-video-intel
 sudo rm -rf /usr/lib/mono
-echo "done: $STEP"
+my_step_end
 
 
-STEP="remove asian fonts"
+my_step_begin "remove asian fonts"
 my_apt_uninstall \
 	fonts-kacst* fonts-khmeros* fonts-lklug-sinhala fonts-guru-extra \
 	fonts-nanum* fonts-noto-cjk fonts-takao* fonts-tibetan-machine fonts-lao \
@@ -28,14 +28,14 @@ my_apt_uninstall \
 	fonts-lohit-* fonts-samyak* fonts-navilu fonts-nakula fonts-orya-extra \
 	fonts-pagul fonts-sarai fonts-telu* fonts-wqy* fonts-smc* fonts-deva-extra
 sudo dpkg-reconfigure fontconfig
-echo "done: $STEP"
+my_step_end
 
-STEP="update packages"
+my_step_begin "update packages"
 apt clean -y -qq
 apt update -y -qq
 apt full-upgrade -y -qq
-echo "done: $STEP"
+my_step_end
 
-STEP="create autostart folder"
+my_step_begin "create autostart folder"
 mkdir -p $XDG_CONFIG_HOME/autostart/
-echo "done: $STEP"
+my_step_end

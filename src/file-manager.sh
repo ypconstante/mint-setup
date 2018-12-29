@@ -2,26 +2,26 @@
 
 source "$(dirname "$0")/_base.sh"
 
-STEP="close nemo"
+my_step_begin "close nemo"
 nemo -q
-echo "done: $STEP"
+my_step_end
 
-STEP="ignore folder view config"
+my_step_begin "ignore folder view config"
 dconf write /org/nemo/preferences/ignore-view-metadata true
-echo "done: $STEP"
+my_step_end
 
-STEP="open files with single click"
+my_step_begin "open files with single click"
 dconf write /org/nemo/preferences/click-policy "'single'"
-echo "done: $STEP"
+my_step_end
 
-STEP="configure nemo toolbar"
+my_step_begin "configure nemo toolbar"
 dconf write /org/nemo/preferences/show-open-in-terminal-toolbar true
 # hide path mode toggle
 dconf write /org/nemo/preferences/show-edit-icon-toolbar false
 dconf write /org/nemo/preferences/show-search-icon-toolbar false
 dconf write /org/nemo/preferences/show-compact-view-icon-toolbar false
-echo "done: $STEP"
+my_step_end
 
-STEP="hide snaps folder"
+my_step_begin "hide snaps folder"
 echo snap >> ~/.hidden
-echo "done: $STEP"
+my_step_end

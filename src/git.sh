@@ -2,25 +2,25 @@
 
 source "$(dirname "$0")/_base.sh"
 
-STEP="install tig"
+my_step_begin "install tig"
 my_apt_install tig
-echo "done: $STEP"
+my_step_end
 
-STEP="create ssh folder"
+my_step_begin "create ssh folder"
 mkdir -p -m 700 ~/.ssh
-echo "done: $STEP"
+my_step_end
 
-STEP="add github and gitlab as known ssh hosts"
+my_step_begin "add github and gitlab as known ssh hosts"
 ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
-echo "done: $STEP"
+my_step_end
 
-STEP="create gitignore"
+my_step_begin "create gitignore"
 curl -sS https://www.gitignore.io/api/git,linux,sublimetext,jetbrains+all,visualstudiocode -o ~/projects/gitignore.gitignore
 git config --global core.excludesfile '~/projects/gitignore.gitignore'
-echo "done: $STEP"
+my_step_end
 
-STEP="git config"
+my_step_begin "git config"
 git config --global core.fileMode false
 git config --global diff.mnemonicprefix true
 git config --global diff.algorithm patience
@@ -29,4 +29,4 @@ git config --global fetch.prune true
 git config --global fetch.pruneTags true
 git config --global pull.rebase true
 git config --global rerere.enabled true
-echo "done: $STEP"
+my_step_end

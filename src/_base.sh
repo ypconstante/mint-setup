@@ -40,6 +40,41 @@ my_append_to_file_if_not_contains() {
 }
 
 ################################### OUTPUT ####################################
+my_echo_error() {
+	local message="$@"
+	echo "$(tput setaf 1)$message$(tput sgr0)"
+}
+
+my_echo_step() {
+	local message="$@"
+	echo "$(tput setab 7)$(tput setaf 0)$message$(tput el)$(tput sgr0)"
+}
+
+my_step_begin() {
+	local step="$@"
+
+	if [ -z "${step-}" ]; then
+		my_echo_error 'step name not given'
+	fi
+
+	if [ -z "${STEP-}" ]; then
+		STEP="$step"
+		my_echo_step "starting: $STEP"
+	else
+		my_echo_error "can't start step '$step', step '$STEP' not ended"
+	fi
+}
+
+my_step_end() {
+	if [ ! -z "${STEP-}" ]; then
+		my_echo_step "done: $STEP"
+		echo ''
+		unset STEP
+	else
+		my_echo_error "no step to end"
+	fi
+}
+
 my_indent() {
 	stdbuf -oL -eL $@ | stdbuf -oL -eL sed 's/^/> /g' | sed 's/$//g'
 }
