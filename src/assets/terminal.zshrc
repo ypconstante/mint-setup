@@ -302,7 +302,6 @@ step_load_sdkman() {
 }
 
 #################################### START ####################################
-source "$ZDOTDIR/.zshenv"
 step_plugins
 step_alias
 step_style
