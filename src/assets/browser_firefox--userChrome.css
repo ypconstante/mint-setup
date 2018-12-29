@@ -26,8 +26,8 @@
 
 /* sidebar fixed width */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
-    min-width: 250px !important;
-    max-width: 250px !important;
+    min-width: 251px !important;
+    max-width: 251px !important;
 }
 
 /* hide tree tab when only one tab open on window */
