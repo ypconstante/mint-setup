@@ -3,7 +3,7 @@
 source "$(dirname "$0")/_base.sh"
 
 get_profile_dir() {
-	find ~/.mozilla/firefox -maxdepth 1 -name '*.default' | head -n 1
+	[[ -d ~/.mozilla/firefox ]] && find ~/.mozilla/firefox -maxdepth 1 -name '*.default' | head -n 1
 }
 
 my_step_begin "create firefox profile"
