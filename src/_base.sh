@@ -20,6 +20,11 @@ XDG_CONFIG_HOME="$HOME/.config"
 XDG_DATA_HOME="$HOME/.local/share"
 
 #################################### FILE #####################################
+my_create_file_if_not_exists() {
+	local file="$1"
+	touch $file 2> /dev/null || sudo touch $file
+}
+
 my_file_contains_line() {
 	local file="$1"
 	local content="$2"
@@ -29,6 +34,8 @@ my_file_contains_line() {
 my_append_to_file_if_not_contains() {
 	local file="$1"
 	local content="$2"
+
+	my_create_file_if_not_exists "$file"
 
 	if ! my_file_contains_line "$file" "$content"; then
 		if [ -w $file ]; then
