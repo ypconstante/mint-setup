@@ -31,7 +31,7 @@ my_append_to_file_if_not_contains() {
 	local content="$2"
 
 	if ! my_file_contains_line "$file" "$content"; then
-		if [ -z $file ]; then
+		if [ -w $file ]; then
 			echo "$content" | tee -a "$file" 1>/dev/null
 		else
 			echo "$content" | sudo tee -a "$file" 1>/dev/null
