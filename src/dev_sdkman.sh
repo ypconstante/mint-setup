@@ -8,6 +8,7 @@ sdkman_script="$HOME/sdkman_script.sh"
 curl -sS 'https://get.sdkman.io' -o $sdkman_script
 
 sed -i "s/\(echo ' .*\)/# \1/g" $sdkman_script
+sed -i 's/\(^echo -e "\\n.*\)/# \1/g' $sdkman_script
 sed -i "s/\(echo ''\)/# \1/g" $sdkman_script
 sed -i 's/\(echo ""\)/# \1/g' $sdkman_script
 
