@@ -87,6 +87,19 @@ my_indent() {
 }
 
 ################################### INSTALL ###################################
+my_apt_add_key() {
+	local url="$1"
+	curl -sS $url | sudo apt-key add -
+}
+
+my_apt_add_repository() {
+	local name="$1"
+	local source="$2"
+	
+	my_append_to_file_if_not_contains /etc/apt/sources.list.d/$name.list "$source"
+	apt update -y -qq
+}
+
 my_apt_install() {
 	echo "Installing '$1'"
 	my_indent sudo apt-get install -y -qq -o=Dpkg::Use-Pty=0 "$@"
