@@ -22,3 +22,5 @@ rm -rf mint-setup
 Sign in or add license to:
 - Chrome
 - Firefox
+- Sublime Merge
+- Sublime Text
