@@ -57,8 +57,6 @@ my_step_begin "install zsh"
 my_apt_install zsh
 my_step_end
 
-export ZDOTDIR=$XDG_DATA_HOME/zsh
-
 my_step_begin "install zgen"
 git clone https://github.com/tarjoilija/zgen.git $ZDOTDIR/zgen
 my_step_end
@@ -78,9 +76,9 @@ my_step_end
 my_step_begin "configure zsh"
 my_append_to_file_if_not_contains /etc/shells $(which zsh)
 sudo chsh -s $(which zsh) $USER
+sed 's/^export \([^=]*\)/\1 DEFAULT/g' $ASSETS_DIR/base--env > $HOME/.pam_environment
+cp $ASSETS_DIR/base--env $ZDOTDIR/.zshenv
 cp $ASSETS_DIR/terminal.zshrc $ZDOTDIR/.zshrc
-cp $ASSETS_DIR/terminal.zshenv $ZDOTDIR/.zshenv
-echo "ZDOTDIR=$ZDOTDIR" > $HOME/.pam_environment
 my_step_end
 
 my_step_begin "install zsh plugins"

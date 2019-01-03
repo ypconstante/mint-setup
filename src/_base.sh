@@ -15,9 +15,7 @@ cd "$(dirname "$0")"
 
 ASSETS_DIR=$(realpath assets)
 
-XDG_CACHE_HOME="$HOME/.cache"
-XDG_CONFIG_HOME="$HOME/.config"
-XDG_DATA_HOME="$HOME/.local/share"
+source $ASSETS_DIR/base--env
 
 #################################### FILE #####################################
 my_create_file_if_not_exists() {
