@@ -286,6 +286,7 @@ step_load_nvm() {
 	sed -i '/#/!s/\(nvm_echo "Found\)/# \1/g' $NVM_DIR/nvm.sh
 	source $NVM_DIR/nvm.sh
 	_zsh_nvm_auto_use
+	zle reset-prompt
 }
 
 step_load_thefuck() {
