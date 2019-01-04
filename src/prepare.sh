@@ -4,7 +4,6 @@ source "$(dirname "$0")/_base.sh"
 
 my_step_begin "remove unused packages"
 apt autoremove -y -qq
-my_apt_uninstall gimp
 my_apt_uninstall gnome-accessibility-themes
 my_apt_uninstall gnome-calendar
 my_apt_uninstall gnome-orca
