@@ -22,5 +22,6 @@ rm -rf mint-setup
 Sign in or add license to:
 - Chrome
 - Firefox
+- JetBrains Toolbox
 - Sublime Merge
 - Sublime Text
