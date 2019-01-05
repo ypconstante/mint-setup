@@ -3,4 +3,5 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
 
 # Fix applications to respect XDG
+export SDKMAN_DIR="${XDG_DATA_HOME}/sdkman"
 export ZDOTDIR="${XDG_DATA_HOME}/zsh"

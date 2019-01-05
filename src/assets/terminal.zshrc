@@ -296,7 +296,6 @@ step_load_thefuck() {
 }
 
 step_load_sdkman() {
-	export SDKMAN_DIR=$XDG_DATA_HOME/sdkman
 	if [[ -s $SDKMAN_DIR/bin/sdkman-init.sh ]]; then
 		source $SDKMAN_DIR/bin/sdkman-init.sh
 	fi

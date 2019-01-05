@@ -12,7 +12,6 @@ sed -i 's/\(^echo -e "\\n.*\)/# \1/g' $sdkman_script
 sed -i "s/\(echo ''\)/# \1/g" $sdkman_script
 sed -i 's/\(echo ""\)/# \1/g' $sdkman_script
 
-export SDKMAN_DIR=$XDG_DATA_HOME/sdkman
 bash $sdkman_script
 
 rm ~/.zshrc
