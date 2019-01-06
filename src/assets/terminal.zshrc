@@ -226,6 +226,10 @@ step_keybinding() {
 	bindkey '^[OA' history-substring-search-up
 	bindkey '^[OB' history-substring-search-down
 
+	# go to begin or end of line on home and end
+	bindkey '^[[H' beginning-of-line
+	bindkey '^[[F' end-of-line
+
 	# go to previous or next word on ctrl+arrow
 	bindkey '^[[1;5C' forward-word
 	bindkey '^[[1;5D' backward-word
