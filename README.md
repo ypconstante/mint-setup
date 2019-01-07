@@ -23,5 +23,6 @@ Sign in or add license to:
 - Chrome
 - Firefox
 - JetBrains Toolbox
+- Spotify
 - Sublime Merge
 - Sublime Text
