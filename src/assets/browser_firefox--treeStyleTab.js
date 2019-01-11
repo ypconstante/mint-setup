@@ -1,8 +1,8 @@
 {
-	"configsVersion": 1,
+	"configsVersion": 2,
 	"notifiedFeaturesVersion": 3,
 	"style": "vertigo",
-	"maxTreeLevel": -1,
+	"maxTreeLevel": 1,
 	"scrollbarMode": 2,
 	"lastConfirmedToCloseTabs": 1540429149800,
 	"sidebarScrollbarPosition": 0,
@@ -32,5 +32,11 @@
 	"collapseExpandSubtreeByDblClick": true,
 	"dropLinksOnTabBehavior": 2,
 	"simulateCloseTabByDblclick": false,
-	"optionsExpandedGroups": []
+	"optionsExpandedGroups": [],
+	"debug": false,
+	"applyThemeColorToIcon": false,
+	"useCachedTree": false,
+	"autoAttachSameSiteOrphan": 1,
+	"showTabDragHandle": false,
+	"colorScheme": "system-color"
 }
