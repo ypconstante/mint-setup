@@ -4,9 +4,9 @@ Steps
 sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update -y -qq
 sudo apt install -y -qq git
-git clone https://github.com/ypconstante/mint-setup.git
-find ./mint-setup/. -name "*.sh" -exec chmod +x {} \;
-./mint-setup/src/prepare.sh
+git clone https://github.com/ypconstante/mint-setup.git ~/projects/personal/mint-setup
+find ./projects/personal/mint-setup/. -name "*.sh" -exec chmod +x {} \;
+./projects/personal/mint-setup/src/prepare.sh
 ```
 
 Update kernel
@@ -15,8 +15,7 @@ Choose drivers
 
 
 ```sh
-./mint-setup/src/main.sh
-rm -rf mint-setup
+./projects/personal/mint-setup/src/main.sh
 ```
 
 Sign in or add license to:

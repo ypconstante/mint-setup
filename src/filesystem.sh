@@ -12,7 +12,7 @@ xdg-user-dirs-update
 my_step_end
 
 my_step_begin "rename templates to projects"
-mv ~/Templates ~/Projects
+rm -rf ~/Templates
 sed -i 's/\$HOME\/Templates/\$HOME\/Projects/' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
 my_step_end
@@ -33,7 +33,6 @@ mv ~/Desktop   ~/desktop
 mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
 mv ~/Media     ~/media
-mv ~/Projects  ~/projects
 sed -i 's/\$HOME\/\(.\)/\$HOME\/\L\1/' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
 my_step_end
