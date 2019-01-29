@@ -24,6 +24,31 @@ my_create_file_if_not_exists() {
 	touch $file 2> /dev/null || sudo touch $file
 }
 
+my_wait_file() {
+	local file="$1"
+	local time_waiting=0;
+
+	until [ -f $file ]; do
+		sleep 1
+		((time_waiting++))
+		if [[ $time_waiting -eq 2 ]]; then
+			echo -n "Waiting file '$file' to be created "
+		elif [[ $time_waiting -gt 2 ]]; then
+			echo -n "#"
+		fi
+		if [[ $time_waiting -gt 20 ]]; then
+			echo ''
+			my_echo_error 'Wait aborted after 20 seconds, file not created'
+			return -1
+		fi
+	done
+
+	if [[ $time_waiting -ge 2 ]]; then
+		echo ''
+		echo 'File created'
+	fi
+}
+
 my_file_contains_line() {
 	local file="$1"
 	local content="$2"
