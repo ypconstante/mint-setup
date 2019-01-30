@@ -63,8 +63,6 @@ perl -i -p0e 's|("search-filesystem":.*?"value": ?)[^\n,]*|$1.true|se' $MENU_CON
 my_step_end
 
 my_step_begin "change menu icon"
-mkdir -p ~/.var/icons
-cp $ASSETS_DIR/desktop--menu-icon.svg ~/.var/icons/menu.svg
 perl -i -p0e 's|("menu-icon-custom":.*?"value": ?)[^\n,]*|$1.true|se' $MENU_CONFIG_FILE
-perl -i -p0e 's|("menu-icon":.*?"value": ?"?)[^"]*|$1."'$HOME'/.var/icons/menu.svg"|se' $MENU_CONFIG_FILE
+perl -i -p0e 's|("menu-icon":.*?"value": ?"?)[^"]*|$1."'$ASSETS_DIR'/desktop--menu-icon.svg"|se' $MENU_CONFIG_FILE
 my_step_end
