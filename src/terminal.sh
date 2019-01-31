@@ -76,7 +76,7 @@ my_step_end
 my_step_begin "configure zsh"
 my_append_to_file_if_not_contains /etc/shells $(which zsh)
 sudo chsh -s $(which zsh) $USER
-sed 's/^export \([^=]*\)/\1 DEFAULT/g' $ASSETS_DIR/base--env > $HOME/.pam_environment
+sed 's/^export \([^=]*\)/\1 DEFAULT/g' $ASSETS_DIR/base--env > ~/.pam_environment
 my_link_file $ASSETS_DIR/base--env $ZDOTDIR/.zshenv
 my_link_file $ASSETS_DIR/terminal.zshrc $ZDOTDIR/.zshrc
 my_step_end

@@ -3,7 +3,7 @@
 source "$(dirname "$0")/_base.sh"
 
 my_step_begin "install sdkman"
-sdkman_script="$HOME/sdkman_script.sh"
+sdkman_script=~/sdkman_script.sh
 
 curl -sS 'https://get.sdkman.io' -o $sdkman_script
 

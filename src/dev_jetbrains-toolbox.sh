@@ -3,8 +3,8 @@
 source "$(dirname "$0")/_base.sh"
 
 toolbox_dir=$XDG_DATA_HOME/JetBrains/Toolbox
-toolbox_gz=$HOME/toolbox.tar.gz
-toolbox_output_dir=$HOME/toolbox
+toolbox_gz=~/toolbox.tar.gz
+toolbox_output_dir=~/toolbox
 
 if [ -d $toolbox_dir ]; then
 	my_step_begin "install toolbox"
