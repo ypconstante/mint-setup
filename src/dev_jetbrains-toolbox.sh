@@ -24,7 +24,7 @@ my_step_end
 
 my_step_begin "config toolbox"
 mkdir -p $toolbox_dir
-cp $ASSETS_DIR/dev_jetbrains-toolbox--settings.json $toolbox_dir/.settings.json
+my_link_file $ASSETS_DIR/dev_jetbrains-toolbox--settings.json $toolbox_dir/.settings.json
 my_step_end
 
 my_step_begin "install toolbox"

@@ -9,7 +9,7 @@ my_apt_uninstall gnome-screenshot
 my_step_end
 
 my_step_begin "config redshift"
-cp $ASSETS_DIR/utilities--redshift.conf $XDG_CONFIG_HOME/redshift.conf
+my_link_file $ASSETS_DIR/utilities--redshift.conf $XDG_CONFIG_HOME/redshift.conf
 my_step_end
 
 my_step_begin "install spotify"

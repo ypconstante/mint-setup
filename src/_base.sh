@@ -19,6 +19,13 @@ source /etc/os-release
 source $ASSETS_DIR/base--env
 
 #################################### FILE #####################################
+my_link_file() {
+	local from="$1"
+	local to="$2"
+	rm -f $to
+	ln $from $to
+}
+
 my_create_file_if_not_exists() {
 	local file="$1"
 	touch $file 2> /dev/null || sudo touch $file

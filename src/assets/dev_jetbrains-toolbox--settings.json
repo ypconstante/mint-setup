@@ -2,7 +2,7 @@
     "autostart": false,
     "channel_rollback_max_history": 1,
     "privacy_policy": {
-        "eua_accepted_version": "1.1"
+        "eua_accepted_version": "1.2"
     },
     "proxy": null,
     "shell_scripts": {
