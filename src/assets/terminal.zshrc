@@ -154,6 +154,8 @@ step_alias() {
 
 	alias cdg='cd-gitroot'
 	alias cdf='cd-gitroot'
+	
+	alias open='xdg-open'
 
 	alias d='dirs -v | head -10'
 
