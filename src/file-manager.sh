@@ -25,3 +25,7 @@ my_step_end
 my_step_begin "hide snaps folder"
 echo snap >> ~/.hidden
 my_step_end
+
+my_step_begin "fix opening nemo from terminal"
+sudo mkdir -p /var/lib/samba/usershares/
+my_step_end
