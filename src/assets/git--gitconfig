@@ -1,0 +1,13 @@
+[core]
+	fileMode = false
+[diff]
+	mnemonicprefix = true
+	algorithm = patience
+	compactionHeuristic = true
+[fetch]
+	prune = true
+	pruneTags = true
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
