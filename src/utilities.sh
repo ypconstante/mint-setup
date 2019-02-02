@@ -23,3 +23,15 @@ my_apt_add_key https://www.virtualbox.org/download/oracle_vbox_2016.asc
 my_apt_add_repository virtualbox "deb https://download.virtualbox.org/virtualbox/debian $UBUNTU_CODENAME contrib"
 my_apt_install virtualbox-6.0
 my_step_end
+
+my_step_begin "install franz"
+installer_path=/tmp/franz_installer.deb
+installer_url=$( \
+	curl -sS https://api.github.com/repos/meetfranz/franz/releases/latest \
+	| grep browser_download_url	 \
+	| grep .deb \
+	| sed -E 's/.*"([^"]+)".*/\1/' \
+)
+curl -L $installer_url -o $installer_path
+sudo dpkg --install $installer_path
+my_step_end
