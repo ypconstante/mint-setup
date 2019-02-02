@@ -23,7 +23,7 @@ my_link_file() {
 	local from="$1"
 	local to="$2"
 	rm -f $to
-	ln $from $to
+	ln $from $to &>/dev/null || ln -s $from $to
 }
 
 my_create_file_if_not_exists() {
