@@ -13,7 +13,9 @@ my_step_end
 
 my_step_begin "rename templates to projects"
 rm -rf ~/Templates
-sed -i 's/\$HOME\/Templates/\$HOME\/Projects/' $XDG_CONFIG_HOME/user-dirs.dirs
+mkdir -p ~/projets/personal
+mkdir -p ~/projets/sandbox
+sed -i 's/\$HOME\/Templates/\$HOME\/projects/' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
 my_step_end
 
