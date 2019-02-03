@@ -5,6 +5,7 @@ source "$(dirname "$0")/_base.sh"
 DEFAULT_GITCONFIG_PATH=~/.gitconfig
 GITCONFIG_DIR=$XDG_CONFIG_HOME/git
 GITCONFIG_FILE=$GITCONFIG_DIR/config
+GITIGNORE_FILE=$GITCONFIG_DIR/gitignore
 
 my_step_begin "install tig"
 my_apt_install tig
@@ -31,8 +32,8 @@ my_create_file_if_not_exists $GITCONFIG_FILE
 my_step_end
 
 my_step_begin "create gitignore"
-curl -sS https://www.gitignore.io/api/git,linux,sublimetext,jetbrains+all,visualstudiocode -o ~/projects/gitignore.gitignore
-git config --global core.excludesfile '~/projects/gitignore.gitignore'
+curl -sS https://www.gitignore.io/api/git,linux,sublimetext,jetbrains+all,visualstudiocode -o $GITIGNORE_FILE
+git config --global core.excludesfile $GITIGNORE_FILE
 my_step_end
 
 my_step_begin "git config"
