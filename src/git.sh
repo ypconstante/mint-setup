@@ -2,6 +2,10 @@
 
 source "$(dirname "$0")/_base.sh"
 
+DEFAULT_GITCONFIG_PATH=~/.gitconfig
+GITCONFIG_DIR=$XDG_CONFIG_HOME/git
+GITCONFIG_FILE=$GITCONFIG_DIR/config
+
 my_step_begin "install tig"
 my_apt_install tig
 my_step_end
@@ -13,6 +17,17 @@ my_step_end
 my_step_begin "add github and gitlab as known ssh hosts"
 ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
+my_step_end
+
+
+my_step_begin "make git respected xdg spec"
+mkdir -p $GITCONFIG_DIR
+
+if [ -f $DEFAULT_GITCONFIG_PATH ]; then
+	mv $DEFAULT_GITCONFIG_PATH $GITCONFIG_FILE
+fi
+
+my_create_file_if_not_exists $GITCONFIG_FILE
 my_step_end
 
 my_step_begin "create gitignore"
