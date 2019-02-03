@@ -63,9 +63,6 @@ step_plugins() {
 		# theme 
 		zgen load denysdovhan/spaceship-prompt spaceship
 
-		# nvm
-		zgen load ypconstante/zsh-nvm
-
 		# 
 		zgen load zsh-users/zsh-autosuggestions
 		zgen load zsh-users/zsh-completions
@@ -97,12 +94,6 @@ step_plugins() {
 	}
 
 	export ZGEN_DIR=$ZDOTDIR/zgen
-
-	# nvm
-	export NVM_DIR=$XDG_DATA_HOME/nvm
-	export NVM_LAZY_LOAD=true
-	export NVM_NO_USE=true
-	export NVM_AUTO_USE=true
 
 	# autosuggestions
 	export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
@@ -276,35 +267,28 @@ step_completion() {
 }
 
 step_async_load() {
-	step_load_nvm
+	step_load_asdf
 	step_load_thefuck
-	step_load_sdkman
 	step_compile_zsh_files
 }
 
 step_compile_zsh_files() {
 	zrecompile $ZDOTDIR/.zshrc
 	zrecompile $ZDOTDIR/.zcompdump
+	zle reset-prompt
 }
 
-step_load_nvm() {
-	perl -i -p0e 's/(\n(nvm_die_on_prefix)\(\) ?\{)[^}].+?\n\}/$1."}"/seg' $NVM_DIR/nvm.sh
-	sed -i '/#/!s/\(nvm_echo "Found\)/# \1/g' $NVM_DIR/nvm.sh
-	source $NVM_DIR/nvm.sh
-	_zsh_nvm_auto_use
-	zle reset-prompt
+step_load_asdf() {
+	if [[ -d $XDG_DATA_HOME/asdf ]]; then
+		source $XDG_DATA_HOME/asdf/asdf.sh
+		source $XDG_DATA_HOME/asdf/completions/asdf.bash
+	fi
 }
 
 step_load_thefuck() {
 	export THEFUCK_HISTORY_LIMIT=5
 	export THEFUCK_WAIT_COMMAND=2
 	source $ZGEN_DIR/robbyrussell/oh-my-zsh-master/plugins/thefuck/thefuck.plugin.zsh
-}
-
-step_load_sdkman() {
-	if [[ -s $SDKMAN_DIR/bin/sdkman-init.sh ]]; then
-		source $SDKMAN_DIR/bin/sdkman-init.sh
-	fi
 }
 
 #################################### START ####################################
