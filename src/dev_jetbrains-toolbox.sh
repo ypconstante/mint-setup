@@ -3,8 +3,8 @@
 source "$(dirname "$0")/_base.sh"
 
 toolbox_dir=$XDG_DATA_HOME/JetBrains/Toolbox
-toolbox_gz=~/toolbox.tar.gz
-toolbox_output_dir=~/toolbox
+toolbox_installer_compressed=/tmp/jetbrains-toolbox.tar.gz
+toolbox_installer_dir=/tmp/jetbrains-toolbox
 
 if [ -d $toolbox_dir ]; then
 	my_step_begin "install toolbox"
@@ -14,12 +14,12 @@ if [ -d $toolbox_dir ]; then
 fi
 
 my_step_begin "download toolbox"
-curl -L 'https://data.services.jetbrains.com/products/download?platform=linux&code=TBA' -o $toolbox_gz
+curl -L 'https://data.services.jetbrains.com/products/download?platform=linux&code=TBA' -o $toolbox_installer_compressed
 my_step_end
 
 my_step_begin "extract installer"
-mkdir $toolbox_output_dir
-tar -xzf $toolbox_gz -C $toolbox_output_dir --strip-components=1
+mkdir $toolbox_installer_dir
+tar -xzf $toolbox_installer_compressed -C $toolbox_installer_dir --strip-components=1
 my_step_end
 
 my_step_begin "config toolbox"
@@ -28,13 +28,13 @@ my_link_file $ASSETS_DIR/dev_jetbrains-toolbox--settings.json $toolbox_dir/.sett
 my_step_end
 
 my_step_begin "install toolbox"
-$toolbox_output_dir/jetbrains-toolbox
+$toolbox_installer_dir/jetbrains-toolbox
 
 sleep 2
 pkill jetbrains-toolb
 my_step_end
 
 my_step_begin "remove installer"
-rm $toolbox_gz
-rm -r $toolbox_output_dir
+rm $toolbox_installer_compressed
+rm -r $toolbox_installer_dir
 my_step_end
