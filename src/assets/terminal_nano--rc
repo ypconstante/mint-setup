@@ -42,10 +42,7 @@ include ~/.config/nano/syntax/dot.nanorc
 include ~/.config/nano/syntax/dotenv.nanorc
 include ~/.config/nano/syntax/git.nanorc
 include ~/.config/nano/syntax/ini.nanorc
-include ~/.config/nano/syntax/json.nanorc
 include ~/.config/nano/syntax/markdown.nanorc
-include ~/.config/nano/syntax/nanorc.nanorc
-include ~/.config/nano/syntax/patch.nanorc
 include ~/.config/nano/syntax/sh.nanorc
 include ~/.config/nano/syntax/yaml.nanorc
 include ~/.config/nano/syntax/zsh.nanorc

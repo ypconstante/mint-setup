@@ -2,7 +2,7 @@
 
 source "$(dirname "$0")/_base.sh"
 
-CONFIG_DIR=~/.config/nano
+CONFIG_DIR=$XDG_CONFIG_HOME/nano
 
 my_step_begin "configure nano"
 mkdir -p $CONFIG_DIR
