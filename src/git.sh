@@ -37,6 +37,6 @@ git config --global core.excludesfile $GITIGNORE_FILE
 my_step_end
 
 my_step_begin "git config"
-git config --global include.path $ASSETS_DIR/git--gitconfig
+git config --global include.path $ASSETS_DIR/git--config
 git config --global commit.template $ASSETS_DIR/git--commit-template
 my_step_end
