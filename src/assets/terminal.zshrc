@@ -17,11 +17,6 @@ batch_zrecompile() {
 	done
 }
 
-fuck-command-line() {
-	echo 'fuck not loaded'
-}
-zle -N fuck-command-line fuck-command-line
-
 ############################## EXPOSED FUNCTIONS ##############################
 man() {
 	env \
@@ -203,9 +198,6 @@ step_keybinding() {
 	KEYTIMEOUT=1
 	bindkey -v
 
-	# run thefuck on esc
-	bindkey '^[' fuck-command-line
-
 	# delete on delete or backspace
 	bindkey '^?' backward-delete-char
 	bindkey '^H' backward-kill-word
@@ -268,7 +260,6 @@ step_completion() {
 
 step_async_load() {
 	step_load_asdf
-	step_load_thefuck
 	step_compile_zsh_files
 }
 
@@ -283,12 +274,6 @@ step_load_asdf() {
 		source $XDG_DATA_HOME/asdf/asdf.sh
 		source $XDG_DATA_HOME/asdf/completions/asdf.bash
 	fi
-}
-
-step_load_thefuck() {
-	export THEFUCK_HISTORY_LIMIT=5
-	export THEFUCK_WAIT_COMMAND=2
-	source $ZGEN_DIR/robbyrussell/oh-my-zsh-master/plugins/thefuck/thefuck.plugin.zsh
 }
 
 #################################### START ####################################
