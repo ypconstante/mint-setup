@@ -21,6 +21,7 @@ asdf plugin-add gradle
 asdf plugin-add java
 asdf plugin-add maven
 asdf plugin-add nodejs
+asdf plugin-update --all
 my_step_end
 
 my_step_begin "import nodejs keys"
