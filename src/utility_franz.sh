@@ -12,4 +12,5 @@ installer_url=$( \
 )
 curl -L $installer_url -o $installer_path
 sudo dpkg --install $installer_path
+rm /tmp/franz_installer.deb
 my_step_end
