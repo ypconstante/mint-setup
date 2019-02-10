@@ -8,7 +8,7 @@ my_apt_add_repository vscode 'deb [arch=amd64] http://packages.microsoft.com/rep
 my_apt_install code
 my_step_end
 
-
 my_step_begin "configure visual studio code"
+mkdir -p $XDG_CONFIG_HOME/Code/User
 my_link_file $ASSETS_DIR/dev_visual-studio-code--settings.json $XDG_CONFIG_HOME/Code/User/settings.json
 my_step_end
