@@ -46,6 +46,12 @@ echo "file://$HOME/downloads Downloads" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
 echo "file://$HOME/projects Projects" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
 my_step_end
 
+my_step_begin "fix gnupg permissions"
+mkdir -p ~/.gnupg
+find ~/.gnupg -type d -exec chmod 700 {} \;
+find ~/.gnupg -type f -exec chmod 600 {} \;
+my_step_end
+
 my_step_begin "temporary files only in memory"
 sudo cp /usr/share/systemd/tmp.mount /etc/systemd/system/
 sudo systemctl enable tmp.mount
