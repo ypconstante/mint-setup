@@ -124,7 +124,7 @@ step_plugins() {
 }
 
 step_alias() {
-	alias ls='ls --color'
+	alias ls='ls --color=auto'
 	alias ll='ls --color=auto -lh'
 	alias lla='ls --color=auto -lha'
 
