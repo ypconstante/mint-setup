@@ -7,6 +7,10 @@
 [fetch]
 	prune = true
 	pruneTags = true
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 [pull]
 	rebase = true
 [rerere]
