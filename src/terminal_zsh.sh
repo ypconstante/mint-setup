@@ -19,5 +19,5 @@ my_link_file $ASSETS_DIR/terminal.zshrc $ZDOTDIR/.zshrc
 my_step_end
 
 my_step_begin "install zsh plugins"
-zsh -i -c true
+zsh -i -c 'zgen update' &> /dev/null
 my_step_end
