@@ -7,7 +7,7 @@ source "$(dirname "$0")/_base.sh"
 ./dev.sh
 ./utilities.sh
 ./desktop.sh
-./file-manager.sh
+./file-browser.sh
 ./filesystem.sh
 ./git.sh
 ./network.sh
