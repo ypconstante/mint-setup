@@ -17,7 +17,7 @@ my_step_begin "install asdf plugins"
 # disable variable check since it's a external script
 set +o nounset
 source $XDG_DATA_HOME/asdf/asdf.sh
-asdf plugin-add gradle
+asdf plugin-add gradle https://github.com/ypconstante/asdf-gradle
 asdf plugin-add java
 asdf plugin-add maven
 asdf plugin-add nodejs
