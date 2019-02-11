@@ -25,5 +25,5 @@ asdf plugin-update --all
 my_step_end
 
 my_step_begin "import nodejs keys"
-source $ASDF_DATA_DIR/plugins/nodejs/bin/import-release-team-keyring
+source $ASDF_DATA_DIR/plugins/nodejs/bin/import-release-team-keyring &> /dev/null
 my_step_end
