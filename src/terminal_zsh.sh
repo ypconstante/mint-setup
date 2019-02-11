@@ -7,7 +7,7 @@ my_apt_install zsh
 my_step_end
 
 my_step_begin "install zgen"
-git clone https://github.com/tarjoilija/zgen.git $ZDOTDIR/zgen
+my_git_clone https://github.com/tarjoilija/zgen.git $ZDOTDIR/zgen
 my_step_end
 
 my_step_begin "configure zsh"

@@ -3,7 +3,7 @@
 source "$(dirname "$0")/_base.sh"
 
 my_step_begin "install asdf"
-git clone https://github.com/asdf-vm/asdf.git $XDG_DATA_HOME/asdf
+my_git_clone https://github.com/asdf-vm/asdf.git $XDG_DATA_HOME/asdf
 cd $XDG_DATA_HOME/asdf
 git fetch
 git -c advice.detachedHead=false checkout "$(git describe --abbrev=0 --tags)"

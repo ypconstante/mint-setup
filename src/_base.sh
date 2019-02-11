@@ -141,6 +141,26 @@ my_apt_uninstall() {
 	my_indent sudo apt-get autoremove -y -qq --purge -o=Dpkg::Use-Pty=0 "$@"
 }
 
+my_git_clone() {
+	local repository="$1"
+	local directory="$2"
+
+	if [ -d $directory ]; then
+		local previous_dir=$PWD
+		cd $directory
+		echo "Updating repo '$directory'"
+		git remote set-url origin $repository
+		if [ $(git symbolic-ref --short -q HEAD) ]; then
+			git pull
+		else
+			git fetch
+		fi
+		cd $previous_dir
+	else
+		git clone $repository $directory
+	fi
+}
+
 my_pip_install() {
 	echo "Installing '$1'"
 	my_indent pip3 install --user "$@"
