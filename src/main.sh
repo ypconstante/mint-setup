@@ -8,7 +8,7 @@ source "$(dirname "$0")/_base.sh"
 ./utilities.sh
 ./desktop.sh
 ./file-browser.sh
-./filesystem.sh
+./file-system.sh
 ./git.sh
 ./network.sh
 ./peripherals.sh

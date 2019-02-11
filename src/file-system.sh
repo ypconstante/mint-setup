@@ -58,8 +58,8 @@ sudo systemctl enable tmp.mount
 my_step_end
 
 my_step_begin "filesystem kernel parameters"
-sudo cp $ASSETS_DIR/filesystem--kernel-parameters.conf /etc/sysctl.d/98-filesystem.conf
-sudo chmod 644 /etc/sysctl.d/98-filesystem.conf
+sudo cp $ASSETS_DIR/file-system--kernel-parameters.conf /etc/sysctl.d/98-file-system.conf
+sudo chmod 644 /etc/sysctl.d/98-file-system.conf
 my_step_end
 
 my_step_begin "disable writing file access time"
