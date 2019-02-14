@@ -8,5 +8,5 @@ sudo chmod 644 /etc/sysctl.d/98-network.conf
 my_step_end
 
 my_step_begin "disable wifi power management"
-sudo sed -i 's/wifi.powersave = 3/wifi.powersave = 2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+sudo sed -Ei 's/wifi.powersave = 3/wifi.powersave = 2/' /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
 my_step_end

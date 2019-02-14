@@ -15,7 +15,7 @@ my_step_begin "rename templates to projects"
 rm -rf ~/Templates
 mkdir -p ~/projets/personal
 mkdir -p ~/projets/sandbox
-sed -i 's/\$HOME\/Templates/\$HOME\/projects/' $XDG_CONFIG_HOME/user-dirs.dirs
+sed -Ei 's|\$HOME/Templates|\$HOME/projects|' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
 my_step_end
 
@@ -24,9 +24,9 @@ mkdir ~/Media
 rm -rf ~/Videos
 rm -rf ~/Music
 rm -rf ~/Pictures
-sed -i 's/\$HOME\/Music/\$HOME\/Media/' $XDG_CONFIG_HOME/user-dirs.dirs
-sed -i 's/\$HOME\/Pictures/\$HOME\/Media/' $XDG_CONFIG_HOME/user-dirs.dirs
-sed -i 's/\$HOME\/Videos/\$HOME\/Media/' $XDG_CONFIG_HOME/user-dirs.dirs
+sed -Ei 's|\$HOME/Music|\$HOME/Media|' $XDG_CONFIG_HOME/user-dirs.dirs
+sed -Ei 's|\$HOME/Pictures|\$HOME/Media|' $XDG_CONFIG_HOME/user-dirs.dirs
+sed -Ei 's|\$HOME/Videos|\$HOME/Media|' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
 my_step_end
 
@@ -35,7 +35,7 @@ mv ~/Desktop   ~/desktop
 mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
 mv ~/Media     ~/media
-sed -i 's/\$HOME\/\(.\)/\$HOME\/\L\1/' $XDG_CONFIG_HOME/user-dirs.dirs
+sed -Ei 's|\$HOME/(.)|\$HOME/\L\1|' $XDG_CONFIG_HOME/user-dirs.dirs
 xdg-user-dirs-update
 my_step_end
 
@@ -63,5 +63,5 @@ sudo chmod 644 /etc/sysctl.d/98-file-system.conf
 my_step_end
 
 my_step_begin "disable writing file access time"
-sudo sed -i '/noatime/!s/\(\/ *\w* * [^ ]*\)/\1,noatime/' /etc/fstab
+sudo sed -Ei '/noatime/!s|(/ *\w* * [^ ]*)|\1,noatime|' /etc/fstab
 my_step_end
