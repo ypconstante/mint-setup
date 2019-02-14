@@ -3,6 +3,7 @@
 source "$(dirname "$0")/_base.sh"
 
 ./prepare.sh
+./terminal.sh
 ./browsers.sh
 ./dev.sh
 ./utilities.sh
@@ -15,5 +16,4 @@ source "$(dirname "$0")/_base.sh"
 ./screen-lock-monitor.sh
 ./sound.sh
 ./system-monitor.sh
-./terminal.sh
 ./update-manager.sh
