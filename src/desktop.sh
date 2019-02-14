@@ -57,12 +57,11 @@ dconf write /org/cinnamon/alttab-minimized-aware true
 dconf write /org/cinnamon/alttab-switcher-enforce-primary-monitor true
 my_step_end
 
-my_step_begin "allow path in menu search"
+my_step_begin "change menu config"
 my_wait_file $MENU_CONFIG_FILE
-perl -i -p0e 's|("search-filesystem":.*?"value": ?)[^\n,]*|$1.true|se' $MENU_CONFIG_FILE
-my_step_end
-
-my_step_begin "change menu icon"
-perl -i -p0e 's|("menu-icon-custom":.*?"value": ?)[^\n,]*|$1.true|se' $MENU_CONFIG_FILE
-perl -i -p0e 's|("menu-icon":.*?"value": ?"?)[^"]*|$1."'$ASSETS_DIR'/desktop--menu-icon.svg"|se' $MENU_CONFIG_FILE
+cat $MENU_CONFIG_FILE \
+	| jq 'setpath(["search-filesystem", "value"]; true)' \
+	| jq 'setpath(["menu-icon-custom", "value"]; true)' \
+	| jq 'setpath(["menu-icon", "value"]; "'$ASSETS_DIR'/desktop--menu-icon.svg")' \
+	| sponge $MENU_CONFIG_FILE
 my_step_end
