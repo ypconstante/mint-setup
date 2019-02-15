@@ -128,7 +128,7 @@ my_apt_add_repository() {
 	local source="$2"
 	
 	my_append_to_file_if_not_contains /etc/apt/sources.list.d/$name.list "$source"
-	apt update -y -qq
+	sudo apt update -y -qq
 }
 
 my_apt_install() {

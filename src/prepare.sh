@@ -3,7 +3,7 @@
 source "$(dirname "$0")/_base.sh"
 
 my_step_begin "remove unused packages"
-apt autoremove -y -qq
+sudo apt autoremove -y -qq
 my_apt_uninstall gnome-accessibility-themes
 my_apt_uninstall gnome-calendar
 my_apt_uninstall gnome-orca
@@ -30,9 +30,9 @@ sudo dpkg-reconfigure fontconfig
 my_step_end
 
 my_step_begin "update packages"
-apt clean -y -qq
-apt update -y -qq
-apt full-upgrade -y -qq
+sudo apt clean -y -qq
+sudo apt update -y -qq
+sudo apt full-upgrade -y -qq
 my_step_end
 
 my_step_begin "create autostart folder"
