@@ -32,7 +32,7 @@ my_create_file_if_not_exists $GITCONFIG_FILE
 my_step_end
 
 my_step_begin "create gitignore"
-curl -sS https://www.gitignore.io/api/git,linux,sublimetext,jetbrains+all,visualstudiocode -o $GITIGNORE_FILE
+curl -sS https://www.gitignore.io/api/git,linux,jetbrains+all,sublimetext,vim,visualstudiocode -o $GITIGNORE_FILE
 git config --global core.excludesfile $GITIGNORE_FILE
 my_step_end
 
