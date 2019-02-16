@@ -37,6 +37,9 @@ dset use-theme-colors false
 dset use-theme-transparency false
 dset use-transparent-background false
 
+dset default-size-columns 150
+dset default-size-rows 40
+
 dconf write /org/gnome/terminal/legacy/default-show-menubar false
 my_step_end
 
