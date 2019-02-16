@@ -1528,4 +1528,8 @@ user_pref("browser.newtabpage.activity-stream.topSitesRows", 2);
 user_pref("browser.newtabpage.activity-stream.section.topstories.showDisclaimer", false);
 user_pref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
 
+// search
+user_pref("findbar.highlightAll", false);
+user_pref("findbar.entireword", false);
+
 user_pref("_user.js.parrot", "user.js finished");
