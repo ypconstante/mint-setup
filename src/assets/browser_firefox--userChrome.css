@@ -27,6 +27,12 @@
    visibility: collapse !important;
 }
 
+/* hide visit site text */
+.ac-separator[actiontype="visiturl"],
+.ac-action[actiontype="visiturl"] {
+   visibility: collapse !important;
+}
+
 /* hide sidebar header */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
    visibility: collapse !important;
