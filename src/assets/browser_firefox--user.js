@@ -1482,6 +1482,8 @@ user_pref("javascript.options.asmjs", true); // 2420
 user_pref("javascript.options.wasm", true); // 2422
 user_pref("layers.acceleration.disabled", true); // 2508
 user_pref("browser.pagethumbnails.capturing_disabled", false); // 2604
+user_pref("devtools.chrome.enabled", true); // 2607
+user_pref("devtools.debugger.remote-enabled", true); // 2608
 user_pref("pdfjs.disabled", false); // 2620
 user_pref("browser.download.forbid_open_with", false); // 2654
 user_pref("privacy.clearOnShutdown.cookies", false); // 2803
