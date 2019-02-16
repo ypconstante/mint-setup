@@ -22,6 +22,11 @@
 	visibility: collapse !important;
 }
 
+/* hide content blocking indicator */
+#tracking-protection-icon-box {
+   visibility: collapse !important;
+}
+
 /* hide sidebar header */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
    visibility: collapse !important;
