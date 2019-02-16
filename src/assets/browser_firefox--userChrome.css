@@ -1,5 +1,10 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+/* hide titlebar */
+#titlebar-buttonbox {
+	overflow: hidden;
+}
+
 /* navbar height */
 :root[uidensity="compact"] #nav-bar {
 	height: 29px;
