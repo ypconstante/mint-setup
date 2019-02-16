@@ -65,6 +65,7 @@ step_plugins() {
 
 		zgen oh-my-zsh lib/git.zsh
 		zgen oh-my-zsh plugins/autojump
+		zgen oh-my-zsh plugins/docker
 		zgen oh-my-zsh plugins/gitfast
 		zgen oh-my-zsh plugins/npm
 		zgen oh-my-zsh plugins/yarn
@@ -167,6 +168,9 @@ step_style() {
 
 	zstyle ':completion:*' menu select
 	zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+
+	zstyle ':completion:*:*:docker:*' option-stacking yes
+	zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 	zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 	zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
