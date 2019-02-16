@@ -1502,7 +1502,7 @@ user_pref("browser.ctrlTab.recentlyUsedOrder", false);
 // hide how to use browser instructions
 user_pref("browser.newtabpage.activity-stream.migrationExpired", true);
 user_pref("browser.urlbar.timesBeforeHidingSuggestionsHint", 0);
-user_pref("privacy.trackingprotection.introCount", 20);
+user_pref("browser.contentblocking.introCount", 20);
 
 // put tabs in titlebar
 // allow titlebar to be hidden via css
