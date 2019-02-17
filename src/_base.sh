@@ -117,6 +117,11 @@ my_indent() {
 	stdbuf -oL -eL $@ | stdbuf -oL -eL sed 's/^/> /g' | sed 's/$//g'
 }
 
+################################### FIREFOX ###################################
+my_firefox_profile_dir() {
+	[[ -d ~/.mozilla/firefox ]] && find ~/.mozilla/firefox -maxdepth 1 -name '*.default' | head -n 1
+}
+
 ################################### INSTALL ###################################
 my_apt_add_key() {
 	local url="$1"
