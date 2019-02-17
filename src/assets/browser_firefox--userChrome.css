@@ -27,9 +27,15 @@
    visibility: collapse !important;
 }
 
-/* hide visit site text */
+/* hide 'visit site' text */
 .ac-separator[actiontype="visiturl"],
 .ac-action[actiontype="visiturl"] {
+   visibility: collapse !important;
+}
+
+/* hide 'search with' text */
+.ac-separator[actiontype="searchengine"],
+.ac-action[actiontype="searchengine"] {
    visibility: collapse !important;
 }
 
