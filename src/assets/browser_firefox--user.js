@@ -1489,6 +1489,7 @@ user_pref("browser.download.forbid_open_with", false); // 2654
 user_pref("privacy.clearOnShutdown.cookies", false); // 2803
 user_pref("privacy.clearOnShutdown.formdata", false); // 2803
 user_pref("privacy.clearOnShutdown.history", false); // 2803
+user_pref("privacy.clearOnShutdown.offlineApps", false); // 2803
 user_pref("privacy.clearOnShutdown.sessions", false); // 2803
 
 // CUSTOM
