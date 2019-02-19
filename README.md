@@ -32,16 +32,16 @@ Install:
 - IntelliJ
 - DataGrip
 
-Configure git:
-- `git config --global user.email "you@example.com"`
-- `git config --global user.name "Your Name"`
-- [Create key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
-
 Install packages using asdf:
 - gradle
 - java
 - maven
 - nodejs
+
+Configure git:
+- `git config --global user.email "you@example.com"`
+- `git config --global user.name "Your Name"`
+- [Create key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
 
 Configure packages:
 - gradle
