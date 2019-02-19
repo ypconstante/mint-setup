@@ -38,6 +38,11 @@ Install packages using asdf:
 - maven
 - nodejs
 
+Configure Firefox extensions:
+- Stylus
+- uBlock
+- Violentmonkey
+
 Configure git:
 - `git config --global user.email "you@example.com"`
 - `git config --global user.name "Your Name"`
