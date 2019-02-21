@@ -36,7 +36,11 @@ curl -sS https://www.gitignore.io/api/git,linux,jetbrains+all,sublimetext,vim,vi
 git config --global core.excludesfile $GITIGNORE_FILE
 my_step_end
 
-my_step_begin "git config"
+my_step_begin "config git"
 git config --global include.path $ASSETS_DIR/git--config
 git config --global commit.template $ASSETS_DIR/git--commit-template
+my_step_end
+
+my_step_begin "config current repo"
+git config core.filemode false
 my_step_end

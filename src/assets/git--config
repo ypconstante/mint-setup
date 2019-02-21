@@ -1,5 +1,4 @@
 [core]
-	fileMode = false
 	untrackedCache = true
 [diff]
 	mnemonicprefix = true
