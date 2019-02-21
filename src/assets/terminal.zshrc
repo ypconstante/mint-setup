@@ -156,6 +156,8 @@ step_alias() {
 
 	alias -- g-='git checkout -'
 	alias -- gco-='git checkout -'
+	alias grbim='git rebase -i master'
+	alias grbmi='git rebase -i master'
 
 	alias tis='tig status'
 	alias til='tig log'
