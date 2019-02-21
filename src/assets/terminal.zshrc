@@ -157,6 +157,7 @@ step_alias() {
 	alias open='xdg-open'
 
 	alias d='dirs -v | head -10'
+	alias x='exit'
 
 	alias -- g-='git checkout -'
 	alias -- gco-='git checkout -'
