@@ -40,6 +40,10 @@ man() {
 			man "$@"
 }
 
+mkcd() {
+	mkdir -p $1 && cd $1
+}
+
 zgen() {
 	source $ZGEN_DIR/zgen.zsh
 	zgen $@
