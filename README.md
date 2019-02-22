@@ -39,6 +39,7 @@ Install packages using asdf:
 - nodejs
 
 Configure Firefox extensions:
+- Auto Discard Tabs
 - Stylus
 - uBlock
 - Violentmonkey
