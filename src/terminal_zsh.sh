@@ -18,6 +18,10 @@ my_link_file $ASSETS_DIR/base--env $ZDOTDIR/.zshenv
 my_link_file $ASSETS_DIR/terminal.zshrc $ZDOTDIR/.zshrc
 my_step_end
 
+my_step_begin "remove zsh checks in not used vcs"
+sudo find /usr/share/zsh/functions/VCS_Info/Backends -type f -not -name '*_git*' -delete
+my_step_end
+
 my_step_begin "install zsh plugins"
 zsh -i -c 'zgen update' &> /dev/null
 my_step_end
