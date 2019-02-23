@@ -1483,6 +1483,7 @@ user_pref("media.gmp-widevinecdm.visible", true); // 1825
 user_pref("media.gmp-widevinecdm.enabled", true); // 1825
 user_pref("media.gmp-widevinecdm.autoupdate", true); // 1825
 user_pref("media.eme.enabled", true); // 1830
+user_pref("dom.serviceWorkers.enabled", false); // 2302
 user_pref("javascript.options.asmjs", true); // 2420
 user_pref("javascript.options.wasm", true); // 2422
 user_pref("layers.acceleration.disabled", true); // 2508
@@ -1490,6 +1491,7 @@ user_pref("browser.pagethumbnails.capturing_disabled", false); // 2604
 user_pref("devtools.chrome.enabled", true); // 2607
 user_pref("devtools.debugger.remote-enabled", true); // 2608
 user_pref("pdfjs.disabled", false); // 2620
+user_pref("network.cookie.cookieBehavior", 4); // 2701
 user_pref("browser.download.forbid_open_with", false); // 2654
 user_pref("privacy.clearOnShutdown.cookies", false); // 2803
 user_pref("privacy.clearOnShutdown.formdata", false); // 2803
@@ -1521,7 +1523,7 @@ user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org
 user_pref("browser.uidensity", 1);
 user_pref(
 	"browser.uiCustomization.state",
-	'{"placements":{"widget-overflow-fixed-list":["_testpilot-containers-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","ublock0_raymondhill_net-browser-action","_aecec67f-0d10-4fa7-b7c7-609a2db280cf_-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","support_lastpass_com-browser-action","downloads-button","bookmarks-menu-button","sync-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button","_c607c8df-14a7-4f28-894f-29e8722976af_-browser-action"],"PersonalToolbar":["personal-bookmarks"]},"seen":["developer-button","_react-devtools-browser-action","_aecec67f-0d10-4fa7-b7c7-609a2db280cf_-browser-action","ublock0_raymondhill_net-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","_testpilot-containers-browser-action","webide-button","_testpilot-addon-browser-action","feed-button","treestyletab_piro_sakura_ne_jp-browser-action","_c28e42b2-28b5-45f0-bdc8-6989ae7e6a7e_-browser-action","support_lastpass_com-browser-action","_c607c8df-14a7-4f28-894f-29e8722976af_-browser-action","_c2c003ee-bd69-42a2-b0e9-6f34222cb046_-browser-action"],"dirtyAreaCache":["PersonalToolbar","nav-bar","TabsToolbar","toolbar-menubar","widget-overflow-fixed-list"],"currentVersion":15,"newElementCount":47}'
+	'{"placements":{"widget-overflow-fixed-list":["_testpilot-containers-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","umatrix_raymondhill_net-browser-action","ublock0_raymondhill_net-browser-action","_aecec67f-0d10-4fa7-b7c7-609a2db280cf_-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","support_lastpass_com-browser-action","downloads-button","bookmarks-menu-button","sync-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button","_c607c8df-14a7-4f28-894f-29e8722976af_-browser-action"],"PersonalToolbar":["personal-bookmarks"]},"seen":["developer-button","_react-devtools-browser-action","_aecec67f-0d10-4fa7-b7c7-609a2db280cf_-browser-action","ublock0_raymondhill_net-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","_testpilot-containers-browser-action","webide-button","_testpilot-addon-browser-action","feed-button","treestyletab_piro_sakura_ne_jp-browser-action","_c28e42b2-28b5-45f0-bdc8-6989ae7e6a7e_-browser-action","support_lastpass_com-browser-action","_c607c8df-14a7-4f28-894f-29e8722976af_-browser-action","_c2c003ee-bd69-42a2-b0e9-6f34222cb046_-browser-action","umatrix_raymondhill_net-browser-action"],"dirtyAreaCache":["PersonalToolbar","nav-bar","TabsToolbar","toolbar-menubar","widget-overflow-fixed-list"],"currentVersion":15,"newElementCount":48}'
 );
 
 // address bar

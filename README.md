@@ -42,6 +42,7 @@ Configure Firefox extensions:
 - Auto Discard Tabs
 - Stylus
 - uBlock
+- uMatrix
 - Violentmonkey
 
 Configure git:
