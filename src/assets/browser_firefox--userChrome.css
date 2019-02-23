@@ -59,6 +59,19 @@
     max-width: 240px !important;
 }
 
+/* private browsing indicator */
+#main-window[privatebrowsingmode="temporary"] #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]::before {
+	position: absolute;
+	content: "";
+	background-color: #8d20ae;
+	background-image: url("chrome://browser/skin/privatebrowsing/private-browsing.svg");
+	background-size: 40px 40px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-blend-mode: lighten;
+	height: 20px;
+}
+
 /* hide tree tab when only one tab open on window */
 #main-window[title^="[1]"][sizemode="normal"] #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
 	visibility: collapse !important;
