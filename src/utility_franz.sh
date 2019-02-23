@@ -9,9 +9,9 @@ else
 	installer_path=/tmp/franz_installer.deb
 	installer_url=$( \
 		curl -sS https://api.github.com/repos/meetfranz/franz/releases/latest \
-		| grep browser_download_url	 \
-		| grep .deb \
-		| sed -E 's/.*"([^"]+)".*/\1/' \
+		| jq '[ .assets[].browser_download_url ]' \
+		| jq '[ .[] | select(endswith(".deb")) ]' \
+		| jq -r 'first' \
 	)
 	curl -L $installer_url -o $installer_path
 	sudo dpkg --install $installer_path
