@@ -25,8 +25,3 @@ list_links | while read line ; do
 	esac
 
 done
-
-
-cat $ASSETS_DIR/browser_firefox--treeStyleTab.js \
-	| jq . \
-	| sponge $ASSETS_DIR/browser_firefox--treeStyleTab.js
