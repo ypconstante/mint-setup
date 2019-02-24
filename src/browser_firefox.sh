@@ -4,7 +4,7 @@ source "$(dirname "$0")/_base.sh"
 
 my_step_begin "create firefox profile"
 if [[ ! -d $(my_firefox_profile_dir) ]]; then
-	firefox -CreateProfile default
+    firefox -CreateProfile default
 fi
 my_step_end
 

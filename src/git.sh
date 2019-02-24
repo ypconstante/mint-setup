@@ -25,7 +25,7 @@ my_step_begin "make git respected xdg spec"
 mkdir -p $GITCONFIG_DIR
 
 if [ -f $DEFAULT_GITCONFIG_PATH ]; then
-	mv $DEFAULT_GITCONFIG_PATH $GITCONFIG_FILE
+    mv $DEFAULT_GITCONFIG_PATH $GITCONFIG_FILE
 fi
 
 my_create_file_if_not_exists $GITCONFIG_FILE

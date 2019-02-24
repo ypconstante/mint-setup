@@ -2,46 +2,46 @@
 
 /* hide titlebar */
 #titlebar-buttonbox {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 /* navbar height */
 :root[uidensity="compact"] #nav-bar {
-	height: 29px;
+    height: 29px;
 }
 
 :root[uidensity="compact"] #urlbar {
-	margin-top: 0 !important;
-	margin-bottom: 0 !important;
-	min-height: 25px !important;
-	height: 25px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 25px !important;
+    height: 25px !important;
 }
 
 /* hide tabs */
 #TabsToolbar {
-	visibility: collapse !important;
+    visibility: collapse !important;
 }
 
 /* hide content blocking indicator */
 #tracking-protection-icon-box {
-   visibility: collapse !important;
+    visibility: collapse !important;
 }
 
 /* hide 'visit site' text */
 .ac-separator[actiontype="visiturl"],
 .ac-action[actiontype="visiturl"] {
-   visibility: collapse !important;
+    visibility: collapse !important;
 }
 
 /* hide 'search with' text */
 .ac-separator[actiontype="searchengine"],
 .ac-action[actiontype="searchengine"] {
-   visibility: collapse !important;
+    visibility: collapse !important;
 }
 
 /* hide sidebar header */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-   visibility: collapse !important;
+    visibility: collapse !important;
 }
 
 /* hide resizer */
@@ -61,18 +61,18 @@
 
 /* private browsing indicator */
 #main-window[privatebrowsingmode="temporary"] #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]::before {
-	position: absolute;
-	content: "";
-	background-color: #8d20ae;
-	background-image: url("chrome://browser/skin/privatebrowsing/private-browsing.svg");
-	background-size: 40px 40px;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-blend-mode: lighten;
-	height: 20px;
+    position: absolute;
+    content: "";
+    background-color: #8d20ae;
+    background-image: url("chrome://browser/skin/privatebrowsing/private-browsing.svg");
+    background-size: 40px 40px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    height: 20px;
 }
 
 /* hide tree tab when only one tab open on window */
 #main-window[title^="[1]"][sizemode="normal"] #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
-	visibility: collapse !important;
+    visibility: collapse !important;
 }

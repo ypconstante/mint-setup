@@ -7,10 +7,10 @@ toolbox_installer_compressed=/tmp/jetbrains-toolbox.tar.gz
 toolbox_installer_dir=/tmp/jetbrains-toolbox
 
 if [ -d $toolbox_dir ]; then
-	my_step_begin "install toolbox"
-	echo 'toolbox already installed'
-	my_step_end
-	return
+    my_step_begin "install toolbox"
+    echo 'toolbox already installed'
+    my_step_end
+    return
 fi
 
 my_step_begin "download toolbox"
