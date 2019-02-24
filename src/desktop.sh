@@ -59,9 +59,9 @@ my_step_end
 
 my_step_begin "change menu config"
 my_wait_file $MENU_CONFIG_FILE
-cat $MENU_CONFIG_FILE \
-    | jq 'setpath(["search-filesystem", "value"]; true)' \
+jq 'setpath(["search-filesystem", "value"]; true)' < "$MENU_CONFIG_FILE" \
     | jq 'setpath(["menu-icon-custom", "value"]; true)' \
-    | jq 'setpath(["menu-icon", "value"]; "'$ASSETS_DIR'/desktop--menu-icon.svg")' \
-    | sponge $MENU_CONFIG_FILE
+    | jq 'setpath(["menu-icon", "value"]; "'"$ASSETS_DIR"'/desktop--menu-icon.svg")' \
+    > "$MENU_CONFIG_FILE.tmp"
+mv "$MENU_CONFIG_FILE.tmp" "$MENU_CONFIG_FILE"
 my_step_end

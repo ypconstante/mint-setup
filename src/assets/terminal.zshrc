@@ -6,14 +6,15 @@ fi
 
 ################################## FUNCTIONS ##################################
 zrecompile() {
-    if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
-        zcompile ${1}
+    local file="$1"
+    if [[ -s "$file" && ( ! -s "$file.zwc" || "$file" -nt "$file.zwc") ]]; then
+        zcompile "$file"
     fi
 }
 
 batch_zrecompile() {
     while read file; do
-        zrecompile $file
+        zrecompile "$file"
     done
 }
 
@@ -21,42 +22,43 @@ batch_zrecompile() {
 firefox_temp() {
     local profile_dir="$(mktemp -p /tmp -d firefox-profile.XXXXXX)"
     echo "profile path: $profile_dir"
-    firefox -profile $profile_dir -no-remote -new-instance
-    rm -rf $profile_dir
+    firefox -profile "$profile_dir" -no-remote -new-instance
+    rm -rf "$profile_dir"
 }
 
 man() {
     env \
-        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-        LESS_TERMCAP_md=$(printf "\e[1;36m") \
-        LESS_TERMCAP_me=$(printf "\e[0m") \
-        LESS_TERMCAP_se=$(printf "\e[0m") \
-        LESS_TERMCAP_so=$(printf "\e[1;30;40m") \
-        LESS_TERMCAP_ue=$(printf "\e[0m") \
-        LESS_TERMCAP_us=$(printf "\e[1;32m") \
-        PAGER="${commands[less]:-$PAGER}" \
+        LESS_TERMCAP_mb="$(printf '\e[1;31m')" \
+        LESS_TERMCAP_md="$(printf '\e[1;36m')" \
+        LESS_TERMCAP_me="$(printf '\e[0m')" \
+        LESS_TERMCAP_se="$(printf '\e[0m')" \
+        LESS_TERMCAP_so="$(printf '\e[1;30;40m')" \
+        LESS_TERMCAP_ue="$(printf '\e[0m')" \
+        LESS_TERMCAP_us="$(printf '\e[1;32m')" \
         _NROFF_U=1 \
         PATH="$HOME/bin:$PATH" \
             man "$@"
 }
 
 mkcd() {
-    mkdir -p $1 && cd $1
+    mkdir -p "$1" && cd "$1"
 }
 
 zgen() {
-    source $ZGEN_DIR/zgen.zsh
-    zgen $@
+    source "$ZGEN_DIR/zgen.zsh"
+    zgen "$*"
+
+
 }
 
 #################################### STEPS ####################################
 step_plugins() {
     __source() {
         if [[ -s $ZDOTDIR/.zshrc.zwc && $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]]; then
-            return -1        
+            return 1
         fi
 
-        source $ZGEN_DIR/init.zsh || return -1
+        source "$ZGEN_DIR/init.zsh" || return 1
         return 0
     }
 
@@ -66,10 +68,10 @@ step_plugins() {
         # base
         zgen load mafredri/zsh-async
 
-        # theme 
+        # theme
         zgen load denysdovhan/spaceship-prompt spaceship
 
-        # 
+        #
         zgen load zsh-users/zsh-autosuggestions
         zgen load zsh-users/zsh-completions
         zgen load zsh-users/zsh-history-substring-search
@@ -90,11 +92,11 @@ step_plugins() {
 
         zgen init
 
-        find $ZDOTDIR -type f \
+        find "$ZDOTDIR" -type f \
             -name '*.zsh' \
             -not -path '*.git*' -not -path '*test-data*' -not -path '*/tests/*' \
             | batch_zrecompile
-        find $ZDOTDIR -type f \
+        find "$ZDOTDIR" -type f \
             -not -name '*.*' -not -name 'README' -not -name 'LICENSE' -not -name 'chucknorris' \
             -not -path '*.git*' -not -path '*test-data*' -not -path '*/tests/*' \
             | batch_zrecompile
@@ -153,7 +155,7 @@ step_alias() {
 
     alias cdg='cd-gitroot'
     alias cdf='cd-gitroot'
-    
+
     alias open='xdg-open'
 
     alias d='dirs -v | head -10'
@@ -174,8 +176,8 @@ step_style() {
     zstyle ':completion:*' completer _expand _complete _correct _approximate
     zstyle ':completion:*' group-name ''
     eval "eval \"$(dircolors -b)\""
-    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+    zstyle ':completion:*:default' list-colors "${(s.:.)${LS_COLORS:?}}"
+    zstyle ':completion:*' list-colors "${(s.:.)${LS_COLORS:?}}"
     zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
     zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
     zstyle ':completion:*' use-compctl false
@@ -188,7 +190,7 @@ step_style() {
     zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
     zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-    zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+    zstyle ':completion:*:kill:*' command "ps -u \$USER -o pid,%cpu,tty,cputime,cmd"
 
     # remove paste text delay
     zstyle ':bracketed-paste-magic' active-widgets '.self-*'
@@ -198,9 +200,9 @@ step_style() {
 }
 
 step_history() {
-    HISTSIZE=1000
-    SAVEHIST=1000
-    HISTFILE=$ZDOTDIR/.zsh_history
+    export HISTSIZE=1000
+    export SAVEHIST=1000
+    export HISTFILE=$ZDOTDIR/.zsh_history
 
     setopt hist_ignore_all_dups    # ignore duplicated commands history list
     setopt hist_ignore_space    # ignore commands that start with space
@@ -214,7 +216,7 @@ step_keybinding() {
     ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
     ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
 
-    KEYTIMEOUT=1
+    export KEYTIMEOUT=1
     bindkey -v
 
     # delete on delete or backspace
@@ -246,16 +248,16 @@ step_completion() {
     local ZSH_COMPDUMP_CUSTOM=$ZDOTDIR/.zcompdump-custom
 
     __is_cache_outdated() {
-        if [[ ! -f $ZSH_COMPDUMP_CUSTOM ]]; then 
+        if [[ ! -f $ZSH_COMPDUMP_CUSTOM ]]; then
             return 0
         fi
 
         local max_cache_file_time=$(date -d '12 hours ago' +%s)
         local file_time=$(date -r $ZSH_COMPDUMP_CUSTOM +%s)
-        if (( $file_time < $max_cache_file_time )); then 
+        if (( file_time < max_cache_file_time )); then
             return 0
-        else 
-            return -1
+        else
+            return 1
         fi
     }
 
@@ -263,17 +265,17 @@ step_completion() {
     fpath=($ZGEN_DIR $fpath)
 
     if __is_cache_outdated; then
-        compinit -d $ZSH_COMPDUMP_CUSTOM
+        compinit -d "$ZSH_COMPDUMP_CUSTOM"
 
         # if file isn't modified, update modified time so the check doesn't run every time
-        if [[ step_completion__is_cache_outdated ]]; then
-            touch -d 'now' $ZSH_COMPDUMP_CUSTOM
+        if __is_cache_outdated; then
+            touch -d 'now' "$ZSH_COMPDUMP_CUSTOM"
         else
-            zrecompile $ZSH_COMPDUMP_CUSTOM
+            zrecompile "$ZSH_COMPDUMP_CUSTOM"
         fi
     else
-        compinit -C -d $ZSH_COMPDUMP_CUSTOM
-        zrecompile $ZSH_COMPDUMP_CUSTOM
+        compinit -C -d "$ZSH_COMPDUMP_CUSTOM"
+        zrecompile "$ZSH_COMPDUMP_CUSTOM"
     fi
 }
 
@@ -283,15 +285,15 @@ step_async_load() {
 }
 
 step_compile_zsh_files() {
-    zrecompile $ZDOTDIR/.zshrc
-    zrecompile $ZDOTDIR/.zcompdump
+    zrecompile "$ZDOTDIR/.zshrc"
+    zrecompile "$ZDOTDIR/.zcompdump"
     zle reset-prompt
 }
 
 step_load_asdf() {
-    if [[ -d $XDG_DATA_HOME/asdf ]]; then
-        source $XDG_DATA_HOME/asdf/asdf.sh
-        source $XDG_DATA_HOME/asdf/completions/asdf.bash
+    if [[ -d "$XDG_DATA_HOME/asdf" ]]; then
+        source "$XDG_DATA_HOME/asdf/asdf.sh"
+        source "$XDG_DATA_HOME/asdf/completions/asdf.bash"
     fi
 }
 
@@ -308,7 +310,7 @@ async_register_callback setup_worker step_async_load
 async_job setup_worker sleep .1
 
 # completion
-setopt listpacked # make completion columns with different widths 
+setopt listpacked # make completion columns with different widths
 
 # changing directories
 # enable 'cd -N' commands

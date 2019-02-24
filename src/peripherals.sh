@@ -15,5 +15,5 @@ my_step_end
 
 my_step_begin "modify keyboard settings"
 dconf write /org/gnome/libgnomekbd/keyboard/options "['caps\tcaps:none']"
-dconf load /org/cinnamon/desktop/keybindings/ < $ASSETS_DIR/peripherals--keyboard-bindings.dconf
+dconf load /org/cinnamon/desktop/keybindings/ < "$ASSETS_DIR/peripherals--keyboard-bindings.dconf"
 my_step_end

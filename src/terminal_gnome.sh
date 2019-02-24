@@ -7,7 +7,7 @@ dset() {
     local key="$1"
     local val="$2"
 
-    gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE_ID/" $key "$val"
+    gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE_ID/" "$key" "$val"
 }
 
 PROFILE_ID=$(gsettings get org.gnome.Terminal.ProfilesList default)

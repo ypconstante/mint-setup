@@ -36,6 +36,6 @@ sudo apt full-upgrade -y -qq
 my_step_end
 
 my_step_begin "create common folders"
-mkdir -p $XDG_CONFIG_HOME/autostart/
-mkdir -p $HOME/.local/bin/
+mkdir -p "$XDG_CONFIG_HOME/autostart/"
+mkdir -p "$HOME/.local/bin/"
 my_step_end

@@ -13,7 +13,7 @@ else
         | jq '[ .[] | select(endswith(".deb")) ]' \
         | jq -r 'first' \
     )
-    curl -L $installer_url -o $installer_path
+    curl -L "$installer_url" -o "$installer_path"
     sudo dpkg --install $installer_path
     rm /tmp/franz_installer.deb
 fi

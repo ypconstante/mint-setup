@@ -18,6 +18,6 @@ up_url=$( \
     | jq '[ .[] | select(endswith("/up")) ]' \
     | jq -r 'first' \
 )
-curl -L $up_url -o $up_path
-chmod +x $up_path
+curl -L "$up_url" -o "$up_path"
+chmod +x "$up_path"
 my_step_end

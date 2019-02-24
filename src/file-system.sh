@@ -15,7 +15,7 @@ my_step_begin "rename templates to projects"
 rm -rf ~/Templates
 mkdir -p ~/projets/personal
 mkdir -p ~/projets/sandbox
-sed -Ei 's|\$HOME/Templates|\$HOME/projects|' $XDG_CONFIG_HOME/user-dirs.dirs
+sed -Ei "s|\\\$HOME/Templates|\\\$HOME/projects|" "$XDG_CONFIG_HOME/user-dirs.dirs"
 xdg-user-dirs-update
 my_step_end
 
@@ -24,9 +24,9 @@ mkdir ~/Media
 rm -rf ~/Videos
 rm -rf ~/Music
 rm -rf ~/Pictures
-sed -Ei 's|\$HOME/Music|\$HOME/Media|' $XDG_CONFIG_HOME/user-dirs.dirs
-sed -Ei 's|\$HOME/Pictures|\$HOME/Media|' $XDG_CONFIG_HOME/user-dirs.dirs
-sed -Ei 's|\$HOME/Videos|\$HOME/Media|' $XDG_CONFIG_HOME/user-dirs.dirs
+sed -Ei "s|\\\$HOME/Music|\\\$HOME/Media|" "$XDG_CONFIG_HOME/user-dirs.dirs"
+sed -Ei "s|\\\$HOME/Pictures|\\\$HOME/Media|" "$XDG_CONFIG_HOME/user-dirs.dirs"
+sed -Ei "s|\\\$HOME/Videos|\\\$HOME/Media|" "$XDG_CONFIG_HOME/user-dirs.dirs"
 xdg-user-dirs-update
 my_step_end
 
@@ -35,15 +35,16 @@ mv ~/Desktop   ~/desktop
 mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
 mv ~/Media     ~/media
-sed -Ei 's|\$HOME/(.)|\$HOME/\L\1|' $XDG_CONFIG_HOME/user-dirs.dirs
+sed -Ei "s|\\\$HOME/(.)|\\\$HOME/\L\1|" "$XDG_CONFIG_HOME/user-dirs.dirs"
 xdg-user-dirs-update
 my_step_end
 
 my_step_begin "create bookmark"
-: > $XDG_CONFIG_HOME/gtk-3.0/bookmarks
-echo "file://$HOME/documents Documents" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
-echo "file://$HOME/downloads Downloads" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
-echo "file://$HOME/projects Projects" >> $XDG_CONFIG_HOME/gtk-3.0/bookmarks
+{
+    echo "file://$HOME/documents Documents"
+    echo "file://$HOME/downloads Downloads"
+    echo "file://$HOME/projects Projects"
+} > "$XDG_CONFIG_HOME/gtk-3.0/bookmarks"
 my_step_end
 
 my_step_begin "fix gnupg permissions"
@@ -58,7 +59,7 @@ sudo systemctl enable tmp.mount
 my_step_end
 
 my_step_begin "filesystem kernel parameters"
-sudo cp $ASSETS_DIR/file-system--kernel-parameters.conf /etc/sysctl.d/98-file-system.conf
+sudo cp "$ASSETS_DIR/file-system--kernel-parameters.conf" /etc/sysctl.d/98-file-system.conf
 sudo chmod 644 /etc/sysctl.d/98-file-system.conf
 my_step_end
 

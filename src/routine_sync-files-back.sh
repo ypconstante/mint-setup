@@ -11,16 +11,16 @@ list_links | while read line ; do
     case "$line" in
         *my_link_file*)
             words=($line)
-            original_from=$(eval echo ${words[1]})
-            original_to=$(eval echo ${words[2]})
-            if [ -f $original_to ] && [ ! -L $original_to ]; then
+            original_from=$(eval echo "${words[1]}")
+            original_to=$(eval echo "${words[2]}")
+            if [ -f "$original_to" ] && [ ! -L "$original_to" ]; then
                 echo "syncing back '$original_to' to '$original_from'"
-                cp $original_to $original_from
-                my_link_file $original_from $original_to
+                cp "$original_to" "$original_from"
+                my_link_file "$original_from" "$original_to"
             fi
         ;;
         *)
-            eval $line
+            eval "$line"
         ;;
     esac
 

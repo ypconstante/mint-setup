@@ -13,5 +13,5 @@ my_step_end
 
 my_step_begin "add user to docker group"
 sudo groupadd docker
-sudo usermod -aG docker $USER
+sudo usermod -aG docker "$USER"
 my_step_end

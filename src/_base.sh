@@ -16,26 +16,26 @@ cd "$(dirname "$0")"
 ASSETS_DIR=$(realpath assets)
 
 source /etc/os-release
-source $ASSETS_DIR/base--env
+source "$ASSETS_DIR/base--env"
 
 #################################### FILE #####################################
 my_link_file() {
     local from="$1"
     local to="$2"
-    rm -f $to
-    ln -s $from $to
+    rm -f "$to"
+    ln -s "$from" "$to"
 }
 
 my_create_file_if_not_exists() {
     local file="$1"
-    touch $file 2> /dev/null || sudo touch $file
+    touch "$file" 2> /dev/null || sudo touch "$file"
 }
 
 my_wait_file() {
     local file="$1"
     local time_waiting=0;
 
-    until [ -f $file ]; do
+    until [ -f "$file" ]; do
         sleep 1
         ((time_waiting++))
         if [[ $time_waiting -eq 2 ]]; then
@@ -46,7 +46,7 @@ my_wait_file() {
         if [[ $time_waiting -gt 20 ]]; then
             echo ''
             my_echo_error 'Wait aborted after 20 seconds, file not created'
-            return -1
+            return 1
         fi
     done
 
@@ -69,7 +69,7 @@ my_append_to_file_if_not_contains() {
     my_create_file_if_not_exists "$file"
 
     if ! my_file_contains_line "$file" "$content"; then
-        if [ -w $file ]; then
+        if [ -w "$file" ]; then
             echo "$content" | tee -a "$file" 1>/dev/null
         else
             echo "$content" | sudo tee -a "$file" 1>/dev/null
@@ -79,17 +79,17 @@ my_append_to_file_if_not_contains() {
 
 ################################### OUTPUT ####################################
 my_echo_error() {
-    local message="$@"
+    local message="1"
     echo "$(tput setaf 1)$message$(tput sgr0)"
 }
 
 my_echo_step() {
-    local message="$@"
+    local message="$1"
     echo "$(tput setab 7)$(tput setaf 0)$message$(tput el)$(tput sgr0)"
 }
 
 my_step_begin() {
-    local step="$@"
+    local step="$1"
 
     if [ -z "${step-}" ]; then
         my_echo_error 'step name not given'
@@ -114,7 +114,7 @@ my_step_end() {
 }
 
 my_indent() {
-    stdbuf -oL -eL $@ | stdbuf -oL -eL sed 's/^/> /g' | sed 's/$//g'
+    stdbuf -oL -eL "$@" | stdbuf -oL -eL sed 's/^/> /g'
 }
 
 ################################### FIREFOX ###################################
@@ -125,14 +125,14 @@ my_firefox_profile_dir() {
 ################################### INSTALL ###################################
 my_apt_add_key() {
     local url="$1"
-    curl -sS $url | sudo apt-key add -
+    curl -sS "$url" | sudo apt-key add -
 }
 
 my_apt_add_repository() {
     local name="$1"
     local source="$2"
 
-    my_append_to_file_if_not_contains /etc/apt/sources.list.d/$name.list "$source"
+    my_append_to_file_if_not_contains "/etc/apt/sources.list.d/$name.list" "$source"
     sudo apt update -y -qq
 }
 
@@ -150,19 +150,19 @@ my_git_clone() {
     local repository="$1"
     local directory="$2"
 
-    if [ -d $directory ]; then
+    if [ -d "$directory" ]; then
         local previous_dir=$PWD
-        cd $directory
+        cd "$directory"
         echo "Updating repo '$directory'"
-        git remote set-url origin $repository
-        if [ $(git symbolic-ref --short -q HEAD) ]; then
+        git remote set-url origin "$repository"
+        if [ "$(git symbolic-ref --short -q HEAD)" ]; then
             git pull
         else
             git fetch
         fi
-        cd $previous_dir
+        cd "$previous_dir"
     else
-        git clone $repository $directory
+        git clone "$repository" "$directory"
     fi
 }
 
@@ -173,6 +173,5 @@ my_pip_install() {
 
 my_command_exists () {
     local command="$1"
-    type $command &> /dev/null
+    type "$command" &> /dev/null
 }
-

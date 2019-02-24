@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Screen Lock Disabler
+Name=Screen Lock Monitor
 Comment=Close unnecessary stuff on screen lock
 Terminal=false
 X-GNOME-Autostart-enabled=true

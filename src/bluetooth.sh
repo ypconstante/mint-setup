@@ -9,8 +9,8 @@ my_apt_install blueman
 my_step_end
 
 my_step_begin "disable blueman applet startup"
-cp /etc/xdg/autostart/blueman.desktop $XDG_CONFIG_HOME/autostart/
-echo 'X-GNOME-Autostart-enabled=false' >> $XDG_CONFIG_HOME/autostart/blueman.desktop
+cp /etc/xdg/autostart/blueman.desktop "$XDG_CONFIG_HOME/autostart/"
+echo 'X-GNOME-Autostart-enabled=false' >> "$XDG_CONFIG_HOME/autostart/blueman.desktop"
 my_step_end
 
 my_step_begin "disable bluetooth automatic power on"

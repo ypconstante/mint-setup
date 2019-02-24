@@ -20,25 +20,24 @@ ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
 my_step_end
 
-
 my_step_begin "make git respected xdg spec"
-mkdir -p $GITCONFIG_DIR
+mkdir -p "$GITCONFIG_DIR"
 
 if [ -f $DEFAULT_GITCONFIG_PATH ]; then
-    mv $DEFAULT_GITCONFIG_PATH $GITCONFIG_FILE
+    mv $DEFAULT_GITCONFIG_PATH "$GITCONFIG_FILE"
 fi
 
-my_create_file_if_not_exists $GITCONFIG_FILE
+my_create_file_if_not_exists "$GITCONFIG_FILE"
 my_step_end
 
 my_step_begin "create gitignore"
-curl -sS https://www.gitignore.io/api/git,linux,jetbrains+all,sublimetext,vim,visualstudiocode -o $GITIGNORE_FILE
-git config --global core.excludesfile $GITIGNORE_FILE
+curl -sS https://www.gitignore.io/api/git,linux,jetbrains+all,sublimetext,vim,visualstudiocode -o "$GITIGNORE_FILE"
+git config --global core.excludesfile "$GITIGNORE_FILE"
 my_step_end
 
 my_step_begin "config git"
-git config --global include.path $ASSETS_DIR/git--config
-git config --global commit.template $ASSETS_DIR/git--commit-template
+git config --global include.path "$ASSETS_DIR/git--config"
+git config --global commit.template "$ASSETS_DIR/git--commit-template"
 my_step_end
 
 my_step_begin "config current repo"
