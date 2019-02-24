@@ -8,6 +8,8 @@
 		"AutoFileName",
 		"EditorConfig",
 		"Package Control",
-		"SideBarEnhancements"
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-shellcheck"
 	]
 }
