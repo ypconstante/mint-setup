@@ -30,7 +30,7 @@ close=['<Alt>F4', '<Super>q']
 panel-run-dialog=['<Alt>F2', '<Super>r']
 
 minimize=['<Super>d']
-show-desktop=@as []
+show-desktop=@as ['<Control><Super>d']
 
 switch-to-workspace-left=['<Control><Super>Left']
 switch-to-workspace-right=['<Control><Super>Right']
