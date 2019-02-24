@@ -4,28 +4,13 @@ command='gnome-system-monitor'
 name='gnome-system-monitor'
 
 [custom-keybindings/custom1]
-binding=['Print']
-command='flameshot full -c'
-name='screenshot current screen - needs v0.6.0'
-
-[custom-keybindings/custom2]
-binding=['<Alt>Print']
-command='flameshot full -c'
-name='screenshot all screens'
-
-[custom-keybindings/custom3]
-binding=['<Control>Print']
-command='flameshot gui'
-name='screenshot gui'
-
-[custom-keybindings/custom4]
 binding=['<Control>q']
 command='true'
 name='disable shortcuts'
 
 [/]
 looking-glass-keybinding=@as []
-custom-list=['custom0', 'custom1', 'custom2', 'custom3', 'custom4']
+custom-list=['custom0', 'custom1']
 magnifier-zoom-in=@as []
 magnifier-zoom-out=@as []
 
@@ -33,11 +18,11 @@ magnifier-zoom-out=@as []
 next=['XF86AudioNext', '<Primary>AudioPlay']
 screensaver=['<Super>l', 'XF86ScreenSaver']
 terminal=['<Super>t']
-area-screenshot=@as []
+area-screenshot=@as ['<Control>Print']
 area-screenshot-clip=@as []
-screenshot=@as []
+screenshot=@as ['Print']
 screenshot-clip=@as []
-window-screenshot=@as []
+window-screenshot=@as ['<Alt>Print']
 window-screenshot-clip=@as []
 
 [wm]
