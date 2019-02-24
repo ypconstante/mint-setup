@@ -13,7 +13,7 @@ set +e
 
 cd "$(dirname "$0")"
 
-ASSETS_DIR=$(realpath assets)
+ASSETS_DIR=$(realpath ../assets)
 
 source /etc/os-release
 source "$ASSETS_DIR/base--env"
