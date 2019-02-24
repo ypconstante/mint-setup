@@ -1,5 +1,9 @@
 # Steps
 
+Setup Timeshift
+
+Create Timeshift snapshot
+
 ```sh
 sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update -y -qq
