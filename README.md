@@ -10,7 +10,7 @@ sudo apt update -y -qq
 sudo apt install -y -qq git
 git clone https://github.com/ypconstante/mint-setup.git ~/projects/personal/mint-setup
 find ./projects/personal/mint-setup/. -name "*.sh" -exec chmod +x {} \;
-./projects/personal/mint-setup/src/prepare.sh
+./projects/personal/mint-setup/shell/prepare.sh
 ```
 
 Update kernel
@@ -20,7 +20,7 @@ Restart computer
 Choose drivers
 
 ```sh
-./projects/personal/mint-setup/src/main.sh
+./projects/personal/mint-setup/shell/main.sh
 ```
 
 Sign in or add license to:
