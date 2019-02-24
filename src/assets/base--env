@@ -11,4 +11,6 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 # Fix applications to respect XDG
 export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME}/asdf"
 export ASDF_DATA_DIR="${XDG_CACHE_HOME}/asdf"
+export NPM_CONFIG_CACHE=${XDG_CACHE_HOME}/npm
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 export ZDOTDIR="${XDG_DATA_HOME}/zsh"
