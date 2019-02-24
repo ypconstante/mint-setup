@@ -2,8 +2,8 @@
 
 source "$(dirname "$0")/_base.sh"
 
-APPLET_ID=42
-MENU_CONFIG_FILE=~/.cinnamon/configs/menu@cinnamon.org/$APPLET_ID.json
+applet_id=42
+menu_config_file=~/.cinnamon/configs/menu@cinnamon.org/$applet_id.json
 
 my_step_begin "hide desktop icons"
 dconf write /org/nemo/desktop/home-icon-visible false
@@ -27,15 +27,15 @@ dconf write /org/cinnamon/panels-height "['1:40']"
 dconf write /org/cinnamon/panels-scale-text-icons "['1:false']"
 # taskbar elements
 dconf write /org/cinnamon/enabled-applets "[
- 'panel1:left:0:menu@cinnamon.org:$APPLET_ID',
- 'panel1:left:3:window-list@cinnamon.org:$APPLET_ID',
- 'panel1:right:0:workspace-switcher@cinnamon.org:$APPLET_ID',
- 'panel1:right:1:systray@cinnamon.org:$APPLET_ID',
- 'panel1:right:2:network@cinnamon.org:$APPLET_ID',
- 'panel1:right:3:sound@cinnamon.org:$APPLET_ID',
- 'panel1:right:4:power@cinnamon.org:$APPLET_ID',
- 'panel1:right:5:notifications@cinnamon.org:$APPLET_ID',
- 'panel1:right:6:calendar@cinnamon.org:$APPLET_ID'
+ 'panel1:left:0:menu@cinnamon.org:$applet_id',
+ 'panel1:left:3:window-list@cinnamon.org:$applet_id',
+ 'panel1:right:0:workspace-switcher@cinnamon.org:$applet_id',
+ 'panel1:right:1:systray@cinnamon.org:$applet_id',
+ 'panel1:right:2:network@cinnamon.org:$applet_id',
+ 'panel1:right:3:sound@cinnamon.org:$applet_id',
+ 'panel1:right:4:power@cinnamon.org:$applet_id',
+ 'panel1:right:5:notifications@cinnamon.org:$applet_id',
+ 'panel1:right:6:calendar@cinnamon.org:$applet_id'
 ]"
 # hide taskbar
 dconf write /org/cinnamon/panels-autohide "['1:intel']"
@@ -58,10 +58,10 @@ dconf write /org/cinnamon/alttab-switcher-enforce-primary-monitor true
 my_step_end
 
 my_step_begin "change menu config"
-my_wait_file $MENU_CONFIG_FILE
-jq 'setpath(["search-filesystem", "value"]; true)' < "$MENU_CONFIG_FILE" \
+my_wait_file $menu_config_file
+jq 'setpath(["search-filesystem", "value"]; true)' < "$menu_config_file" \
     | jq 'setpath(["menu-icon-custom", "value"]; true)' \
     | jq 'setpath(["menu-icon", "value"]; "'"$ASSETS_DIR"'/desktop--menu-icon.svg")' \
-    > "$MENU_CONFIG_FILE.tmp"
-mv "$MENU_CONFIG_FILE.tmp" "$MENU_CONFIG_FILE"
+    > "$menu_config_file.tmp"
+mv "$menu_config_file.tmp" "$menu_config_file"
 my_step_end

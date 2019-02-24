@@ -2,11 +2,11 @@
 
 source "$(dirname "$0")/_base.sh"
 
-toolbox_dir=$XDG_DATA_HOME/JetBrains/Toolbox
-toolbox_installer_compressed=/tmp/jetbrains-toolbox.tar.gz
-toolbox_installer_dir=/tmp/jetbrains-toolbox
+install_dir=$XDG_DATA_HOME/JetBrains/Toolbox
+installer_compressed_file=/tmp/jetbrains-toolbox.tar.gz
+installer_dir=/tmp/jetbrains-toolbox
 
-if [ -d "$toolbox_dir" ]; then
+if [ -d "$install_dir" ]; then
     my_step_begin "install toolbox"
     echo 'toolbox already installed'
     my_step_end
@@ -14,27 +14,27 @@ if [ -d "$toolbox_dir" ]; then
 fi
 
 my_step_begin "download toolbox"
-curl -L 'https://data.services.jetbrains.com/products/download?platform=linux&code=TBA' -o "$toolbox_installer_compressed"
+curl -L 'https://data.services.jetbrains.com/products/download?platform=linux&code=TBA' -o "$installer_compressed_file"
 my_step_end
 
 my_step_begin "extract installer"
-mkdir $toolbox_installer_dir
-tar -xzf $toolbox_installer_compressed -C $toolbox_installer_dir --strip-components=1
+mkdir $installer_dir
+tar -xzf $installer_compressed_file -C $installer_dir --strip-components=1
 my_step_end
 
 my_step_begin "config toolbox"
-mkdir -p "$toolbox_dir"
-my_link_file "$ASSETS_DIR/dev_jetbrains-toolbox--settings.json" "$toolbox_dir/.settings.json"
+mkdir -p "$install_dir"
+my_link_file "$ASSETS_DIR/dev_jetbrains-toolbox--settings.json" "$install_dir/.settings.json"
 my_step_end
 
 my_step_begin "install toolbox"
-$toolbox_installer_dir/jetbrains-toolbox
+$installer_dir/jetbrains-toolbox
 
 sleep 2
 pkill jetbrains-toolb
 my_step_end
 
 my_step_begin "remove installer"
-rm $toolbox_installer_compressed
-rm -r $toolbox_installer_dir
+rm $installer_compressed_file
+rm -r $installer_dir
 my_step_end

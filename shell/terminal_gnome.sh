@@ -7,11 +7,11 @@ dset() {
     local key="$1"
     local val="$2"
 
-    gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$PROFILE_ID/" "$key" "$val"
+    gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile_id/" "$key" "$val"
 }
 
-PROFILE_ID=$(gsettings get org.gnome.Terminal.ProfilesList default)
-PROFILE_ID=${PROFILE_ID:1:-1}
+profile_id=$(gsettings get org.gnome.Terminal.ProfilesList default)
+profile_id=${profile_id:1:-1}
 
 # colors from darcula and monokai
 color_red="'#ff6188'"

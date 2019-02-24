@@ -95,19 +95,19 @@ my_step_begin() {
         my_echo_error 'step name not given'
     fi
 
-    if [ -z "${STEP-}" ]; then
-        STEP="$step"
-        my_echo_step "starting: $STEP"
+    if [ -z "${current_step-}" ]; then
+        current_step="$step"
+        my_echo_step "starting: $current_step"
     else
-        my_echo_error "can't start step '$step', step '$STEP' not ended"
+        my_echo_error "can't start step '$step', step '$current_step' not ended"
     fi
 }
 
 my_step_end() {
-    if [ ! -z "${STEP-}" ]; then
-        my_echo_step "done: $STEP"
+    if [ ! -z "${current_step-}" ]; then
+        my_echo_step "done: $current_step"
         echo ''
-        unset STEP
+        unset current_step
     else
         my_echo_error "no step to end"
     fi

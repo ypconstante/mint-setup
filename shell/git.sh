@@ -2,10 +2,10 @@
 
 source "$(dirname "$0")/_base.sh"
 
-DEFAULT_GITCONFIG_PATH=~/.gitconfig
-GITCONFIG_DIR=$XDG_CONFIG_HOME/git
-GITCONFIG_FILE=$GITCONFIG_DIR/config
-GITIGNORE_FILE=$GITCONFIG_DIR/gitignore
+default_config_file=~/.gitconfig
+config_dir=$XDG_CONFIG_HOME/git
+config_file=$config_dir/config
+git_ignore_file=$config_dir/gitignore
 
 my_step_begin "install tig"
 my_apt_install tig
@@ -21,18 +21,18 @@ ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
 my_step_end
 
 my_step_begin "make git respected xdg spec"
-mkdir -p "$GITCONFIG_DIR"
+mkdir -p "$config_dir"
 
-if [ -f $DEFAULT_GITCONFIG_PATH ]; then
-    mv $DEFAULT_GITCONFIG_PATH "$GITCONFIG_FILE"
+if [ -f $default_config_file ]; then
+    mv $default_config_file "$config_file"
 fi
 
-my_create_file_if_not_exists "$GITCONFIG_FILE"
+my_create_file_if_not_exists "$config_file"
 my_step_end
 
 my_step_begin "create gitignore"
-curl -sS https://www.gitignore.io/api/git,linux,jetbrains+all,sublimetext,vim,visualstudiocode -o "$GITIGNORE_FILE"
-git config --global core.excludesfile "$GITIGNORE_FILE"
+curl -sS https://www.gitignore.io/api/git,linux,jetbrains+all,sublimetext,vim,visualstudiocode -o "$git_ignore_file"
+git config --global core.excludesfile "$git_ignore_file"
 my_step_end
 
 my_step_begin "config git"
