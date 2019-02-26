@@ -1,7 +1,7 @@
 /******
 * name: ghacks user.js
-* date: 8 February 2019
-* version 65-beta: Dancing with My Pants
+* date: 26 February 2019
+* version 65: Dancing with My Pants
 *   "If I had the chance, I'd ask the world to dance, and I'll be dancing with my pants"
 * authors: v52+ github | v51- www.ghacks.net
 * url: https://github.com/ghacksuserjs/ghacks-user.js
@@ -179,14 +179,13 @@ user_pref("geo.provider.use_gpsd", false); // [LINUX]
      monetized extensions, time constraints, legacy issues, and fear of breakage/bugs.
      It is still important to do updates for security reasons, please do so manually. ***/
 user_pref("_user.js.parrot", "0300 syntax error: the parrot's not pinin' for the fjords!");
-/* 0301b: disable auto-update checks for extensions
- * [SETTING] about:addons>Extensions>[cog-wheel-icon]>Update Add-ons Automatically (toggle) ***/
+/* 0301b: disable auto-CHECKING for extension and theme updates ***/
    // user_pref("extensions.update.enabled", false);
-/* 0302a: disable auto update installing for Firefox [NON-WINDOWS FF65+]
+/* 0302a: disable auto-INSTALLING Firefox updates [NON-WINDOWS FF65+]
  * [NOTE] In FF65+ on Windows this SETTING (below) is now stored in a file and the pref was removed
  * [SETTING] General>Firefox Updates>Check for updates but let you choose... ***/
 user_pref("app.update.auto", false);
-/* 0302b: disable auto update installing for extensions (after the check in 0301b)
+/* 0302b: disable auto-INSTALLING extension and theme updates (after the check in 0301b)
  * [SETTING] about:addons>Extensions>[cog-wheel-icon]>Update Add-ons Automatically (toggle) ***/
 user_pref("extensions.update.autoUpdateDefault", false);
 /* 0303: disable background update service [WINDOWS]
@@ -201,7 +200,10 @@ user_pref("app.update.silent", false);
  * used when installing/updating an extension, and in daily background update checks: if false, it
  * hides the expanded text description (if it exists) when you "show more details about an addon" ***/
    // user_pref("extensions.getAddons.cache.enabled", false);
-/* 0307: disable auto updating of personas (themes) ***/
+/* 0307: disable auto updating of lightweight themes (LWT)
+ * Not to be confused with themes in 0301* + 0302*, which use the FF55+ Theme API
+ * Mozilla plan to convert existing LWTs and remove LWT support in the future, see [1]
+ * [1] https://blog.mozilla.org/addons/2018/09/20/future-themes-here/ ***/
 user_pref("lightweightThemes.update.enabled", false);
 /* 0308: disable search update
  * [SETTING] General>Firefox Updates>Automatically update search engines ***/
@@ -308,16 +310,7 @@ user_pref("extensions.blocklist.url", "https://blocklists.settings.services.mozi
    // user_pref("services.blocklist.plugins.collection", "");
    // user_pref("services.blocklist.gfx.collection", "");
 
-/** SAFE BROWSING (SB)
-    This sub-section has been redesigned to differentiate between "real-time"/"user initiated" data
-    being sent to Google from all other settings such as using local blocklists/whitelists and updating
-    those lists. There are NO privacy issues here. *IF* required, a full url is never sent to Google,
-    only a PART-hash of the prefix, and this is hidden with noise of other real PART-hashes. Google also
-    swear it is anonymized and only used to flag malicious sites/activity. Firefox also takes measures
-    such as striping out identifying parameters and storing safe browsing cookies in a separate jar.
-    SB v4 (FF57+) doesn't even use cookies. (#Turn on browser.safebrowsing.debug to monitor this activity)
-    #Required reading [#] https://feeding.cloud.geek.nz/posts/how-safe-browsing-works-in-firefox/
-    [1] https://wiki.mozilla.org/Security/Safe_Browsing ***/
+/** SAFE BROWSING (SB) **/
 /* 0410: disable "Block dangerous and deceptive content"
  * This covers deceptive sites such as phishing and social engineering
  * [SETTING] Privacy & Security>Security>Deceptive Content and Software Protection ***/
@@ -358,7 +351,7 @@ user_pref("browser.safebrowsing.provider.google4.reportPhishMistakeURL", ""); //
 user_pref("browser.safebrowsing.provider.google4.dataSharing.enabled", false);
 user_pref("browser.safebrowsing.provider.google4.dataSharingURL", "");
 
-/** TRACKING PROTECTION (TP) **/
+/*** [SECTION 0500]: SYSTEM ADD-ONS / EXPERIMENTS */
 user_pref("_user.js.parrot", "0500 syntax error: the parrot's cashed in 'is chips!");
 /* 0502: disable Mozilla permission to silently opt you into tests ***/
 user_pref("network.allow-experiments", false);
@@ -475,6 +468,7 @@ user_pref("network.proxy.autoconfig_url.include_path", false); // [DEFAULT: fals
  * [1] https://www.ghacks.net/2018/02/20/firefox-60-with-new-preference-to-disable-ftp/ ***/
    // user_pref("network.ftp.enabled", false);
 /* 0709: disable using UNC (Uniform Naming Convention) paths [FF61+]
+ * [SETUP-CHROME] Can break extensions for profiles on network shares
  * [1] https://trac.torproject.org/projects/tor/ticket/26424 ***/
 user_pref("network.file.disable_unc_paths", true); // [HIDDEN PREF]
 /* 0710: disable GIO as a potential proxy bypass vector
@@ -486,14 +480,7 @@ user_pref("network.file.disable_unc_paths", true); // [HIDDEN PREF]
  * [4] https://en.wikipedia.org/wiki/GIO_(software) ***/
 user_pref("network.gio.supported-protocols", ""); // [HIDDEN PREF]
 
-/*** [SECTION 0800]: LOCATION BAR / SEARCH BAR / SUGGESTIONS / HISTORY / FORMS [SETUP-CHROME]
-     Change items 0850 and above to suit for privacy vs convenience and functionality. Consider
-     your environment (no unwanted eyeballs), your device (restricted access), your device's
-     unattended state (locked, encrypted, forensic hardened). Likewise, you may want to check
-     the items cleared on shutdown in section 2800.
-     [NOTE] The urlbar is also commonly referred to as the location bar and address bar
-     #Required reading [#] https://xkcd.com/538/
-***/
+/*** [SECTION 0800]: LOCATION BAR / SEARCH BAR / SUGGESTIONS / HISTORY / FORMS [SETUP-CHROME] ***/
 user_pref("_user.js.parrot", "0800 syntax error: the parrot's ceased to be!");
 /* 0801: disable location bar using search
  * don't leak typos to a search engine, give an error message instead ***/
