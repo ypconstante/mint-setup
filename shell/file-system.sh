@@ -20,11 +20,11 @@ my_step_end
 
 my_step_begin "create media folder"
 mkdir ~/Media
-rm -rf ~/Videos
 rm -rf ~/Music
-rm -rf ~/Pictures
 xdg-user-dirs-update --set MUSIC "$HOME/Media"
+rm -rf ~/Pictures
 xdg-user-dirs-update --set PICTURES "$HOME/Media"
+rm -rf ~/Videos
 xdg-user-dirs-update --set VIDEOS "$HOME/Media"
 my_step_end
 
