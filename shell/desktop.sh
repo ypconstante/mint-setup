@@ -2,8 +2,8 @@
 
 source "$(dirname "$0")/_base.sh"
 
-applet_id=42
-menu_config_file=~/.cinnamon/configs/menu@cinnamon.org/$applet_id.json
+menu_applet_id=42
+menu_config_file=~/.cinnamon/configs/menu@cinnamon.org/$menu_applet_id.json
 
 my_step_begin "hide desktop icons"
 dconf write /org/nemo/desktop/home-icon-visible false
@@ -27,15 +27,15 @@ dconf write /org/cinnamon/panels-height "['1:40']"
 dconf write /org/cinnamon/panels-scale-text-icons "['1:false']"
 # taskbar elements
 dconf write /org/cinnamon/enabled-applets "[
- 'panel1:left:0:menu@cinnamon.org:$applet_id',
- 'panel1:left:3:window-list@cinnamon.org:$applet_id',
- 'panel1:right:0:workspace-switcher@cinnamon.org:$applet_id',
- 'panel1:right:1:systray@cinnamon.org:$applet_id',
- 'panel1:right:2:network@cinnamon.org:$applet_id',
- 'panel1:right:3:sound@cinnamon.org:$applet_id',
- 'panel1:right:4:power@cinnamon.org:$applet_id',
- 'panel1:right:5:notifications@cinnamon.org:$applet_id',
- 'panel1:right:6:calendar@cinnamon.org:$applet_id'
+ 'panel1:left:0:menu@cinnamon.org:$menu_applet_id',
+ 'panel1:left:3:window-list@cinnamon.org',
+ 'panel1:right:0:workspace-switcher@cinnamon.org',
+ 'panel1:right:1:systray@cinnamon.org',
+ 'panel1:right:2:network@cinnamon.org',
+ 'panel1:right:3:sound@cinnamon.org',
+ 'panel1:right:4:power@cinnamon.org',
+ 'panel1:right:5:notifications@cinnamon.org',
+ 'panel1:right:6:calendar@cinnamon.org'
 ]"
 # hide taskbar
 dconf write /org/cinnamon/panels-autohide "['1:intel']"
