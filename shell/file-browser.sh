@@ -14,6 +14,10 @@ my_step_begin "open files with single click"
 dconf write /org/nemo/preferences/click-policy "'single'"
 my_step_end
 
+my_step_begin "edit executable text files when opened with nemo"
+dconf write /org/nemo/preferences/executable-text-activation "'display'"
+my_step_end
+
 my_step_begin "configure nemo toolbar"
 dconf write /org/nemo/preferences/show-open-in-terminal-toolbar true
 # hide path mode toggle
