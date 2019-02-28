@@ -47,8 +47,7 @@ my_step_end
 
 my_step_begin "modify windows"
 dconf write /org/cinnamon/desktop/wm/preferences/button-layout "':minimize,close'"
-dconf write /org/cinnamon/desktop/wm/preferences/focus-mode "'sloppy'"
-dconf write /org/cinnamon/desktop/wm/preferences/auto-raise false
+dconf write /org/cinnamon/desktop/wm/preferences/focus-mode "'click'"
 my_step_end
 
 my_step_begin "modify alt tab switcher"
