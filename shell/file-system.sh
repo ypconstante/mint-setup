@@ -15,8 +15,7 @@ my_step_begin "rename templates to projects"
 rm -rf ~/Templates
 mkdir -p ~/projects/personal
 mkdir -p ~/projects/sandbox
-sed -Ei "s|\\\$HOME/Templates|\\\$HOME/projects|" "$XDG_CONFIG_HOME/user-dirs.dirs"
-xdg-user-dirs-update
+xdg-user-dirs-update --set TEMPLATES "$HOME/projects"
 my_step_end
 
 my_step_begin "create media folder"
@@ -24,10 +23,9 @@ mkdir ~/Media
 rm -rf ~/Videos
 rm -rf ~/Music
 rm -rf ~/Pictures
-sed -Ei "s|\\\$HOME/Music|\\\$HOME/Media|" "$XDG_CONFIG_HOME/user-dirs.dirs"
-sed -Ei "s|\\\$HOME/Pictures|\\\$HOME/Media|" "$XDG_CONFIG_HOME/user-dirs.dirs"
-sed -Ei "s|\\\$HOME/Videos|\\\$HOME/Media|" "$XDG_CONFIG_HOME/user-dirs.dirs"
-xdg-user-dirs-update
+xdg-user-dirs-update --set MUSIC "$HOME/Media"
+xdg-user-dirs-update --set PICTURES "$HOME/Media"
+xdg-user-dirs-update --set VIDEOS "$HOME/Media"
 my_step_end
 
 my_step_begin "make home folders lower case"
