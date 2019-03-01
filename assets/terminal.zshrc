@@ -65,9 +65,6 @@ step_plugins() {
     __config() {
         zgen reset
 
-        # base
-        zgen load mafredri/zsh-async
-
         # theme
         zgen load denysdovhan/spaceship-prompt spaceship
 
@@ -279,22 +276,16 @@ step_completion() {
     fi
 }
 
-step_async_load() {
-    step_load_asdf
-    step_compile_zsh_files
-}
-
-step_compile_zsh_files() {
-    zrecompile "$ZDOTDIR/.zshrc"
-    zrecompile "$ZDOTDIR/.zcompdump"
-    zle reset-prompt
-}
-
 step_load_asdf() {
     if [[ -d "$XDG_DATA_HOME/asdf" ]]; then
         source "$XDG_DATA_HOME/asdf/asdf.sh"
         source "$XDG_DATA_HOME/asdf/completions/asdf.bash"
     fi
+}
+
+step_compile_zsh_files() {
+    zrecompile "$ZDOTDIR/.zshrc"
+    zrecompile "$ZDOTDIR/.zcompdump"
 }
 
 #################################### START ####################################
@@ -304,10 +295,8 @@ step_style
 step_history
 step_keybinding
 step_completion
-
-async_start_worker setup_worker -n
-async_register_callback setup_worker step_async_load
-async_job setup_worker sleep .1
+step_load_asdf
+step_compile_zsh_files
 
 # completion
 setopt listpacked # make completion columns with different widths
