@@ -12,12 +12,13 @@ mkdir -p ~/projects/sandbox
 my_step_end
 
 my_step_begin "remove non used folders"
+xdg-user-dirs-update --set DESKTOP "$(xdg-user-dir DOWNLOAD)"
+rm -rf ~/Desktop
 xdg-user-dirs-update --set PUBLICSHARE "$(xdg-user-dir DOWNLOAD)"
 rm -rf ~/Public
 my_step_end
 
 my_step_begin "make home folders lower case"
-mv ~/Desktop   ~/desktop
 mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
 mv ~/Music     ~/music
