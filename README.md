@@ -43,12 +43,6 @@ Install:
 - IntelliJ
 - DataGrip
 
-Install packages using asdf:
-- gradle
-- java
-- maven
-- nodejs
-
 Configure Firefox extensions:
 - Auto Discard Tabs
 - Stylus
