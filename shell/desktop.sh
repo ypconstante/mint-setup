@@ -7,6 +7,8 @@ menu_config_file=~/.cinnamon/configs/menu@cinnamon.org/$menu_applet_id.json
 
 my_step_begin "hide desktop icons"
 dconf write /org/nemo/desktop/desktop-layout "'false::false'"
+# still used by nemo to define if desktop will be shown in nemo's sidebar
+dconf write /org/nemo/desktop/show-desktop-icons false
 my_step_end
 
 my_step_begin "change theme"
