@@ -23,8 +23,8 @@ my_step_begin "modify taskbar"
 dconf write /org/cinnamon/panels-enabled "['1:0:right']"
 # size
 dconf write /org/cinnamon/panels-height "['1:40']"
-dconf write /org/cinnamon/panel-zone-icon-sizes "'[{\"panelId\": 1, \"left\": 0, \"center\": 0, \"right\": 24}]'"
-dconf write /org/cinnamon/theme/symbolic-relative-size 0.50
+dconf write /org/cinnamon/panel-zone-icon-sizes "'[{\"panelId\": 1, \"left\": 0, \"center\": 0, \"right\": 22}]'"
+dconf write /org/cinnamon/theme/symbolic-relative-size 0.75
 # taskbar elements
 dconf write /org/cinnamon/enabled-applets "[
  'panel1:left:0:menu@cinnamon.org:$menu_applet_id',
