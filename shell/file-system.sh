@@ -6,6 +6,11 @@ my_step_begin "close nemo"
 nemo -q
 my_step_end
 
+my_step_begin "create base project structure"
+mkdir -p ~/projects/personal
+mkdir -p ~/projects/sandbox
+my_step_end
+
 my_step_begin "remove non used folders"
 rm -rf ~/Public
 xdg-user-dirs-update
@@ -13,8 +18,6 @@ my_step_end
 
 my_step_begin "rename templates to projects"
 rm -rf ~/Templates
-mkdir -p ~/projects/personal
-mkdir -p ~/projects/sandbox
 xdg-user-dirs-update --set TEMPLATES "$HOME/projects"
 my_step_end
 
