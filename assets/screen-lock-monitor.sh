@@ -19,7 +19,7 @@ run
 
 dbus-monitor --session "type='signal',interface='org.cinnamon.ScreenSaver'" |
     while read x; do
-        case "$x" in 
+        case "$x" in
             *"boolean true"*)
                 run;;
         esac
