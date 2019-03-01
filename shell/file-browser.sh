@@ -26,6 +26,10 @@ dconf write /org/nemo/preferences/show-search-icon-toolbar false
 dconf write /org/nemo/preferences/show-compact-view-icon-toolbar false
 my_step_end
 
+my_step_begin "configure nemo sidebar"
+dconf write /org/nemo/window-state/sidebar-width 154
+my_step_end
+
 my_step_begin "fix opening nemo from terminal"
 sudo mkdir -p /var/lib/samba/usershares/
 my_step_end
