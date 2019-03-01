@@ -16,6 +16,16 @@ xdg-user-dirs-update --set TEMPLATES "$HOME/projects"
 rm -rf ~/Templates
 my_step_end
 
+my_step_begin "create media folder"
+mkdir -p ~/media
+xdg-user-dirs-update --set MUSIC "$HOME/media"
+rm -rf ~/Music
+xdg-user-dirs-update --set PICTURES "$HOME/media"
+rm -rf ~/Pictures
+xdg-user-dirs-update --set VIDEOS "$HOME/media"
+rm -rf ~/Videos
+my_step_end
+
 my_step_begin "remove non used folders"
 xdg-user-dirs-update --set DESKTOP "$(xdg-user-dir DOWNLOAD)"
 rm -rf ~/Desktop
@@ -26,21 +36,8 @@ my_step_end
 my_step_begin "make home folders lower case"
 mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
-mv ~/Music     ~/music
-mv ~/Pictures  ~/pictures
-mv ~/Videos    ~/videos
 sed -Ei "s|\\\$HOME/(.)|\\\$HOME/\L\1|" "$XDG_CONFIG_HOME/user-dirs.dirs"
 xdg-user-dirs-update
-my_step_end
-
-my_step_begin "create media folder"
-mkdir -p ~/media
-xdg-user-dirs-update --set MUSIC "$HOME/media"
-rm -rf ~/music
-xdg-user-dirs-update --set PICTURES "$HOME/media"
-rm -rf ~/pictures
-xdg-user-dirs-update --set VIDEOS "$HOME/media"
-rm -rf ~/videos
 my_step_end
 
 my_step_begin "create bookmark"
