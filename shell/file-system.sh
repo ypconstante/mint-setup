@@ -11,6 +11,11 @@ mkdir -p ~/projects/personal
 mkdir -p ~/projects/sandbox
 my_step_end
 
+my_step_begin "rename templates to projects"
+xdg-user-dirs-update --set TEMPLATES "$HOME/projects"
+rm -rf ~/Templates
+my_step_end
+
 my_step_begin "remove non used folders"
 xdg-user-dirs-update --set DESKTOP "$(xdg-user-dir DOWNLOAD)"
 rm -rf ~/Desktop
@@ -23,15 +28,9 @@ mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
 mv ~/Music     ~/music
 mv ~/Pictures  ~/pictures
-mv ~/Templates ~/templates
 mv ~/Videos    ~/videos
 sed -Ei "s|\\\$HOME/(.)|\\\$HOME/\L\1|" "$XDG_CONFIG_HOME/user-dirs.dirs"
 xdg-user-dirs-update
-my_step_end
-
-my_step_begin "rename templates to projects"
-xdg-user-dirs-update --set TEMPLATES "$HOME/projects"
-rm -rf ~/templates
 my_step_end
 
 my_step_begin "create media folder"
