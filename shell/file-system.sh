@@ -35,7 +35,7 @@ xdg-user-dirs-update --set TEMPLATES "$HOME/projects"
 my_step_end
 
 my_step_begin "create media folder"
-mkdir ~/media
+mkdir -p ~/media
 rm -rf ~/music
 xdg-user-dirs-update --set MUSIC "$HOME/media"
 rm -rf ~/pictures
