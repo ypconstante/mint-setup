@@ -11,21 +11,20 @@ mkdir -p ~/projects/personal
 mkdir -p ~/projects/sandbox
 my_step_end
 
+my_step_begin "remove non used folders"
+xdg-user-dirs-update --set PUBLICSHARE "$(xdg-user-dir DOWNLOAD)"
+rm -rf ~/Public
+my_step_end
+
 my_step_begin "make home folders lower case"
 mv ~/Desktop   ~/desktop
 mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
 mv ~/Music     ~/music
 mv ~/Pictures  ~/pictures
-mv ~/Public    ~/public
 mv ~/Templates ~/templates
 mv ~/Videos    ~/videos
 sed -Ei "s|\\\$HOME/(.)|\\\$HOME/\L\1|" "$XDG_CONFIG_HOME/user-dirs.dirs"
-xdg-user-dirs-update
-my_step_end
-
-my_step_begin "remove non used folders"
-rm -rf ~/public
 xdg-user-dirs-update
 my_step_end
 
