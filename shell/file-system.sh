@@ -6,6 +6,16 @@ my_step_begin "close nemo"
 nemo -q
 my_step_end
 
+my_step_begin "documents folder lower case"
+mv ~/Documents ~/documents
+xdg-user-dirs-update --set DOCUMENTS "$HOME/documents"
+my_step_end
+
+my_step_begin "downloads lower case"
+mv ~/Downloads ~/downloads
+xdg-user-dirs-update --set DOWNLOAD "$HOME/downloads"
+my_step_end
+
 my_step_begin "create base project structure"
 mkdir -p ~/projects/personal
 mkdir -p ~/projects/sandbox
@@ -31,13 +41,6 @@ xdg-user-dirs-update --set DESKTOP "$(xdg-user-dir DOWNLOAD)"
 rm -rf ~/Desktop
 xdg-user-dirs-update --set PUBLICSHARE "$(xdg-user-dir DOWNLOAD)"
 rm -rf ~/Public
-my_step_end
-
-my_step_begin "make home folders lower case"
-mv ~/Documents ~/documents
-mv ~/Downloads ~/downloads
-sed -Ei "s|\\\$HOME/(.)|\\\$HOME/\L\1|" "$XDG_CONFIG_HOME/user-dirs.dirs"
-xdg-user-dirs-update
 my_step_end
 
 my_step_begin "create bookmark"
