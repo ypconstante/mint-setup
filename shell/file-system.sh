@@ -30,18 +30,18 @@ xdg-user-dirs-update
 my_step_end
 
 my_step_begin "rename templates to projects"
-rm -rf ~/templates
 xdg-user-dirs-update --set TEMPLATES "$HOME/projects"
+rm -rf ~/templates
 my_step_end
 
 my_step_begin "create media folder"
 mkdir -p ~/media
-rm -rf ~/music
 xdg-user-dirs-update --set MUSIC "$HOME/media"
-rm -rf ~/pictures
+rm -rf ~/music
 xdg-user-dirs-update --set PICTURES "$HOME/media"
-rm -rf ~/videos
+rm -rf ~/pictures
 xdg-user-dirs-update --set VIDEOS "$HOME/media"
+rm -rf ~/videos
 my_step_end
 
 my_step_begin "create bookmark"
