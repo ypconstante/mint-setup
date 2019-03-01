@@ -28,14 +28,14 @@ dconf write /org/cinnamon/theme/symbolic-relative-size 0.75
 # taskbar elements
 dconf write /org/cinnamon/enabled-applets "[
  'panel1:left:0:menu@cinnamon.org:$menu_applet_id',
- 'panel1:left:3:grouped-window-list@cinnamon.org',
+ 'panel1:left:10:grouped-window-list@cinnamon.org',
  'panel1:right:0:workspace-switcher@cinnamon.org',
- 'panel1:right:1:systray@cinnamon.org',
- 'panel1:right:2:network@cinnamon.org',
- 'panel1:right:3:sound@cinnamon.org',
- 'panel1:right:4:power@cinnamon.org',
- 'panel1:right:5:notifications@cinnamon.org',
- 'panel1:right:6:calendar@cinnamon.org'
+ 'panel1:right:10:systray@cinnamon.org',
+ 'panel1:right:20:network@cinnamon.org',
+ 'panel1:right:30:sound@cinnamon.org',
+ 'panel1:right:40:power@cinnamon.org',
+ 'panel1:right:50:notifications@cinnamon.org',
+ 'panel1:right:60:calendar@cinnamon.org'
 ]"
 # hide taskbar
 dconf write /org/cinnamon/panels-autohide "['1:intel']"
