@@ -30,6 +30,7 @@ dconf write /org/cinnamon/enabled-applets "[
  'panel1:left:0:menu@cinnamon.org:$menu_applet_id',
  'panel1:left:10:grouped-window-list@cinnamon.org',
  'panel1:right:0:workspace-switcher@cinnamon.org',
+ 'panel1:right:5:spacer@cinnamon.org',
  'panel1:right:10:systray@cinnamon.org',
  'panel1:right:20:network@cinnamon.org',
  'panel1:right:30:sound@cinnamon.org',
