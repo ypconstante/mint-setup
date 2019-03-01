@@ -10,7 +10,7 @@ if [ -d "$install_dir" ]; then
     my_step_begin "install toolbox"
     echo 'toolbox already installed'
     my_step_end
-    return
+    exit 0
 fi
 
 my_step_begin "download toolbox"
