@@ -11,33 +11,37 @@ mkdir -p ~/projects/personal
 mkdir -p ~/projects/sandbox
 my_step_end
 
-my_step_begin "remove non used folders"
-rm -rf ~/Public
-xdg-user-dirs-update
-my_step_end
-
-my_step_begin "rename templates to projects"
-rm -rf ~/Templates
-xdg-user-dirs-update --set TEMPLATES "$HOME/projects"
-my_step_end
-
-my_step_begin "create media folder"
-mkdir ~/Media
-rm -rf ~/Music
-xdg-user-dirs-update --set MUSIC "$HOME/Media"
-rm -rf ~/Pictures
-xdg-user-dirs-update --set PICTURES "$HOME/Media"
-rm -rf ~/Videos
-xdg-user-dirs-update --set VIDEOS "$HOME/Media"
-my_step_end
-
 my_step_begin "make home folders lower case"
 mv ~/Desktop   ~/desktop
 mv ~/Documents ~/documents
 mv ~/Downloads ~/downloads
-mv ~/Media     ~/media
+mv ~/Music     ~/music
+mv ~/Pictures  ~/pictures
+mv ~/Public    ~/public
+mv ~/Templates ~/templates
+mv ~/Videos    ~/videos
 sed -Ei "s|\\\$HOME/(.)|\\\$HOME/\L\1|" "$XDG_CONFIG_HOME/user-dirs.dirs"
 xdg-user-dirs-update
+my_step_end
+
+my_step_begin "remove non used folders"
+rm -rf ~/public
+xdg-user-dirs-update
+my_step_end
+
+my_step_begin "rename templates to projects"
+rm -rf ~/templates
+xdg-user-dirs-update --set TEMPLATES "$HOME/projects"
+my_step_end
+
+my_step_begin "create media folder"
+mkdir ~/media
+rm -rf ~/music
+xdg-user-dirs-update --set MUSIC "$HOME/media"
+rm -rf ~/pictures
+xdg-user-dirs-update --set PICTURES "$HOME/media"
+rm -rf ~/videos
+xdg-user-dirs-update --set VIDEOS "$HOME/media"
 my_step_end
 
 my_step_begin "create bookmark"
