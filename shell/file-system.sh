@@ -47,6 +47,7 @@ my_step_begin "create bookmark"
 {
     echo "file://$HOME/documents Documents"
     echo "file://$HOME/downloads Downloads"
+    echo "file://$HOME/media Media"
     echo "file://$HOME/projects Projects"
 } > "$XDG_CONFIG_HOME/gtk-3.0/bookmarks"
 my_step_end
