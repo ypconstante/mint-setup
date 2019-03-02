@@ -42,6 +42,7 @@ rm -rf ~/Desktop
 xdg-user-dirs-update --set PUBLICSHARE "$(xdg-user-dir DOWNLOAD)"
 rm -rf ~/Public
 rm -rf ~/.gconf
+rm -rf ~/.linuxmint
 my_step_end
 
 my_step_begin "create bookmark"

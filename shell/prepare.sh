@@ -8,6 +8,7 @@ my_apt_uninstall gnome-accessibility-themes
 my_apt_uninstall gnome-calendar
 my_apt_uninstall gnome-orca
 my_apt_uninstall hexchat
+my_apt_uninstall mintwelcome
 my_apt_uninstall mono-*
 my_apt_uninstall ndiswrappe*
 my_apt_uninstall pix
