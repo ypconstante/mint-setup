@@ -41,6 +41,7 @@ xdg-user-dirs-update --set DESKTOP "$HOME"
 rm -rf ~/Desktop
 xdg-user-dirs-update --set PUBLICSHARE "$(xdg-user-dir DOWNLOAD)"
 rm -rf ~/Public
+rm -rf ~/.gconf
 my_step_end
 
 my_step_begin "create bookmark"
