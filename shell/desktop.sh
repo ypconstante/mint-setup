@@ -48,7 +48,7 @@ dconf write /org/cinnamon/desktop/background/picture-options "'zoom'"
 my_step_end
 
 my_step_begin "modify windows"
-dconf write /org/cinnamon/desktop/wm/preferences/button-layout "':minimize,close'"
+dconf write /org/cinnamon/desktop/wm/preferences/button-layout "'close,minimize:'"
 dconf write /org/cinnamon/desktop/wm/preferences/focus-mode "'click'"
 dconf write /org/cinnamon/prevent-focus-stealing true
 dconf write /org/cinnamon/desktop-effects false
