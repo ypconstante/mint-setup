@@ -179,11 +179,6 @@ my_git_clone() {
     fi
 }
 
-my_pip_install() {
-    echo "Installing '$1'"
-    my_indent pip3 install --user "$@"
-}
-
 my_command_exists () {
     local command="$1"
     type "$command" &> /dev/null
