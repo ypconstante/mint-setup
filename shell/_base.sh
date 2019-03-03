@@ -78,6 +78,15 @@ my_append_to_file_if_not_contains() {
 }
 
 ################################### OUTPUT ####################################
+my_echo_without_line_break() {
+    local message="$1"
+    echo -n "$message"
+}
+
+my_echo_clear_line() {
+    echo -en "\r$(tput el)"
+}
+
 my_echo_error() {
     local message="$1"
     echo "$(tput setaf 1)$message$(tput sgr0)"
@@ -125,15 +134,19 @@ my_firefox_profile_dir() {
 ################################### INSTALL ###################################
 my_apt_add_key() {
     local url="$1"
-    curl -sS "$url" | sudo apt-key add -
+    my_echo_without_line_break "Adding key '$url'"
+    curl -sS "$url" | sudo apt-key --quiet add -
+    my_echo_clear_line
 }
 
 my_apt_add_repository() {
     local name="$1"
     local source="$2"
 
+    my_echo_without_line_break "Adding repository '$name'"
     my_append_to_file_if_not_contains "/etc/apt/sources.list.d/$name.list" "$source"
-    sudo apt update -y -qq
+    sudo apt-get update -y -qq 1> /dev/null
+    my_echo_clear_line
 }
 
 my_apt_install() {
