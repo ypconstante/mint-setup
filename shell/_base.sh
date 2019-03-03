@@ -79,7 +79,7 @@ my_append_to_file_if_not_contains() {
 
 ################################### OUTPUT ####################################
 my_echo_error() {
-    local message="1"
+    local message="$1"
     echo "$(tput setaf 1)$message$(tput sgr0)"
 }
 
