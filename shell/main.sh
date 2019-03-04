@@ -7,6 +7,7 @@ source "$(dirname "$0")/_base.sh"
 ./browsers.sh
 ./desktop.sh
 ./dev.sh
+./environment.sh
 ./file-browser.sh
 ./file-system.sh
 ./git.sh
