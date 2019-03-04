@@ -31,7 +31,7 @@ Restart computer
 ```
 
 Sign in or add license to:
-- Chrome
+- Chromium
 - Firefox
 - Franz
 - JetBrains Toolbox
