@@ -60,6 +60,14 @@ dconf write /org/cinnamon/alttab-minimized-aware true
 dconf write /org/cinnamon/alttab-switcher-enforce-primary-monitor true
 my_step_end
 
+my_step_begin "config workspaces"
+dconf write /org/cinnamon/muffin/workspace-cycle true
+dconf write /org/cinnamon/workspace-osd-duration 300
+dconf write /org/cinnamon/workspace-osd-x 95
+dconf write /org/cinnamon/workspace-osd-y 95
+
+my_step_end
+
 my_step_begin "change menu config"
 my_wait_file $menu_config_file
 jq 'setpath(["search-filesystem", "value"]; true)' < "$menu_config_file" \
