@@ -46,6 +46,7 @@ Install:
 Configure Firefox extensions:
 - Auto Discard Tabs
 - Stylus
+- Tree Style Tab
 - uBlock
 - uMatrix
 - Violentmonkey
