@@ -61,6 +61,7 @@ dconf write /org/cinnamon/alttab-switcher-enforce-primary-monitor true
 my_step_end
 
 my_step_begin "config workspaces"
+dconf write /org/cinnamon/desktop/wm/preferences/num-workspaces 3
 dconf write /org/cinnamon/muffin/workspace-cycle true
 dconf write /org/cinnamon/workspace-osd-duration 300
 dconf write /org/cinnamon/workspace-osd-x 95
