@@ -4,15 +4,11 @@ Setup Timeshift
 
 Create Timeshift snapshot
 
-Update dependencies
-
 Update kernel
 
 Restart computer
 
 Choose drivers
-
-Create Timeshift snapshot
 
 ```sh
 sudo add-apt-repository ppa:git-core/ppa -y
@@ -25,6 +21,7 @@ find ./projects/personal/mint-setup/. -name "*.sh" -exec chmod +x {} \;
 
 Restart computer
 
+Create Timeshift snapshot
 
 ```sh
 ./projects/personal/mint-setup/shell/main.sh
