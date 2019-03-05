@@ -122,8 +122,9 @@ my_step_end() {
     fi
 }
 
-my_indent() {
-    stdbuf -oL -eL "$@" | stdbuf -oL -eL sed 's/^/> /g'
+my_echo_substep() {
+    local message="$1"
+    echo "$(tput bold)$(tput setaf 4)$message$(tput el)$(tput sgr0)"
 }
 
 ################################### FIREFOX ###################################
@@ -150,13 +151,15 @@ my_apt_add_repository() {
 }
 
 my_apt_install() {
-    echo "Installing '$1'"
-    my_indent sudo apt-get install -y -qq -o=Dpkg::Use-Pty=0 "$@"
+    my_echo_substep "Installing '$1'"
+    sudo apt-get install -y -qq "$@"
+    my_echo_substep "Installed '$1'"
 }
 
 my_apt_uninstall() {
-    echo "Uninstalling '$1'"
-    my_indent sudo apt-get autoremove -y -qq --purge -o=Dpkg::Use-Pty=0 "$@"
+    my_echo_substep "Uninstalling '$1'"
+    sudo apt-get autoremove -y -qq --purge "$@"
+    my_echo_substep "Uninstalled '$1'"
 }
 
 my_git_clone() {
