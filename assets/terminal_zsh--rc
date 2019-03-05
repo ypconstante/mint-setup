@@ -65,10 +65,8 @@ step_plugins() {
     __config() {
         zgen reset
 
-        # theme
         zgen load denysdovhan/spaceship-prompt spaceship
 
-        #
         zgen load zsh-users/zsh-autosuggestions
         zgen load zsh-users/zsh-completions
         zgen load zsh-users/zsh-history-substring-search
