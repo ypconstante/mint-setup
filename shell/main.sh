@@ -4,6 +4,7 @@ source "$(dirname "$0")/_base.sh"
 
 ./prepare.sh
 ./terminal.sh
+./bluetooth.sh
 ./browsers.sh
 ./desktop.sh
 ./dev.sh
