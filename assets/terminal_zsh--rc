@@ -118,14 +118,14 @@ step_plugins() {
     export SPACESHIP_GIT_STATUS_DIVERGED='ΛV'
     export SPACESHIP_PROMPT_ORDER=(
         user        # Username section
-        dir            # Current directory section
+        dir         # Current directory section
         host        # Hostname section
-        git            # Git section (git_branch + git_status)
+        git         # Git section (git_branch + git_status)
         node        # Node.js section
-        exec_time    # Execution time
+        exec_time   # Execution time
         jobs        # Background jobs indicator
         line_sep    # Line break
-        exit_code    # Exit code section
+        exit_code   # Exit code section
         char        # Prompt character
     )
 
