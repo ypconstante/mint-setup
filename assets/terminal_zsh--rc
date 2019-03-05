@@ -72,7 +72,6 @@ step_plugins() {
         zgen load zsh-users/zsh-history-substring-search
 
         zgen oh-my-zsh lib/git.zsh
-        zgen oh-my-zsh lib/termsupport.zsh
         zgen oh-my-zsh plugins/autojump
         zgen oh-my-zsh plugins/docker
         zgen oh-my-zsh plugins/gitfast
@@ -287,6 +286,26 @@ step_compile_zsh_files() {
     zrecompile "$ZDOTDIR/.zcompdump"
 }
 
+step_terminal_title() {
+    # based on https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/termsupport.zsh
+    __window_title() {
+        local title="$1"
+        print -Pn "\e]2;$title:q\a"
+    }
+
+    __precmd() {
+        __window_title "%~"
+    }
+
+    __preexec() {
+        local cmd="$1"
+        __window_title "%100>...>$cmd%<<"
+    }
+
+    precmd_functions+=(__precmd)
+    preexec_functions+=(__preexec)
+}
+
 #################################### START ####################################
 step_plugins
 step_alias
@@ -296,6 +315,7 @@ step_keybinding
 step_completion
 step_load_asdf
 step_compile_zsh_files
+step_terminal_title
 
 # completion
 setopt listpacked # make completion columns with different widths
