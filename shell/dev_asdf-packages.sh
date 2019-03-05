@@ -12,6 +12,8 @@ asdf_install_and_set_global() {
     my_step_end
 }
 
+set +o nounset
+source "$XDG_DATA_HOME/asdf/asdf.sh"
 asdf_install_and_set_global gradle "$(asdf list-all gradle | grep -v '[a-z]' | grep '^5' | tail -1)"
 asdf_install_and_set_global java "$(asdf list-all java | grep openjdk | tail -1)"
 asdf_install_and_set_global maven "$(asdf list-all maven | grep -v '[a-z]' | tail -1)"
