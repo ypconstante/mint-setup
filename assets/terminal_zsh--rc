@@ -19,7 +19,7 @@ batch_zrecompile() {
 }
 
 ############################## EXPOSED FUNCTIONS ##############################
-firefox_temp() {
+firefox-temp() {
     local profile_dir="$(mktemp -p /tmp -d firefox-profile.XXXXXX)"
     echo "profile path: $profile_dir"
     firefox -profile "$profile_dir" -no-remote -new-instance
