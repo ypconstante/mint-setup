@@ -48,7 +48,7 @@ dconf write /apps/guake/style/font/palette \
 my_step_end
 
 my_step_begin "configure guake shortcuts"
-dconf write /apps/guake/keybindings/global/show-hide "'F1'"
+dconf write /apps/guake/keybindings/global/show-hide "'F2'"
 dconf write /apps/guake/keybindings/local/quit "'disabled'"
 dconf write /apps/guake/keybindings/local/new-tab "'<Primary>t'"
 dconf write /apps/guake/keybindings/local/close-tab "'<Primary>w'"
