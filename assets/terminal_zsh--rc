@@ -320,10 +320,3 @@ setopt pushd_silent
 if [[ $PROFILE_STARTUP == true ]]; then
     zprof
 fi
-
-# refresh prompt every 5 seconds
-TMOUT=5
-
-TRAPALRM() {
-    zle reset-prompt
-}
