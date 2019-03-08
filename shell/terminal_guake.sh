@@ -7,7 +7,7 @@ my_apt_install guake
 my_step_end
 
 my_step_begin "start guake at startup"
-my_link_file /usr/share/applications/guake.desktop "$XDG_CONFIG_HOME/autostart/guake.desktop"
+my_link_file /usr/share/applications/guake.desktop "$XDG_CONFIG_HOME/autostart/"
 my_step_end
 
 my_step_begin "config guake"

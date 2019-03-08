@@ -22,6 +22,10 @@ source "$ASSETS_DIR/base--env"
 my_link_file() {
     local from="$1"
     local to="$2"
+    if [[ "$to" == */ ]]; then
+        local filename="$(basename "$from")"
+        to="${to}${filename}"
+    fi
     rm -f "$to"
     ln -s "$from" "$to"
 }
