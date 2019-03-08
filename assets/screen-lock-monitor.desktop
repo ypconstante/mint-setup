@@ -3,6 +3,7 @@ Type=Application
 Name=Screen Lock Monitor
 Comment=Close unnecessary stuff on screen lock
 Terminal=false
+Exec=screen-lock-monitor
 X-GNOME-Autostart-enabled=true
 X-GNOME-Autostart-Delay=5
 X-GNOME-AutoRestart=true
