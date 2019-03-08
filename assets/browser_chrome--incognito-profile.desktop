@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Chromium Web Browser - Incognito
+GenericName=Web Browser
+Comment=Access the Internet
+Exec=chromium-browser --incognito
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=chromium-browser
+Categories=Network;WebBrowser;
+StartupNotify=true
+X-AppInstall-Package=chromium-browser
