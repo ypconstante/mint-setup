@@ -16,3 +16,12 @@ mkdir -p "$(my_firefox_profile_dir)/chrome"
 my_link_file "$ASSETS_DIR/browser_firefox--userChrome.css" "$(my_firefox_profile_dir)/chrome/userChrome.css"
 my_link_file "$ASSETS_DIR/browser_firefox--userContent.css" "$(my_firefox_profile_dir)/chrome/userContent.css"
 my_step_end
+
+my_step_begin "enable temporary firefox"
+bin_file="$HOME/.local/bin/firefox-temp"
+menu_file="$XDG_DATA_HOME/applications/firefox-temp.desktop"
+my_link_file "$ASSETS_DIR/browser_firefox--temp-profile.sh" "$bin_file"
+chmod +x "$bin_file"
+my_link_file "$ASSETS_DIR/browser_firefox--temp-profile.desktop" "$menu_file"
+chmod +x "$menu_file"
+my_step_end
