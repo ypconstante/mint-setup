@@ -129,6 +129,10 @@ step_alias() {
     alias ll='ls -lh'
     alias lla='ls -lha'
 
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+
     alias ..='cd ..'
     alias ...='cd ../..'
     alias ....='cd ../../..'
