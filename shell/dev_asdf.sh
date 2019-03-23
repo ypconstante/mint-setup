@@ -18,6 +18,7 @@ my_step_begin "install asdf plugins"
 set +o nounset
 source "$XDG_DATA_HOME/asdf/asdf.sh"
 asdf plugin-add gradle https://github.com/ypconstante/asdf-gradle
+asdf plugin-add golang
 asdf plugin-add java
 asdf plugin-add maven
 asdf plugin-add nodejs
