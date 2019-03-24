@@ -51,7 +51,7 @@ Configure Firefox extensions:
 Configure git:
 - `git config --global user.email "you@example.com"`
 - `git config --global user.name "Your Name"`
-- [Create key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
+- [Create key](https://github.com/ypconstante/mint-setup/wiki#create-ssh-key)
 
 Configure packages:
 - gradle
