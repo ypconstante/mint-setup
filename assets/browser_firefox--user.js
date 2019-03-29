@@ -1,8 +1,8 @@
 /******
 * name: ghacks user.js
-* date: 26 February 2019
-* version 65: Dancing with My Pants
-*   "If I had the chance, I'd ask the world to dance, and I'll be dancing with my pants"
+* date: 27 March 2019
+* version 66-beta: The Power of Pants
+*   "The power of pants is a curious thing. Make a one man weep, make another man sing"
 * authors: v52+ github | v51- www.ghacks.net
 * url: https://github.com/ghacksuserjs/ghacks-user.js
 * license: MIT: https://github.com/ghacksuserjs/ghacks-user.js/blob/master/LICENSE.txt
@@ -117,6 +117,7 @@ user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
 user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.feeds.discoverystreamfeed", false); // [FF66+]
 /* 0105d: disable Activity Stream recent Highlights in the Library [FF57+] ***/
    // user_pref("browser.library.activity-stream.enabled", false);
 /* 0110: start Firefox in PB (Private Browsing) mode
@@ -251,7 +252,7 @@ user_pref("datareporting.policy.dataSubmissionEnabled", false);
  * [NOTE] This pref has no effect when Health Reports (0340) are disabled
  * [SETTING] Privacy & Security>Firefox Data Collection & Use>...>Allow Firefox to install and run studies ***/
 user_pref("app.shield.optoutstudies.enabled", false);
-/* 0343: disable Extension Recommendations in about:addons and AMO [FF65+]
+/* 0343: disable personalized Extension Recommendations in about:addons and AMO [FF65+]
  * [NOTE] This pref has no effect when Health Reports (0340) are disabled
  * [SETTING] Privacy & Security>Firefox Data Collection & Use>...>Allow Firefox to make personalized extension rec.
  * [1] https://support.mozilla.org/kb/personalized-extension-recommendations ***/
@@ -268,11 +269,6 @@ user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false); // [FF58+
  * [1] https://en.wikipedia.org/wiki/Pocket_(application)
  * [2] https://www.gnu.gl/blog/Posts/multiple-vulnerabilities-in-pocket/ ***/
 user_pref("extensions.pocket.enabled", false);
-/* 0380: disable Browser Error Reporter [FF60+]
- * [1] https://support.mozilla.org/en-US/kb/firefox-nightly-error-collection
- * [2] https://firefox-source-docs.mozilla.org/browser/browser/BrowserErrorReporter.html ***/
-user_pref("browser.chrome.errorReporter.enabled", false);
-user_pref("browser.chrome.errorReporter.submitUrl", "");
 /* 0390: disable Captive Portal detection
  * [1] https://en.wikipedia.org/wiki/Captive_portal
  * [2] https://wiki.mozilla.org/Necko/CaptivePortal
@@ -351,10 +347,8 @@ user_pref("browser.safebrowsing.provider.google4.reportPhishMistakeURL", ""); //
 user_pref("browser.safebrowsing.provider.google4.dataSharing.enabled", false);
 user_pref("browser.safebrowsing.provider.google4.dataSharingURL", "");
 
-/*** [SECTION 0500]: SYSTEM ADD-ONS / EXPERIMENTS */
+/*** [SECTION 0500]: SYSTEM ADD-ONS / EXPERIMENTS ***/
 user_pref("_user.js.parrot", "0500 syntax error: the parrot's cashed in 'is chips!");
-/* 0502: disable Mozilla permission to silently opt you into tests ***/
-user_pref("network.allow-experiments", false);
 /* 0503: disable Normandy/Shield [FF60+]
  * Shield is an telemetry system (including Heartbeat) that can also push and test "recipes"
  * [1] https://wiki.mozilla.org/Firefox/Shield
@@ -983,11 +977,14 @@ user_pref("dom.imagecapture.enabled", false); // [DEFAULT: false]
 /* 2028: disable offscreen canvas [FF44+]
  * [1] https://developer.mozilla.org/docs/Web/API/OffscreenCanvas ***/
 user_pref("gfx.offscreencanvas.enabled", false); // [DEFAULT: false]
-/* 2030: disable auto-play of HTML5 media [FF63+]
- * 0=Allowed (default), 1=Blocked, 2=Prompt
- * [SETUP-WEB] This may break video playback on various sites ***/
+/* 2030: disable autoplay of HTML5 media [FF63+]
+ * 0=Allowed, 1=Blocked, 2=Prompt
+ * [NOTE] You can set exceptions under site permissions
+ * [SETTING] Privacy & Security>Permissions>Block websites from automatically playing sound ***/
 user_pref("media.autoplay.default", 1);
-/* 2031: disable audio auto-play in non-active tabs [FF51+]
+/* 2031: disable autoplay of HTML5 media if you interacted with the site [FF66+] ***/
+user_pref("media.autoplay.enabled.user-gestures-needed", false);
+/* 2032: disable audio autoplay in non-active tabs [FF51+]
  * [1] https://www.ghacks.net/2016/11/14/firefox-51-blocks-automatic-audio-playback-in-non-active-tabs/ ***/
 user_pref("media.block-autoplay-until-in-foreground", true);
 
@@ -1349,10 +1346,10 @@ user_pref("dom.caches.enabled", false);
 
 /*** [SECTION 2800]: SHUTDOWN [SETUP-CHROME] ***/
 user_pref("_user.js.parrot", "2800 syntax error: the parrot's bleedin' demised!");
-/* 2802: enable Firefox to clear history items on shutdown
+/* 2802: enable Firefox to clear items on shutdown (see 2803)
  * [SETTING] Privacy & Security>History>Custom Settings>Clear history when Firefox closes ***/
 user_pref("privacy.sanitize.sanitizeOnShutdown", true);
-/* 2803: set what history items to clear on shutdown
+/* 2803: set what items to clear on shutdown (if 2802 is true)
  * [NOTE] If 'history' is true, downloads will also be cleared regardless of the value
  * but if 'history' is false, downloads can still be cleared independently
  * However, this may not always be the case. The interface combines and syncs these
@@ -1366,7 +1363,7 @@ user_pref("privacy.clearOnShutdown.history", true); // Browsing & Download Histo
 user_pref("privacy.clearOnShutdown.offlineApps", true); // Offline Website Data
 user_pref("privacy.clearOnShutdown.sessions", true); // Active Logins
 user_pref("privacy.clearOnShutdown.siteSettings", false); // Site Preferences
-/* 2804: reset default history items to clear with Ctrl-Shift-Del (to match 2803)
+/* 2804: reset default items to clear with Ctrl-Shift-Del (to match 2803)
  * This dialog can also be accessed from the menu History>Clear Recent History
  * Firefox remembers your last choices. This will reset them when you start Firefox.
  * [NOTE] Regardless of what you set privacy.cpd.downloads to, as soon as the dialog
@@ -1413,6 +1410,7 @@ user_pref("privacy.firstparty.isolate.restrict_opener_access", true); // [DEFAUL
 /*** [SECTION 4500]: RFP (RESIST FINGERPRINTING) ***/
 user_pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
 /* 4501: enable privacy.resistFingerprinting [FF41+]
+ * This pref is the master switch for all other privacy.resist* prefs unless stated
  * [SETUP-WEB] RFP is not ready for the masses, so expect some website breakage
  * [1] https://bugzilla.mozilla.org/418986 ***/
 user_pref("privacy.resistFingerprinting", true);
@@ -1428,8 +1426,17 @@ user_pref("privacy.resistFingerprinting", true);
  * to sanitize or clear extensions.webextensions.restrictedDomains (see 2662) to keep that side-effect
  * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1384330,1406795,1415644,1453988 ***/
 user_pref("privacy.resistFingerprinting.block_mozAddonManager", true); // [HIDDEN PREF]
-/* 4504: disable showing about:blank as soon as possible during startup [FF60+]
- * When default true (FF62+) this no longer masks the RFP resizing activity
+/* 4504: enable RFP letterboxing [FF67+]
+ * Dynamically resizes the inner window in 200w x100h steps by applying letterboxing, using dimensions
+ * which waste the least content area, If you use the dimension pref, then it will only apply those
+ * resolutions. The format is "width1xheight1, width2xheight2, ..." (e.g. "800x600, 1000x1000, 1600x900")
+ * [NOTE] This does NOT require RFP (see 4501) **for now**
+ * [WARNING] The dimension pref is only meant for testing, and we recommend you DO NOT USE it
+ * [1] https://bugzilla.mozilla.org/1407366 ***/
+user_pref("privacy.resistFingerprinting.letterboxing", true); // [HIDDEN PREF]
+   // user_pref("privacy.resistFingerprinting.letterboxing.dimensions", ""); // [HIDDEN PREF]
+/* 4510: disable showing about:blank as soon as possible during startup [FF60+]
+ * When default true (FF62+) this no longer masks the RFP chrome resizing activity
  * [1] https://bugzilla.mozilla.org/1448423 ***/
 user_pref("browser.startup.blankWindow", false);
 
@@ -1471,6 +1478,7 @@ user_pref("media.gmp-widevinecdm.enabled", true); // 1825
 user_pref("media.gmp-widevinecdm.autoupdate", true); // 1825
 user_pref("media.eme.enabled", true); // 1830
 user_pref("dom.serviceWorkers.enabled", false); // 2302
+user_pref("dom.event.clipboardevents.enabled", true); // 2401
 user_pref("javascript.options.asmjs", true); // 2420
 user_pref("javascript.options.wasm", true); // 2422
 user_pref("layers.acceleration.disabled", true); // 2508
