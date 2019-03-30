@@ -1498,6 +1498,7 @@ user_pref("privacy.clearOnShutdown.sessions", false); // 2803
 user_pref("_user.js.parrot", "custom section syntax error");
 
 user_pref("general.warnOnAboutConfig", false);
+user_pref("full-screen-api.enabled", false);
 
 // ctrl+tab by tab order
 user_pref("browser.ctrlTab.recentlyUsedOrder", false);
