@@ -1500,6 +1500,9 @@ user_pref("_user.js.parrot", "custom section syntax error");
 user_pref("general.warnOnAboutConfig", false);
 user_pref("full-screen-api.enabled", false);
 
+// don't sync addons status
+user_pref("services.sync.addons.ignoreUserEnabledChanges", true);
+
 // ctrl+tab by tab order
 user_pref("browser.ctrlTab.recentlyUsedOrder", false);
 
