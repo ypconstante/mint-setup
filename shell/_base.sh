@@ -144,12 +144,25 @@ my_apt_add_key() {
     my_echo_clear_line
 }
 
+my_apt_add_ppa() {
+    local ppa="$1"
+
+    sudo apt-add-repository -y "$ppa"
+    my_apt_update
+}
+
 my_apt_add_repository() {
     local name="$1"
     local source="$2"
 
     my_echo_without_line_break "Adding repository '$name'"
     my_append_to_file_if_not_contains "/etc/apt/sources.list.d/$name.list" "$source"
+    my_echo_clear_line
+    my_apt_update
+}
+
+my_apt_update() {
+    my_echo_without_line_break "Updating packages info"
     sudo apt-get update -y -qq 1> /dev/null
     my_echo_clear_line
 }
