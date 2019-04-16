@@ -12,6 +12,7 @@ export XDG_LIB_HOME="${HOME}/.local/lib"
 # Fix applications to respect XDG
 export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME}/asdf"
 export ASDF_DATA_DIR="${XDG_LIB_HOME}/asdf"
+export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
 export GRADLE_USER_HOME="${XDG_DATA_HOME}/gradle"
 export GOPATH="${XDG_LIB_HOME}/go"
 export LESSHISTFILE=-
