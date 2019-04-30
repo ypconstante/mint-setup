@@ -43,6 +43,7 @@ Install:
 Configure Firefox extensions:
 - Auto Discard Tabs
 - Stylus
+- Temporary Containers
 - Tree Style Tab
 - uBlock
 - uMatrix
