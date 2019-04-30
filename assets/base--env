@@ -22,4 +22,5 @@ export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 export ZDOTDIR="${XDG_DATA_HOME}/zsh"
 
 # Path
-export PATH="${PATH}:${HOME}/.local/bin:${GOPATH}/bin:./node_modules/.bin:./bin:./.bin"
+export DEFAULT_PATH="${PATH}"
+export PATH="${ASDF_DATA_DIR}/shims:${XDG_DATA_HOME}/asdf/bin:${DEFAULT_PATH}:${HOME}/.local/bin:${GOPATH}/bin:./node_modules/.bin:./bin:./.bin"
