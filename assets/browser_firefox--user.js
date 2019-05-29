@@ -1481,6 +1481,7 @@ user_pref("dom.serviceWorkers.enabled", false); // 2302
 user_pref("dom.event.clipboardevents.enabled", true); // 2401
 user_pref("javascript.options.asmjs", true); // 2420
 user_pref("javascript.options.wasm", true); // 2422
+user_pref("dom.IntersectionObserver.enabled", true); // 2426
 user_pref("layers.acceleration.disabled", true); // 2508
 user_pref("browser.pagethumbnails.capturing_disabled", false); // 2604
 user_pref("devtools.chrome.enabled", true); // 2607
