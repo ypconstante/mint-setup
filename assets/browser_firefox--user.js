@@ -1399,6 +1399,9 @@ user_pref("browser.tabs.drawInTitlebar", true);
 // theme
 user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org");
 
+// allow custom css files
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
 // toolbar
 user_pref("browser.uidensity", 1);
 user_pref(
