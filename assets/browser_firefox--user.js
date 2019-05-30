@@ -1425,4 +1425,8 @@ user_pref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
 user_pref("findbar.highlightAll", true);
 user_pref("findbar.entireword", false);
 
+// enable webrender
+user_pref("layers.acceleration.disabled", false);
+user_pref("gfx.webrender.all", true);
+
 user_pref("_user.js.parrot", "user.js finished");
