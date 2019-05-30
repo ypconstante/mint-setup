@@ -33,18 +33,18 @@
 }
 
 /* hide resizer */
-#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
+#sidebar-box + #sidebar-splitter {
     display: none !important;
 }
 
-#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+#sidebar-box {
     border-right: 1px solid ThreeDShadow;
 }
 
 /* sidebar fixed width */
-#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
-    min-width: 240px !important;
-    max-width: 240px !important;
+#sidebar-box {
+    min-width: 320px !important;
+    max-width: 320px !important;
 }
 
 /* hide tree tab when only one tab open on window */
