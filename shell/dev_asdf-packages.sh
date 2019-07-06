@@ -19,3 +19,4 @@ asdf_install_and_set_global golang "$(asdf list-all golang | grep -v '[a-z]' | g
 asdf_install_and_set_global java "$(asdf list-all java | grep openjdk | tail -1)"
 asdf_install_and_set_global maven "$(asdf list-all maven | grep -v '[a-z]' | tail -1)"
 asdf_install_and_set_global nodejs "$(asdf list-all nodejs | grep '^10' | tail -1)"
+asdf_install_and_set_global nodejs "$(asdf list-all nodejs | grep '^12' | tail -1)"
