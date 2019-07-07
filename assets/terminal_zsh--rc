@@ -100,7 +100,7 @@ step_plugins() {
     export SPACESHIP_CHAR_SYMBOL_ROOT='# '
     export SPACESHIP_CHAR_SYMBOL_SECONDARY='$ '
     export SPACESHIP_DIR_TRUNC=0
-    export SPACESHIP_DIR_LOCK_SYMBOL=' 🗝'
+    export SPACESHIP_DIR_LOCK_SYMBOL=' X'
     export SPACESHIP_GIT_SYMBOL=''
     export SPACESHIP_GIT_STATUS_AHEAD='Λ'
     export SPACESHIP_GIT_STATUS_BEHIND='V'
