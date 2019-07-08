@@ -21,6 +21,7 @@ asdf plugin-add gradle https://github.com/ypconstante/asdf-gradle
 asdf plugin-add java
 asdf plugin-add maven
 asdf plugin-add nodejs
+asdf plugin-add python
 asdf plugin-update --all
 my_step_end
 

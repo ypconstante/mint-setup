@@ -71,6 +71,7 @@ step_plugins() {
         zgen oh-my-zsh plugins/yarn
 
         zgen load mollifier/cd-gitroot
+        zgen load MichaelAquilina/zsh-autoswitch-virtualenv
         zgen load MichaelAquilina/zsh-you-should-use
         zgen load zdharma/fast-syntax-highlighting
 
@@ -111,6 +112,8 @@ step_plugins() {
         host        # Hostname section
         git         # Git section (git_branch + git_status)
         node        # Node.js section
+        pyenv       # Pyenv section
+        venv        # virtualenv section
         exec_time   # Execution time
         jobs        # Background jobs indicator
         line_sep    # Line break
