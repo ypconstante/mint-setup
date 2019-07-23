@@ -16,6 +16,7 @@ mkdir -p -m 700 ~/.ssh
 my_step_end
 
 my_step_begin "add github and gitlab as known ssh hosts"
+ssh-keyscan -t rsa bitbucket.org >> ~/.ssh/known_hosts
 ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
 my_step_end
