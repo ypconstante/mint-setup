@@ -305,13 +305,13 @@ step_terminal_title() {
 }
 
 #################################### START ####################################
+step_load_asdf
 step_plugins
 step_alias
 step_style
 step_history
 step_keybinding
 step_completion
-step_load_asdf
 step_compile_zsh_files
 step_terminal_title
 
