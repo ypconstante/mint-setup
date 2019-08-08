@@ -35,6 +35,7 @@ sudo apt clean -y -qq
 sudo apt update -y -qq
 sudo apt full-upgrade -y -qq
 sudo apt autoremove -y -qq
+flatpak update
 my_step_end
 
 my_step_begin "create common folders"

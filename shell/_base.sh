@@ -144,13 +144,6 @@ my_apt_add_key() {
     my_echo_clear_line
 }
 
-my_apt_add_ppa() {
-    local ppa="$1"
-
-    sudo apt-add-repository -y "$ppa"
-    my_apt_update
-}
-
 my_apt_add_repository() {
     local name="$1"
     local source="$2"
@@ -177,6 +170,12 @@ my_apt_uninstall() {
     my_echo_substep "Uninstalling '$1'"
     sudo apt-get autoremove -y -qq --purge "$@"
     my_echo_substep "Uninstalled '$1'"
+}
+
+my_flatpak_install() {
+    my_echo_substep "Installing '$1'"
+    flatpak install -y flathub "$@"
+    my_echo_substep "Installed '$1'"
 }
 
 my_git_clone() {
