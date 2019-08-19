@@ -1,4 +1,5 @@
 [core]
+    commitGraph = true
     untrackedCache = true
 [diff]
     mnemonicprefix = true
@@ -7,7 +8,9 @@
 [fetch]
     prune = true
     pruneTags = true
-[log]    
+[gc]
+    writeCommitGraph = true
+[log]
     abbrevCommit = true
 [merge]
     tool = vscode
