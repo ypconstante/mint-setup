@@ -1,8 +1,8 @@
 /******
 * name: ghacks user.js
-* date: 26 June 2019
-* version 67: Barbie Pants
-*   "I'm a Barbie pants in a Barbie world. Life in plastic, it's fantastic"
+* date: 18 August 2019
+* version 68-beta: Knock on Pants
+*   "It's like thunder, lightning... the way you wear me is frightening"
 * authors: v52+ github | v51- www.ghacks.net
 * url: https://github.com/ghacksuserjs/ghacks-user.js
 * license: MIT: https://github.com/ghacksuserjs/ghacks-user.js/blob/master/LICENSE.txt
@@ -112,9 +112,7 @@ user_pref("browser.newtabpage.activity-stream.telemetry.ping.endpoint", "");
 /* 0105b: disable Activity Stream Snippets
  * Runs code received from a server (aka Remote Code Execution) and sends information back to a metrics server
  * [1] https://abouthome-snippets-service.readthedocs.io/ ***/
-user_pref("browser.aboutHomeSnippets.updateUrl", "");
 user_pref("browser.newtabpage.activity-stream.asrouter.providers.snippets", "");
-user_pref("browser.newtabpage.activity-stream.disableSnippets", true);
 user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
 /* 0105c: disable Activity Stream Top Stories, Pocket-based and/or sponsored content ***/
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
@@ -202,11 +200,6 @@ user_pref("app.update.auto", false);
  * used when installing/updating an extension, and in daily background update checks: if false, it
  * hides the expanded text description (if it exists) when you "show more details about an addon" ***/
    // user_pref("extensions.getAddons.cache.enabled", false);
-/* 0307: disable auto updating of lightweight themes (LWT)
- * Not to be confused with themes in 0301* + 0302*, which use the FF55+ Theme API
- * Mozilla plan to convert existing LWTs and remove LWT support in the future, see [1]
- * [1] https://blog.mozilla.org/addons/2018/09/20/future-themes-here/ ***/
-user_pref("lightweightThemes.update.enabled", false);
 /* 0308: disable search update
  * [SETTING] General>Firefox Updates>Automatically update search engines ***/
 user_pref("browser.search.update", false);
@@ -214,9 +207,13 @@ user_pref("browser.search.update", false);
 user_pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
 /* 0310: disable sending the URL of the website where a plugin crashed ***/
 user_pref("dom.ipc.plugins.reportCrashURL", false);
-/* 0320: disable about:addons' Get Add-ons panel (uses Google Analytics) ***/
+/* 0320: disable about:addons' Recommendations pane (uses Google Analytics) ***/
 user_pref("extensions.getAddons.showPane", false); // [HIDDEN PREF]
 user_pref("extensions.webservice.discoverURL", "");
+/* 0321: disable recommendations in about:addons' Extensions and Themes panes [FF68+] ***/
+user_pref("extensions.getAddons.discovery.api_url", "");
+user_pref("extensions.htmlaboutaddons.discover.enabled", false);
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 /* 0330: disable telemetry
  * the pref (.unified) affects the behaviour of the pref (.enabled)
  * IF unified=false then .enabled controls the telemetry module
@@ -458,7 +455,7 @@ user_pref("browser.sessionhistory.max_entries", 10);
 /* 0805: disable CSS querying page history - CSS history leak
  * [NOTE] This has NEVER been fully "resolved": in Mozilla/docs it is stated it's
  * only in 'certain circumstances', also see latest comments in [2]
- * [TEST] http://lcamtuf.coredump.cx/yahh/ (see github wiki APPENDIX C on how to use)
+ * [TEST] http://lcamtuf.coredump.cx/yahh/ (see github wiki APPENDIX A on how to use)
  * [1] https://dbaron.org/mozilla/visited-privacy
  * [2] https://bugzilla.mozilla.org/147777
  * [3] https://developer.mozilla.org/docs/Web/CSS/Privacy_and_the_:visited_selector ***/
@@ -505,10 +502,6 @@ user_pref("browser.formfill.enable", false);
  * [NOTE] We also clear history and downloads on exiting Firefox (see 2803)
  * [SETTING] Privacy & Security>History>Custom Settings>Remember browsing and download history ***/
    // user_pref("places.history.enabled", false);
-/* 0864: disable date/time picker
- * This can leak your locale if not en-US
- * [1] https://trac.torproject.org/projects/tor/ticket/21787 ***/
-user_pref("dom.forms.datetime", false);
 /* 0870: disable Windows jumplist [WINDOWS] ***/
 user_pref("browser.taskbar.lists.enabled", false);
 user_pref("browser.taskbar.lists.frequent.enabled", false);
@@ -810,7 +803,6 @@ user_pref("privacy.userContext.enabled", true);
 user_pref("privacy.usercontext.about_newtab_segregation.enabled", true); // [DEFAULT: true in FF61+]
 /* 1704: set behaviour on "+ Tab" button to display container menu [FF53+] [SETUP-CHROME]
  * 0=no menu (default), 1=show when clicked, 2=show on long press
- * [NOTE] The menu does not contain a non-container tab option (use Ctrl+T to open non-container tab)
  * [1] https://bugzilla.mozilla.org/1328756 ***/
 user_pref("privacy.userContext.longPressBehavior", 2);
 
@@ -841,6 +833,8 @@ user_pref("media.eme.enabled", false);
 /*** [SECTION 2000]: MEDIA / CAMERA / MIC ***/
 user_pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
 /* 2001: disable WebRTC (Web Real-Time Communication)
+ * [SETUP-WEB] WebRTC can leak your IP address from behind your VPN, but if this is not
+ * in your threat model, and you want Real-Time Communication, this is the pref for you
  * [1] https://www.privacytools.io/#webrtc ***/
 user_pref("media.peerconnection.enabled", false);
 /* 2002: limit WebRTC IP leaks if using WebRTC
@@ -850,6 +844,8 @@ user_pref("media.peerconnection.enabled", false);
 user_pref("media.peerconnection.ice.default_address_only", true);
 user_pref("media.peerconnection.ice.no_host", true); // [FF51+]
 /* 2010: disable WebGL (Web Graphics Library)
+ * [SETUP-WEB] When disabled, may break some websites. When enabled, provides high entropy,
+ * especially with readPixels(). Some of the other entropy is lessened with RFP (see 4501)
  * [1] https://www.contextis.com/resources/blog/webgl-new-dimension-browser-exploitation/
  * [2] https://security.stackexchange.com/questions/13799/is-webgl-a-security-concern ***/
 user_pref("webgl.disabled", true);
@@ -878,7 +874,9 @@ user_pref("media.autoplay.default", 1); // [DEFAULT: 1 in FF67+]
 user_pref("media.autoplay.enabled.user-gestures-needed", false);
 /* 2032: disable audio autoplay in non-active tabs [FF51+]
  * [1] https://www.ghacks.net/2016/11/14/firefox-51-blocks-automatic-audio-playback-in-non-active-tabs/ ***/
-user_pref("media.block-autoplay-until-in-foreground", true);
+user_pref("media.block-autoplay-until-in-foreground", true); // [DEFAULT: true]
+/* 2033: disable autoplay for muted videos [FF63+] ***/
+   // user_pref("media.autoplay.allow-muted", false);
 
 /*** [SECTION 2200]: WINDOW MEDDLING & LEAKS / POPUPS ***/
 user_pref("_user.js.parrot", "2200 syntax error: the parrot's 'istory!");
@@ -911,7 +909,7 @@ user_pref("browser.link.open_newwindow.restriction", 0);
  * [SETTING] Privacy & Security>Permissions>Block pop-up windows ***/
 user_pref("dom.disable_open_during_load", true);
 /* 2212: limit events that can cause a popup [SETUP-WEB]
- * default is "change click dblclick mouseup pointerup notificationclick reset submit touchend contextmenu"
+ * default is "change click dblclick auxclick mouseup pointerup notificationclick reset submit touchend contextmenu"
  * [1] http://kb.mozillazine.org/Dom.popup_allowed_events ***/
 user_pref("dom.popup_allowed_events", "click dblclick");
 
@@ -962,7 +960,7 @@ user_pref("dom.event.clipboardevents.enabled", false);
 /* 2403: disable clipboard commands (cut/copy) from "non-privileged" content [FF41+]
  * this disables document.execCommand("cut"/"copy") to protect your clipboard
  * [1] https://bugzilla.mozilla.org/1170911 ***/
-user_pref("dom.allow_cut_copy", false); // [HIDDEN PREF]
+user_pref("dom.allow_cut_copy", false);
 /* 2404: disable "Confirm you want to leave" dialog on page close
  * Does not prevent JS leaks of the page close event.
  * [1] https://developer.mozilla.org/docs/Web/Events/beforeunload
@@ -1147,9 +1145,6 @@ user_pref("extensions.autoDisableScopes", 15); // [DEFAULT: 15]
 /* 2680: enable CSP (Content Security Policy)
  * [1] https://developer.mozilla.org/docs/Web/HTTP/CSP ***/
 user_pref("security.csp.enable", true); // [DEFAULT: true]
-/* 2682: enable CSP 1.1 experimental hash-source directive [FF29+]
- * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=855326,883975 ***/
-user_pref("security.csp.experimentalEnabled", true);
 /* 2684: enforce a security delay on some confirmation dialogs such as install, open/save
  * [1] http://kb.mozillazine.org/Disable_extension_install_delay_-_Firefox
  * [2] https://www.squarefree.com/2004/07/01/race-conditions-in-security-dialogs/ ***/
@@ -1278,7 +1273,8 @@ user_pref("privacy.firstparty.isolate.restrict_opener_access", true); // [DEFAUL
 user_pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
 /* 4501: enable privacy.resistFingerprinting [FF41+]
  * This pref is the master switch for all other privacy.resist* prefs unless stated
- * [SETUP-WEB] RFP is not ready for the masses, so expect some website breakage
+ * [SETUP-WEB] RFP can cause the odd website to break in strange ways, and has a few side affects,
+ * but is largely robust nowadays. Give it a try. Your choice. Also see 4504 (letterboxing).
  * [1] https://bugzilla.mozilla.org/418986 ***/
 user_pref("privacy.resistFingerprinting", true);
 /* 4502: set new window sizes to round to hundreds [FF55+] [SETUP-CHROME]
@@ -1286,8 +1282,8 @@ user_pref("privacy.resistFingerprinting", true);
  * The override values are a starting point to round from if you want some control
  * [1] https://bugzilla.mozilla.org/1330882
  * [2] https://hardware.metrics.mozilla.com/ ***/
-   // user_pref("privacy.window.maxInnerWidth", 1600); // [HIDDEN PREF]
-   // user_pref("privacy.window.maxInnerHeight", 900); // [HIDDEN PREF]
+   // user_pref("privacy.window.maxInnerWidth", 1000);
+   // user_pref("privacy.window.maxInnerHeight", 1000);
 /* 4503: disable mozAddonManager Web API [FF57+]
  * [NOTE] As a side-effect in FF57-59 this allowed extensions to work on AMO. In FF60+ you also need
  * to sanitize or clear extensions.webextensions.restrictedDomains (see 2662) to keep that side-effect
@@ -1297,7 +1293,8 @@ user_pref("privacy.resistFingerprinting.block_mozAddonManager", true); // [HIDDE
  * Dynamically resizes the inner window (FF67; 200w x100h: FF68+; stepped ranges) by applying letterboxing,
  * using dimensions which waste the least content area, If you use the dimension pref, then it will only apply
  * those resolutions. The format is "width1xheight1, width2xheight2, ..." (e.g. "800x600, 1000x1000, 1600x900")
- * [NOTE] This does NOT require RFP (see 4501) **for now**
+ * [SETUP-WEB] This does NOT require RFP (see 4501) **for now**, so if you're not using 4501, or you are but you're
+ * not taking anti-fingerprinting seriously and a little visual change upsets you, then feel free to flip this pref
  * [WARNING] The dimension pref is only meant for testing, and we recommend you DO NOT USE it
  * [1] https://bugzilla.mozilla.org/1407366 ***/
 user_pref("privacy.resistFingerprinting.letterboxing", true); // [HIDDEN PREF]
@@ -1321,7 +1318,6 @@ user_pref("keyword.enabled", true); // 0801
 user_pref("browser.search.suggest.enabled", true); // 0807
 user_pref("browser.urlbar.suggest.searches", true); // 0808
 user_pref("browser.formfill.enable", true); // 0860
-user_pref("dom.forms.datetime", true); // 0864
 user_pref("browser.cache.disk.enable", true); // 1001
 user_pref("browser.cache.disk.capacity", 500000); // 1001
 user_pref("browser.cache.disk.smart_size.enabled", true); // 1001
@@ -1333,6 +1329,7 @@ user_pref("browser.shell.shortcutFavicons", true); // 1030
 user_pref("media.gmp-widevinecdm.visible", true); // 1825
 user_pref("media.gmp-widevinecdm.enabled", true); // 1825
 user_pref("media.eme.enabled", true); // 1830
+user_pref("media.autoplay.allow-muted", false); // 2033
 user_pref("dom.serviceWorkers.enabled", false); // 2302
 user_pref("dom.webnotifications.enabled", false); // 2304
 user_pref("dom.webnotifications.serviceworker.enabled", false); // 2304
