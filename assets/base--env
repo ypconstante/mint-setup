@@ -8,6 +8,9 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 
 export PIP_REQUIRE_VIRTUALENV=true
 
+# Karma test runner
+export CHROME_BIN=/usr/bin/chromium-browser
+
 # Non standard
 export XDG_LIB_HOME="${HOME}/.local/lib"
 
