@@ -33,6 +33,10 @@ man() {
             man "$@"
 }
 
+git_default_branch() {
+    git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+}
+
 mkcd() {
     mkdir -p "$1" && cd "$1"
 }
@@ -157,8 +161,9 @@ step_alias() {
 
     alias -- g-='git checkout -'
     alias -- gco-='git checkout -'
-    alias grbim='git rebase -i master'
-    alias grbmi='git rebase -i master'
+    alias gcom='git checkout $(git_default_branch)'
+    alias grbim='git fetch && git rebase -i refs/remotes/origin/$(git_default_branch)'
+    alias grbmi='grbim'
 
     alias tis='tig status'
     alias til='tig log'
