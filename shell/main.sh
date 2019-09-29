@@ -6,6 +6,7 @@ source "$(dirname "$0")/_base.sh"
 ./terminal.sh
 ./bluetooth.sh
 ./browsers.sh
+./certificates.sh
 ./desktop.sh
 ./dev.sh
 ./environment.sh

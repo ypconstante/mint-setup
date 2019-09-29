@@ -49,6 +49,9 @@ Configure Firefox extensions:
 - uMatrix
 - Violentmonkey
 
+Add certificates to firefox
+- /usr/local/share/ca-certificates
+
 Configure git:
 - `git config --global user.email "you@example.com"`
 - `git config --global user.name "Your Name"`
