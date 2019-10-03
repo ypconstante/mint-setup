@@ -15,7 +15,7 @@ source "$(dirname "$0")/_base.sh"
 ./git.sh
 ./network.sh
 ./peripherals.sh
-./screen-lock-monitor.sh
+./screen-lock.sh
 ./sound.sh
 ./system-monitor.sh
 ./update-manager.sh
