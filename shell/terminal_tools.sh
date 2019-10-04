@@ -22,3 +22,16 @@ up_url=$( \
 curl -L "$up_url" -o "$up_file"
 chmod +x "$up_file"
 my_step_end
+
+my_step_begin "install playerctl"
+installer_url=$( \
+    curl -sS https://api.github.com/repos/altdesktop/playerctl/releases/latest \
+    | jq '[ .assets[].browser_download_url ]' \
+    | jq '[ .[] | select(endswith(".deb")) ]' \
+    | jq -r 'first' \
+)
+installer_file=$(basename "$installer_url")
+curl -L "$installer_url" -o "$installer_file"
+sudo dpkg --install "$installer_file"
+rm "$installer_file"
+my_step_end

@@ -14,8 +14,27 @@ mute() {
     amixer -q -D pulse sset Master mute
 }
 
+pause() {
+    # https://github.com/folixg/pause-on-lock/blob/master/pause-on-lock
+    PAUSED_PLAYER="none"
+
+    read -r -a players <<< "$(playerctl --list-all)"
+    for player in "${players[@]}"; do
+      if [ "$(playerctl --player="$player" status)" = "Playing" ]; then
+        playerctl --player="$player" pause
+        PAUSED_PLAYER=$player
+      fi
+    done
+}
+
 unmute() {
     amixer -q -D pulse sset Master unmute
+}
+
+play() {
+    if [ "$PAUSED_PLAYER" != "none" ]; then
+      playerctl --player="$PAUSED_PLAYER" play
+    fi
 }
 
 on_start() {
@@ -27,10 +46,12 @@ on_lock() {
     disable_bluetooth
     close_jetbrains_toolbox
     mute
+    pause
 }
 
 on_unlock() {
     unmute
+    play
 }
 
 on_start
