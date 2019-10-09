@@ -37,7 +37,7 @@ play() {
     fi
 }
 
-on_start() {
+on_startup() {
     disable_bluetooth
     close_jetbrains_toolbox
 }
@@ -54,8 +54,6 @@ on_unlock() {
     play
 }
 
-on_start
-
 dbus-monitor --session "type='signal',interface='org.cinnamon.ScreenSaver',member='ActiveChanged'" |
     while read x; do
         case "$x" in
@@ -64,4 +62,6 @@ dbus-monitor --session "type='signal',interface='org.cinnamon.ScreenSaver',membe
             *"false"*)
                 on_unlock;;
         esac
-    done
+    done &
+
+on_startup

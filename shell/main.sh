@@ -10,12 +10,12 @@ source "$(dirname "$0")/_base.sh"
 ./desktop.sh
 ./dev.sh
 ./environment.sh
+./events-monitor.sh
 ./file-browser.sh
 ./file-system.sh
 ./git.sh
 ./network.sh
 ./peripherals.sh
-./screen-lock.sh
 ./sound.sh
 ./system-monitor.sh
 ./update-manager.sh

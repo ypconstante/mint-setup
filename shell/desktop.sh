@@ -66,7 +66,14 @@ dconf write /org/cinnamon/muffin/workspace-cycle true
 dconf write /org/cinnamon/workspace-osd-duration 300
 dconf write /org/cinnamon/workspace-osd-x 95
 dconf write /org/cinnamon/workspace-osd-y 95
+my_step_end
 
+my_step_begin "config screen lock"
+dconf write /org/cinnamon/desktop/screensaver/allow-keyboard-shortcuts false
+dconf write /org/cinnamon/desktop/screensaver/allow-media-control false
+dconf write /org/cinnamon/desktop/screensaver/show-album-art false
+dconf write /org/cinnamon/desktop/screensaver/show-info-panel false
+dconf write /org/cinnamon/desktop/screensaver/floating-widgets false
 my_step_end
 
 my_step_begin "change menu config"

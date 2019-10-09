@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Screen Lock Monitor
-Comment=Close unnecessary stuff on screen lock
+Name=Events Monitor
+Comment=Run actions on OS events
 Terminal=false
-Exec=screen-lock-monitor
+Exec=events-monitor
 X-GNOME-Autostart-enabled=true
 X-GNOME-Autostart-Delay=5
 X-GNOME-AutoRestart=true
