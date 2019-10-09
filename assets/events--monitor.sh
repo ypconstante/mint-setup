@@ -12,6 +12,15 @@ close_jetbrains_toolbox() {
 
 mute() {
     amixer -q -D pulse sset Master mute
+    mute_speakers
+}
+
+mute_speakers() {
+    grep -v '^\s\s' /proc/asound/cards | cut -d ' ' -f 2 |
+        while read card; do
+            amixer -Dhw:"$card" -q set Speaker mute &> /dev/null
+            amixer -Dhw:"$card" -q set Speaker 0% &> /dev/null
+        done
 }
 
 pause() {
@@ -39,7 +48,7 @@ play() {
 
 on_startup() {
     disable_bluetooth
-    close_jetbrains_toolbox
+    mute_speakers
 }
 
 on_lock() {
@@ -51,6 +60,7 @@ on_lock() {
 
 on_unlock() {
     unmute
+    mute_speakers
     play
 }
 
@@ -62,6 +72,13 @@ dbus-monitor --session "type='signal',interface='org.cinnamon.ScreenSaver',membe
             *"false"*)
                 on_unlock;;
         esac
+    done &
+
+acpi_listen |
+    while read line; do
+        if [ "$line" = "jack/headphone HEADPHONE unplug" ]; then
+            on_headphone_unplug
+        fi
     done &
 
 on_startup
