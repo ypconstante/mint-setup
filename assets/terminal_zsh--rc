@@ -75,7 +75,6 @@ step_plugins() {
         zgen oh-my-zsh plugins/npm
         zgen oh-my-zsh plugins/yarn
 
-        zgen load mollifier/cd-gitroot
         zgen load MichaelAquilina/zsh-autoswitch-virtualenv
         # zgen load MichaelAquilina/zsh-you-should-use
         zgen load zdharma/fast-syntax-highlighting
@@ -152,8 +151,8 @@ step_alias() {
     alias -- -4='cd -4'
     alias -- -5='cd -5'
 
-    alias cdg='cd-gitroot'
-    alias cdf='cd-gitroot'
+    alias cdg='grt'
+    alias cdf='grt'
 
     alias open='xdg-open'
 
