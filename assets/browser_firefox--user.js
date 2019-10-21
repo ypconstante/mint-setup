@@ -1321,7 +1321,7 @@ user_pref("browser.shell.shortcutFavicons", true); // 1030
 user_pref("media.gmp-widevinecdm.visible", true); // 1825
 user_pref("media.gmp-widevinecdm.enabled", true); // 1825
 user_pref("media.eme.enabled", true); // 1830
-user_pref("media.autoplay.default", 5); // 2030
+user_pref("media.autoplay.default", 1); // 2030
 user_pref("dom.serviceWorkers.enabled", false); // 2302
 user_pref("dom.webnotifications.enabled", false); // 2304
 user_pref("dom.webnotifications.serviceworker.enabled", false); // 2304
