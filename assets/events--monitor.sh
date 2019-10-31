@@ -64,6 +64,11 @@ on_unlock() {
     play
 }
 
+on_headphone_unplug() {
+    mute_speakers
+    pause
+}
+
 dbus-monitor --session "type='signal',interface='org.cinnamon.ScreenSaver',member='ActiveChanged'" |
     while read x; do
         case "$x" in
