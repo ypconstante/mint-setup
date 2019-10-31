@@ -57,6 +57,11 @@ Configure git:
 - `git config --global user.name "Your Name"`
 - [Create key](https://github.com/ypconstante/mint-setup/wiki#create-ssh-key)
 
+Configure Spotify
+- Download liked songs
+- In 'Settings > Display Options', disable notifications
+- In 'Settings > Privacy', disable cookies
+
 Configure packages:
 - gradle
 - maven
