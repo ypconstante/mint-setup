@@ -154,6 +154,15 @@ my_apt_add_repository() {
     my_apt_update
 }
 
+my_apt_add_ppa_repository() {
+    local name="$1"
+
+    my_echo_substep "Adding repository '$name'"
+    sudo add-apt-repository -y "$name"
+    my_echo_substep "Added repository '$name'"
+    my_apt_update
+}
+
 my_apt_update() {
     my_echo_without_line_break "Updating packages info"
     sudo apt-get update -y -qq 1> /dev/null

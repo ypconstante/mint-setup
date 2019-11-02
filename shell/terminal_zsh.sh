@@ -12,7 +12,7 @@ my_step_end
 
 my_step_begin "configure zsh"
 my_append_to_file_if_not_contains /etc/shells "$(which zsh)"
-sudo chsh -s "$(which zsh)" "$USER"
+sudo chsh -s "$(command -v zsh)" "$USER"
 my_link_file "$ASSETS_DIR/base--env" "$ZDOTDIR/.zshenv"
 my_link_file "$ASSETS_DIR/terminal_zsh--rc" "$ZDOTDIR/.zshrc"
 my_step_end
