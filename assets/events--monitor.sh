@@ -10,6 +10,10 @@ close_jetbrains_toolbox() {
     pkill jetbrains-toolb
 }
 
+minimize_private_windows() {
+    xdotool search --name Private | xargs -L 1 xdotool windowminimize
+}
+
 mute() {
     amixer -q -D pulse sset Master mute
     mute_speakers
@@ -52,9 +56,10 @@ on_startup() {
 }
 
 on_lock() {
-    disable_bluetooth
-    close_jetbrains_toolbox
+    minimize_private_windows
     mute
+    close_jetbrains_toolbox
+    disable_bluetooth
     pause
 }
 
@@ -69,11 +74,17 @@ on_headphone_unplug() {
     pause
 }
 
-dbus-monitor --session "type='signal',interface='org.cinnamon.ScreenSaver',member='ActiveChanged'" |
-    while read x; do
-        case "$x" in
-            *"true"*)
+dbus-monitor --session "interface='org.cinnamon.ScreenSaver',member='Lock'" |
+    while read line; do
+        case "$line" in
+            *"Lock"*)
                 on_lock;;
+        esac
+    done &
+
+dbus-monitor --session "type='signal',interface='org.cinnamon.ScreenSaver',member='ActiveChanged'" |
+    while read line; do
+        case "$line" in
             *"false"*)
                 on_unlock;;
         esac
