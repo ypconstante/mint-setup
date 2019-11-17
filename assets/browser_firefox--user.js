@@ -1318,6 +1318,7 @@ user_pref("browser.cache.disk_cache_ssl", true); // 1002
 user_pref("browser.sessionstore.privacy_level", 0); // 1021
 user_pref("browser.sessionstore.interval", 120000); // 1023
 user_pref("browser.shell.shortcutFavicons", true); // 1030
+user_pref("browser.display.use_document_fonts", 1); // 1401
 user_pref("media.gmp-widevinecdm.visible", true); // 1825
 user_pref("media.gmp-widevinecdm.enabled", true); // 1825
 user_pref("media.eme.enabled", true); // 1830
@@ -1344,7 +1345,6 @@ user_pref("privacy.clearOnShutdown.sessions", false); // 2803
 user_pref("_user.js.parrot", "custom section syntax error");
 
 user_pref("general.warnOnAboutConfig", false);
-user_pref("full-screen-api.enabled", false);
 user_pref("dom.popup_maximum", 3);
 
 // don't sync addons status
@@ -1395,5 +1395,8 @@ user_pref("findbar.entireword", false);
 // enable webrender
 user_pref("layers.acceleration.disabled", false);
 user_pref("gfx.webrender.all", true);
+
+// reset options
+user_pref("full-screen-api.enabled", true);
 
 user_pref("_user.js.parrot", "user.js finished");
