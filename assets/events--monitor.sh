@@ -17,7 +17,7 @@ close_jetbrains_toolbox() {
 }
 
 minimize_private_windows() {
-    xdotool search --name Private | xargs -L 1 xdotool windowminimize
+    xdotool search --name Private | xargs --no-run-if-empty -L 1 xdotool windowminimize
 }
 
 mute() {
