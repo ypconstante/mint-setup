@@ -1,5 +1,9 @@
 #!/bin/bash
 
+kill_previous_events_monitor() {
+    pgrep events-monitor | grep -v "$$" | xargs kill -9
+}
+
 disable_bluetooth() {
     pkill blueman-applet
     pkill blueman-manager
@@ -51,6 +55,7 @@ play() {
 }
 
 on_startup() {
+    kill_previous_events_monitor
     disable_bluetooth
     mute_speakers
 }
@@ -74,6 +79,8 @@ on_headphone_unplug() {
     pause
 }
 
+on_startup
+
 dbus-monitor --session "interface='org.cinnamon.ScreenSaver',member='Lock'" |
     while read line; do
         case "$line" in
@@ -96,5 +103,3 @@ acpi_listen |
             on_headphone_unplug
         fi
     done &
-
-on_startup
