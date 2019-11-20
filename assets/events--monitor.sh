@@ -1,5 +1,7 @@
 #!/bin/bash
 
+FILE_PLAYER_PAUSED=/tmp/events-monitor--player-paused
+
 kill_previous_events_monitor() {
     pgrep events-monitor | grep -v "$$" | xargs kill -9
 }
@@ -31,6 +33,10 @@ mute_speakers() {
         done
 }
 
+unmute() {
+    amixer -q -D pulse sset Master unmute
+}
+
 pause() {
     # https://github.com/folixg/pause-on-lock/blob/master/pause-on-lock
     PAUSED_PLAYER="none"
@@ -42,15 +48,18 @@ pause() {
         PAUSED_PLAYER=$player
       fi
     done
-}
 
-unmute() {
-    amixer -q -D pulse sset Master unmute
+    if [ "$PAUSED_PLAYER" != "none" ]; then
+        echo "$PAUSED_PLAYER" > $FILE_PLAYER_PAUSED
+    fi
 }
 
 play() {
-    if [ "$PAUSED_PLAYER" != "none" ]; then
-      playerctl --player="$PAUSED_PLAYER" play
+    if [[ -f $FILE_PLAYER_PAUSED ]]; then
+        PAUSED_PLAYER="$(cat $FILE_PLAYER_PAUSED)"
+        rm $FILE_PLAYER_PAUSED
+
+        playerctl --player="$PAUSED_PLAYER" play
     fi
 }
 
