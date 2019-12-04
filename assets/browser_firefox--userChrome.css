@@ -10,11 +10,6 @@
     visibility: collapse !important;
 }
 
-/* hide content blocking indicator */
-#tracking-protection-icon-box {
-    visibility: collapse !important;
-}
-
 /* hide 'visit site' text */
 .ac-separator[actiontype="visiturl"],
 .ac-action[actiontype="visiturl"] {
