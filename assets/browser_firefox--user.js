@@ -1,8 +1,8 @@
 /******
 * name: ghacks user.js
-* date: 20 September 2019
-* version 69: Pants One More Time
-*   "When I'm not with pants I lose my mind. Give me a sign. Hit me, pants, one more time."
+* date: 03 December 2019
+* version 70: Pinpants Wizard
+*   "Ever since I was a young pants, I've played the silver ball"
 * authors: v52+ github | v51- www.ghacks.net
 * url: https://github.com/ghacksuserjs/ghacks-user.js
 * license: MIT: https://github.com/ghacksuserjs/ghacks-user.js/blob/master/LICENSE.txt
@@ -246,8 +246,7 @@ user_pref("datareporting.healthreport.uploadEnabled", false);
  * [1] https://bugzilla.mozilla.org/1195552 ***/
 user_pref("datareporting.policy.dataSubmissionEnabled", false);
 /* 0342: disable Studies (see 0503)
- * [NOTE] This pref has no effect when Health Reports (0340) are disabled
- * [SETTING] Privacy & Security>Firefox Data Collection & Use>...>Allow Firefox to install and run studies ***/
+ * [SETTING] Privacy & Security>Firefox Data Collection & Use>Allow Firefox to install and run studies ***/
 user_pref("app.shield.optoutstudies.enabled", false);
 /* 0343: disable personalized Extension Recommendations in about:addons and AMO [FF65+]
  * [NOTE] This pref has no effect when Health Reports (0340) are disabled
@@ -360,7 +359,7 @@ user_pref("network.prefetch-next", false);
  * [1] https://www.ghacks.net/2013/04/27/firefox-prefetching-what-you-need-to-know/
  * [2] https://developer.mozilla.org/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control ***/
 user_pref("network.dns.disablePrefetch", true);
-user_pref("network.dns.disablePrefetchFromHTTPS", true); // [HIDDEN PREF]
+user_pref("network.dns.disablePrefetchFromHTTPS", true); // [HIDDEN PREF ESR] [DEFAULT: true FF70+]
 /* 0603: disable predictor / prefetching ***/
 user_pref("network.predictor.enabled", false);
 user_pref("network.predictor.enable-prefetch", false); // [FF48+]
@@ -413,16 +412,6 @@ user_pref("network.http.altsvc.oe", false);
  * as a remote Tor node will handle the DNS request
  * [1] https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/WebBrowsers ***/
 user_pref("network.proxy.socks_remote_dns", true);
-/* 0707: disable (or setup) DNS-over-HTTPS (DoH) [FF60+]
- * TRR = Trusted Recursive Resolver
- * 0=off by default, 1=race (removed in FF69), 2=TRR first, 3=TRR only,
- * 4=race for stats but always use native result (removed in FF69), 5=explicitly off
- * [WARNING] DoH bypasses hosts and gives info to yet another party (e.g. Cloudflare)
- * [1] https://www.ghacks.net/2018/04/02/configure-dns-over-https-in-firefox/
- * [2] https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/ ***/
-   // user_pref("network.trr.mode", 0);
-   // user_pref("network.trr.bootstrapAddress", "");
-   // user_pref("network.trr.uri", "");
 /* 0708: disable FTP [FF60+]
  * [1] https://www.ghacks.net/2018/02/20/firefox-60-with-new-preference-to-disable-ftp/ ***/
    // user_pref("network.ftp.enabled", false);
@@ -559,7 +548,7 @@ user_pref("browser.cache.disk.enable", false);
 /* 1003: disable memory cache
 /* capacity: -1=determine dynamically (default), 0=none, n=memory capacity in kilobytes ***/
    // user_pref("browser.cache.memory.enable", false);
-   // user_pref("browser.cache.memory.capacity", 0); // [HIDDEN PREF]
+   // user_pref("browser.cache.memory.capacity", 0); // [HIDDEN PREF ESR]
 /* 1006: disable permissions manager from writing to disk [RESTART]
  * [NOTE] This means any permission changes are session only
  * [1] https://bugzilla.mozilla.org/967812 ***/
@@ -593,24 +582,26 @@ user_pref("toolkit.winRegisterApplicationRestart", false);
  * profile/shortcutCache directory. The .ico remains after the shortcut is deleted.
  * If set to false then the shortcuts use a generic Firefox icon ***/
 user_pref("browser.shell.shortcutFavicons", false);
-/* 1031: disable favicons in tabs and new bookmarks
- * bookmark favicons are stored as data blobs in favicons.sqlite ***/
+/* 1031: disable favicons in history and bookmarks
+ * Stored as data blobs in favicons.sqlite, these don't reveal anything that your
+ * actual history (and bookmarks) already do. Your history is more detailed, so
+ * control that instead; e.g. disable history, clear history on close, use PB mode
+ * [NOTE] favicons.sqlite is sanitized on Firefox close, not in-session ***/
    // user_pref("browser.chrome.site_icons", false);
 /* 1032: disable favicons in web notifications ***/
-user_pref("alerts.showFavicons", false); // [DEFAULT: false]
+   // user_pref("alerts.showFavicons", false); // [DEFAULT: false]
 
 /*** [SECTION 1200]: HTTPS (SSL/TLS / OCSP / CERTS / HPKP / CIPHERS) ***/
 user_pref("_user.js.parrot", "1200 syntax error: the parrot's a stiff!");
 /** SSL (Secure Sockets Layer) / TLS (Transport Layer Security) ***/
-/* 1201: disable old SSL/TLS "insecure" renegotiation (vulnerable to a MiTM attack)
- * [SETUP-WEB] <2% of secure sites do NOT support the newer "secure" renegotiation, see [2]
- * [1] https://wiki.mozilla.org/Security:Renegotiation
- * [2] https://www.ssllabs.com/ssl-pulse/ ***/
+/* 1201: disable old SSL/TLS "insecure" negotiation (vulnerable to a MiTM attack)
+ * [1] https://wiki.mozilla.org/Security:Renegotiation ***/
 user_pref("security.ssl.require_safe_negotiation", true);
 /* 1202: control TLS versions with min and max
  * 1=TLS 1.0, 2=TLS 1.1, 3=TLS 1.2, 4=TLS 1.3
  * [WARNING] Leave these at default, otherwise you alter your TLS fingerprint.
- * Firefox telemetry (April 2019) shows only 0.5% of TLS web traffic uses 1.0 or 1.1 ***/
+ * Firefox telemetry (April 2019) shows only 0.5% of TLS web traffic uses 1.0 or 1.1
+ * [1] https://www.ssllabs.com/ssl-pulse/ ***/
    // user_pref("security.tls.version.min", 3);
    // user_pref("security.tls.version.max", 4);
 /* 1203: disable SSL session tracking [FF36+]
@@ -692,7 +683,7 @@ user_pref("security.mixed_content.block_display_content", true);
  * [1] https://bugzilla.mozilla.org/1190623 ***/
 user_pref("security.mixed_content.block_object_subrequest", true);
 
-/** CIPHERS [see the section 1200 intro] ***/
+/** CIPHERS [WARNING: do not meddle with your cipher suite: see the section 1200 intro] ***/
 /* 1261: disable 3DES (effective key size < 128)
  * [1] https://en.wikipedia.org/wiki/3des#Security
  * [2] https://en.wikipedia.org/wiki/Meet-in-the-middle_attack
@@ -723,10 +714,8 @@ user_pref("browser.ssl_override_behavior", 1);
  * [TEST] https://expired.badssl.com/ ***/
 user_pref("browser.xul.error_pages.expert_bad_cert", true);
 /* 1273: display "insecure" icon and "Not Secure" text on HTTP sites ***/
-user_pref("security.insecure_connection_icon.enabled", true); // [FF59+]
+user_pref("security.insecure_connection_icon.enabled", true); // [FF59+] [DEFAULT: true FF70+]
 user_pref("security.insecure_connection_text.enabled", true); // [FF60+]
-   // user_pref("security.insecure_connection_icon.pbmode.enabled", true); // [FF59+] private windows only
-   // user_pref("security.insecure_connection_text.pbmode.enabled", true); // [FF60+] private windows only
 
 /*** [SECTION 1400]: FONTS ***/
 user_pref("_user.js.parrot", "1400 syntax error: the parrot's bereft of life!");
@@ -764,7 +753,7 @@ user_pref("_user.js.parrot", "1600 syntax error: the parrot rests in peace!");
    // user_pref("network.http.referer.trimmingPolicy", 0); // [DEFAULT: 0]
 /* 1603: CROSS ORIGIN: control when to send a referer
  * 0=always (default), 1=only if base domains match, 2=only if hosts match
- * [SETUP-WEB] Known to cause issues with older modems/routers and some sites e.g vimeo ***/
+ * [SETUP-WEB] Known to cause issues with older modems/routers and some sites e.g vimeo, icloud ***/
 user_pref("network.http.referer.XOriginPolicy", 1);
 /* 1604: CROSS ORIGIN: control the amount of information to send [FF52+]
  * 0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port ***/
@@ -799,8 +788,6 @@ user_pref("privacy.userContext.ui.enabled", true);
 /* 1702: enable Container Tabs [FF50+]
  * [SETTING] General>Tabs>Enable Container Tabs ***/
 user_pref("privacy.userContext.enabled", true);
-/* 1703: enable a private container for thumbnail loads [FF51+] ***/
-user_pref("privacy.usercontext.about_newtab_segregation.enabled", true); // [DEFAULT: true in FF61+]
 /* 1704: set behaviour on "+ Tab" button to display container menu [FF53+] [SETUP-CHROME]
  * 0=no menu (default), 1=show when clicked, 2=show on long press
  * [1] https://bugzilla.mozilla.org/1328756 ***/
@@ -835,11 +822,14 @@ user_pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
  * [1] https://www.privacytools.io/#webrtc ***/
 user_pref("media.peerconnection.enabled", false);
 /* 2002: limit WebRTC IP leaks if using WebRTC
+ * In FF70+ these settings match Mode 4 (Mode 3 in older versions) (see [3])
  * [TEST] https://browserleaks.com/webrtc
- * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1189041,1297416
- * [2] https://wiki.mozilla.org/Media/WebRTC/Privacy ***/
+ * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1189041,1297416,1452713
+ * [2] https://wiki.mozilla.org/Media/WebRTC/Privacy
+ * [3] https://tools.ietf.org/html/draft-ietf-rtcweb-ip-handling-12#section-5.2 ***/
 user_pref("media.peerconnection.ice.default_address_only", true);
 user_pref("media.peerconnection.ice.no_host", true); // [FF51+]
+user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", true); // [FF70+]
 /* 2010: disable WebGL (Web Graphics Library)
  * [SETUP-WEB] When disabled, may break some websites. When enabled, provides high entropy,
  * especially with readPixels(). Some of the other entropy is lessened with RFP (see 4501)
@@ -980,6 +970,7 @@ user_pref("javascript.options.asmjs", false);
    // user_pref("javascript.options.ion", false);
    // user_pref("javascript.options.baselinejit", false);
 /* 2422: disable WebAssembly [FF52+] [SETUP-PERF]
+ * [NOTE] In FF71+ this no longer affects extensions (1576254)
  * [1] https://developer.mozilla.org/docs/WebAssembly ***/
 user_pref("javascript.options.wasm", false);
 /* 2426: disable Intersection Observer API [FF55+]
@@ -1054,13 +1045,14 @@ user_pref("devtools.chrome.enabled", false);
 /* 2608: disable WebIDE to prevent remote debugging and ADB extension download
  * [1] https://trac.torproject.org/projects/tor/ticket/16222 ***/
 user_pref("devtools.debugger.remote-enabled", false);
-user_pref("devtools.webide.enabled", false);
+user_pref("devtools.webide.enabled", false); // [DEFAULT: false FF70+]
 user_pref("devtools.webide.autoinstallADBExtension", false); // [FF64+]
 /* 2609: disable MathML (Mathematical Markup Language) [FF51+] [SETUP-HARDEN]
  * [TEST] https://ghacksuserjs.github.io/TorZillaPrint/TorZillaPrint.html#misc
  * [1] https://bugzilla.mozilla.org/1173199 ***/
    // user_pref("mathml.disabled", true);
 /* 2610: disable in-content SVG (Scalable Vector Graphics) [FF53+]
+ * [NOTE] In FF70+ and ESR68.1.0+ this no longer affects extensions (1564208)
  * [WARNING] Expect breakage incl. youtube player controls. Best left for a "hardened" profile.
  * [1] https://bugzilla.mozilla.org/1216893 ***/
    // user_pref("svg.disabled", true);
@@ -1089,7 +1081,7 @@ user_pref("webchannel.allowObject.urlWhitelist", "");
  * [3] CVE-2017-5383: https://www.mozilla.org/security/advisories/mfsa2017-02/
  * [4] https://www.xudongz.com/blog/2017/idn-phishing/ ***/
 user_pref("network.IDN_show_punycode", true);
-/* 2620: enable Firefox's built-in PDF reader [SETUP-CHROME]
+/* 2620: enforce Firefox's built-in PDF reader [SETUP-CHROME]
  * This setting controls if the option "Display in Firefox" is available in the setting below
  *   and by effect controls whether PDFs are handled in-browser or externally ("Ask" or "Open With")
  * PROS: pdfjs is lightweight, open source, and as secure/vetted as any pdf reader out there (more than most)
@@ -1137,7 +1129,8 @@ user_pref("extensions.autoDisableScopes", 15); // [DEFAULT: 15]
    // user_pref("extensions.webextensions.restrictedDomains", "");
 
 /** SECURITY ***/
-/* 2680: enable CSP (Content Security Policy)
+/* 2680: enforce CSP (Content Security Policy)
+ * [WARNING] CSP is a very important and widespread security feature. Don't disable it!
  * [1] https://developer.mozilla.org/docs/Web/HTTP/CSP ***/
 user_pref("security.csp.enable", true); // [DEFAULT: true]
 /* 2684: enforce a security delay on some confirmation dialogs such as install, open/save
@@ -1148,7 +1141,7 @@ user_pref("security.dialog_enable_delay", 700);
 user_pref("_user.js.parrot", "2700 syntax error: the parrot's joined the bleedin' choir invisible!");
 /* 2701: disable 3rd-party cookies and site-data [SETUP-WEB]
  * 0=Accept cookies and site data, 1=(Block) All third-party cookies, 2=(Block) All cookies,
- * 3=(Block) Cookies from unvisited sites, 4=(Block) Third-party trackers (FF63+) (default FF69+)
+ * 3=(Block) Cookies from unvisited websites, 4=(Block) Cross-site and social media trackers (FF63+) (default FF69+)
  * [NOTE] You can set exceptions under site permissions or use an extension
  * [SETTING] Privacy & Security>Content Blocking>Custom>Choose what to block>Cookies ***/
 user_pref("network.cookie.cookieBehavior", 1);
@@ -1233,6 +1226,7 @@ user_pref("privacy.cpd.sessions", true); // Active Logins
 user_pref("privacy.cpd.siteSettings", false); // Site Preferences
 /* 2805: clear Session Restore data when sanitizing on shutdown or manually [FF34+]
  * [NOTE] Not needed if Session Restore is not used (see 0102) or is already cleared with history (see 2803)
+ * [NOTE] privacy.clearOnShutdown.openWindows prevents resuming from crashes (see 1022)
  * [NOTE] privacy.cpd.openWindows has a bug that causes an additional window to open ***/
    // user_pref("privacy.clearOnShutdown.openWindows", true);
    // user_pref("privacy.cpd.openWindows", true);
@@ -1259,7 +1253,7 @@ user_pref("privacy.firstparty.isolate", true);
  * [2] https://bugzilla.mozilla.org/1492607
  * [3] https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage ***/
 user_pref("privacy.firstparty.isolate.restrict_opener_access", true); // [DEFAULT: true]
-   // user_pref("privacy.firstparty.isolate.block_post_message", true); // [HIDDEN PREF]
+   // user_pref("privacy.firstparty.isolate.block_post_message", true); // [HIDDEN PREF ESR]
 
 /*** [SECTION 4500]: RFP (RESIST FINGERPRINTING) ***/
 user_pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
