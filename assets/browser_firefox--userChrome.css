@@ -16,6 +16,11 @@
     visibility: collapse !important;
 }
 
+/* change browser frame color */
+.browserContainer {
+    background-color: #323234;
+}
+
 /* hide sidebar header */
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
     visibility: collapse !important;
