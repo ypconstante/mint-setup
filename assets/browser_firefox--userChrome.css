@@ -16,6 +16,11 @@
     visibility: collapse !important;
 }
 
+/* hide toolbar border */
+#navigator-toolbox {
+    border: none !important;
+}
+
 /* change browser frame color */
 .browserContainer {
     background-color: #323234;
