@@ -1402,6 +1402,5 @@ user_pref("layers.acceleration.disabled", false);
 user_pref("gfx.webrender.all", true);
 
 // reset options
-user_pref("full-screen-api.enabled", true);
 
 user_pref("_user.js.parrot", "user.js finished");
