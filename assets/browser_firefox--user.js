@@ -1355,6 +1355,9 @@ user_pref("services.sync.addons.ignoreUserEnabledChanges", true);
 // ctrl+tab by tab order
 user_pref("browser.ctrlTab.recentlyUsedOrder", false);
 
+// disable backspace as back to previous page
+user_pref("browser.backspace_action", 2);
+
 // hide how to use browser instructions
 user_pref("browser.newtabpage.activity-stream.migrationExpired", true);
 user_pref("browser.urlbar.timesBeforeHidingSuggestionsHint", 0);
