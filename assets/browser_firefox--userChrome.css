@@ -22,7 +22,7 @@
 }
 
 /* change browser frame color */
-.browserContainer {
+window:not([privatebrowsingmode]) .browserContainer {
     background-color: #323234;
 }
 
