@@ -1363,6 +1363,8 @@ user_pref("browser.newtabpage.activity-stream.migrationExpired", true);
 user_pref("browser.urlbar.timesBeforeHidingSuggestionsHint", 0);
 user_pref("browser.contentblocking.introCount", 20);
 user_pref("extensions.privatebrowsing.notification", true);
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
 
 // put tabs in titlebar
 // allow titlebar to be hidden via css
