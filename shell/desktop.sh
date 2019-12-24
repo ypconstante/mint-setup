@@ -32,6 +32,7 @@ dconf write /org/cinnamon/enabled-applets "[
  'panel1:right:0:workspace-switcher@cinnamon.org',
  'panel1:right:5:spacer@cinnamon.org',
  'panel1:right:10:systray@cinnamon.org',
+ 'panel1:right:15:xapp-status@cinnamon.org',
  'panel1:right:20:network@cinnamon.org',
  'panel1:right:30:sound@cinnamon.org',
  'panel1:right:40:power@cinnamon.org',
