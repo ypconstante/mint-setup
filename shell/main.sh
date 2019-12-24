@@ -4,6 +4,7 @@ source "$(dirname "$0")/_base.sh"
 
 ./prepare.sh
 ./terminal.sh
+./file-system.sh
 ./bluetooth.sh
 ./browsers.sh
 ./certificates.sh
@@ -12,7 +13,6 @@ source "$(dirname "$0")/_base.sh"
 ./environment.sh
 ./events-monitor.sh
 ./file-browser.sh
-./file-system.sh
 ./git.sh
 ./network.sh
 ./peripherals.sh
