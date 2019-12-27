@@ -1359,10 +1359,18 @@ user_pref("browser.ctrlTab.recentlyUsedOrder", false);
 user_pref("browser.backspace_action", 2);
 
 // hide how to use browser instructions
-user_pref("browser.newtabpage.activity-stream.migrationExpired", true);
+user_pref("browser.startup.homepage_override.mstone", "ignore"); // master switch
+user_pref("startup.homepage_welcome_url", "");
+user_pref("startup.homepage_welcome_url.additional", "");
+user_pref("startup.homepage_override_url", "");
+user_pref("devtools.webconsole.input.editorOnboarding", false);
+user_pref("browser.messaging-system.whatsNewPanel.enabled", false);
 user_pref("browser.urlbar.timesBeforeHidingSuggestionsHint", 0);
 user_pref("browser.contentblocking.introCount", 20);
 user_pref("extensions.privatebrowsing.notification", true);
+user_pref("browser.library.activity-stream.enabled", false);
+user_pref("browser.newtabpage.activity-stream.asrouter.providers.onboarding", "");
+user_pref("browser.newtabpage.activity-stream.migrationExpired", true);
 user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
 user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
 
@@ -1371,7 +1379,7 @@ user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", 
 user_pref("browser.tabs.drawInTitlebar", true);
 
 // theme
-user_pref("lightweightThemes.selectedThemeID", "firefox-compact-dark@mozilla.org");
+user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
 
 // allow custom css files
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);

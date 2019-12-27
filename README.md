@@ -40,22 +40,23 @@ Install:
 - IntelliJ
 - DataGrip
 
-Configure Firefox extensions:
-- Auto Discard Tabs
-- Stylus
-- Temporary Containers
-- Tree Style Tab
-- uBlock
-- uMatrix
-- Violentmonkey
-
-Add certificates to firefox
-- /usr/local/share/ca-certificates
 
 Configure git:
 - `git config --global user.email "you@example.com"`
 - `git config --global user.name "Your Name"`
 - [Create key](https://github.com/ypconstante/mint-setup/wiki#create-ssh-key)
+
+Configure Firefox:
+- Change theme to dark compact
+- Extensions:
+-- Auto Discard Tabs
+-- Stylus
+-- Temporary Containers
+-- Tree Style Tab
+-- uBlock
+-- uMatrix
+-- Violentmonkey
+- Add certificates from /usr/local/share/ca-certificates
 
 Configure Spotify
 - Download liked songs

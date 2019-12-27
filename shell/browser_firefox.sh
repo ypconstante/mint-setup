@@ -2,10 +2,25 @@
 
 source "$(dirname "$0")/_base.sh"
 
-my_step_begin "create firefox profile"
+profile_name='default-release'
+
+my_firefox_profile_dir() {
+    [[ -d ~/.mozilla/firefox ]] && find ~/.mozilla/firefox -maxdepth 1 -name "*.$profile_name" | head -n 1
+}
+
+my_firefox_close() {
+    killall -9 firefox
+}
+
 if [[ ! -d $(my_firefox_profile_dir) ]]; then
-    firefox -CreateProfile default
+    my_step_begin "firefox profile check"
+    my_echo_error "no firefox profile available"
+    my_step_end
+    exit
 fi
+
+my_step_begin "close firefox"
+my_firefox_close
 my_step_end
 
 my_step_begin "config firefox"

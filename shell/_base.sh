@@ -131,11 +131,6 @@ my_echo_substep() {
     echo "$(tput bold)$(tput setaf 4)$message$(tput el)$(tput sgr0)"
 }
 
-################################### FIREFOX ###################################
-my_firefox_profile_dir() {
-    [[ -d ~/.mozilla/firefox ]] && find ~/.mozilla/firefox -maxdepth 1 -name '*.default' | head -n 1
-}
-
 ################################### INSTALL ###################################
 my_apt_add_key() {
     local url="$1"
