@@ -1344,6 +1344,11 @@ user_pref("privacy.clearOnShutdown.history", false); // 2803
 user_pref("privacy.clearOnShutdown.offlineApps", false); // 2803
 user_pref("privacy.clearOnShutdown.sessions", false); // 2803
 
+// fix jira login with google account
+// user_pref("network.http.referer.XOriginPolicy", 0); // 1603
+// user_pref("privacy.firstparty.isolate", false); // 4001
+// user_pref("privacy.resistFingerprinting", false); // 4501
+
 // CUSTOM
 user_pref("_user.js.parrot", "custom section syntax error");
 
