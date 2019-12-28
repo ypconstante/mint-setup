@@ -16,9 +16,10 @@ mkdir -p -m 700 ~/.ssh
 my_step_end
 
 my_step_begin "add known ssh hosts"
-ssh-keyscan -t rsa bitbucket.org >> ~/.ssh/known_hosts
-ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
+for host in 'bitbucket.org' 'github.com' 'gitlab.com'; do
+    ssh-keygen -R $host 1> /dev/null
+    ssh-keyscan -t rsa $host | tee -a ~/.ssh/known_hosts
+done
 my_step_end
 
 my_step_begin "make git respected xdg spec"
