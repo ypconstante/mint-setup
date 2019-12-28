@@ -18,7 +18,7 @@ my_step_end
 my_step_begin "add known ssh hosts"
 for host in 'bitbucket.org' 'github.com' 'gitlab.com'; do
     ssh-keygen -R $host 1> /dev/null
-    ssh-keyscan -t rsa $host | tee -a ~/.ssh/known_hosts
+    ssh-keyscan -t rsa $host >> ~/.ssh/known_hosts
 done
 my_step_end
 
@@ -34,7 +34,7 @@ my_step_end
 
 my_step_begin "create gitignore"
 curl -sS https://www.gitignore.io/api/git,linux,jetbrains+all,sublimetext,virtualenv,visualstudiocode -o "$git_ignore_file"
-echo -e "\n.tool-versions"| tee -a "$git_ignore_file"
+echo -e "\n.tool-versions" >> "$git_ignore_file"
 git config --global core.excludesfile "$git_ignore_file"
 my_step_end
 
