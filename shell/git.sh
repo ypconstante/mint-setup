@@ -34,6 +34,7 @@ my_step_end
 
 my_step_begin "create gitignore"
 curl -sS https://www.gitignore.io/api/git,linux,jetbrains+all,sublimetext,virtualenv,visualstudiocode -o "$git_ignore_file"
+echo -e "\n.tool-versions"| tee -a "$git_ignore_file"
 git config --global core.excludesfile "$git_ignore_file"
 my_step_end
 
