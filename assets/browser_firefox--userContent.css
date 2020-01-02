@@ -11,4 +11,12 @@ body * {
     .top-site-outer .tile {
         box-shadow: none !important;
     }
+
+    .top-site-outer .title .icon {
+        display: none !important;
+    }
+
+    .top-site-outer .title.pinned span {
+        padding: 0 !important;
+    }
 }
