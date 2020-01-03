@@ -49,13 +49,13 @@ Configure git:
 Configure Firefox:
 - Change theme to dark compact
 - Extensions:
--- Auto Discard Tabs
--- Stylus
--- Temporary Containers
--- Tree Style Tab
--- uBlock
--- uMatrix
--- Violentmonkey
+    - Auto Discard Tabs
+    - Stylus
+    - Temporary Containers
+    - Tree Style Tab
+    - uBlock
+    - uMatrix
+    - Violentmonkey
 - Add certificates from /usr/local/share/ca-certificates
 
 Configure Spotify
