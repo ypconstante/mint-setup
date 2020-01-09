@@ -47,6 +47,6 @@ window:not([privatebrowsingmode]) .browserContainer {
 }
 
 /* hide tree tab when only one tab open on window */
-#main-window[title^="[1]"][sizemode="normal"] #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+#main-window[title^="[1]"] #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
     visibility: collapse !important;
 }
