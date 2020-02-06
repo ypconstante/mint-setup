@@ -30,6 +30,11 @@ my_step_begin "configure nemo sidebar"
 dconf write /org/nemo/window-state/sidebar-width 154
 my_step_end
 
+my_step_begin "disable previews"
+dconf write /org/nemo/preferences/show-image-thumbnails "'never'"
+dconf write /org/nemo/preferences/show-directory-item-counts "'never'"
+my_step_end
+
 my_step_begin "fix opening nemo from terminal"
 sudo mkdir -p /var/lib/samba/usershares/
 my_step_end
