@@ -10,3 +10,7 @@ dconf write /org/cinnamon/sounds/tile-enabled false
 dconf write /org/cinnamon/sounds/plug-enabled false
 dconf write /org/cinnamon/sounds/switch-enabled false
 my_step_end
+
+my_step_begin "avoid hissing sound when not playing audio"
+sudo sed -Ei "s/^load-module module-suspend-on-idle$/#load-module module-suspend-on-idle/" /etc/pulse/default.pa
+my_step_end
