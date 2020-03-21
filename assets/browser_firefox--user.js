@@ -1632,6 +1632,10 @@ user_pref("browser.ctrlTab.recentlyUsedOrder", false);
 // disable backspace as back to previous page
 user_pref("browser.backspace_action", 2);
 
+// disable permission prompt
+user_pref("permissions.default.desktop-notification", 2);
+user_pref("permissions.default.geo", 2);
+
 // hide how to use browser instructions
 user_pref("browser.startup.homepage_override.mstone", "ignore"); // master switch
 user_pref("startup.homepage_welcome_url", "");
