@@ -3,6 +3,7 @@
 source "$(dirname "$0")/_base.sh"
 
 ./prepare.sh
+./xdg-fixes.sh
 ./terminal.sh
 ./file-system.sh
 ./bluetooth.sh
