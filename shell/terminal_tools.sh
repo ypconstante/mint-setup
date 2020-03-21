@@ -36,3 +36,8 @@ curl -L "$installer_url" -o "$installer_file"
 sudo dpkg --install "$installer_file"
 rm "$installer_file"
 my_step_end
+
+my_step_begin "move wget files"
+my_append_to_file_if_not_contains "$XDG_CONFIG_HOME/wgetrc" "hsts-file = ${XDG_CACHE_HOME}/wget-hsts"
+rm -f "$HOME/.wget-hsts"
+my_step_end
