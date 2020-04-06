@@ -182,6 +182,18 @@ my_flatpak_install() {
     my_echo_substep "Installed '$1'"
 }
 
+my_asdf_install_and_set_global() {
+    local package="$1"
+    local version="$2"
+    source "$XDG_DATA_HOME/asdf/asdf.sh"
+    my_step_begin "install $package"
+    echo "installing $package version $version"
+    asdf install "$package" "$version"
+    asdf global "$package" "$version"
+    my_step_end
+}
+
+
 my_git_clone() {
     local repository="$1"
     local directory="$2"

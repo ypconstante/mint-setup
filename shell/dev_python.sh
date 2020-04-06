@@ -2,15 +2,29 @@
 
 source "$(dirname "$0")/_base.sh"
 
-# python is installed using asdf
-
-my_step_begin "install virtual envs"
-export PIP_REQUIRE_VIRTUALENV=false
-pip install --user pipenv
-pip install --user virtualenv
+my_step_begin "install python build dependencies"
+my_apt_install libbz2-dev
+my_apt_install libreadline-dev
+my_apt_install libsqlite3-dev
+my_apt_install libssl-dev
+my_apt_install python-openssl
+my_apt_install zlib1g-dev
 my_step_end
 
-my_step_begin "update conda"
-conda update conda -y
-conda update --all -y
+my_asdf_install_and_set_global python "$(asdf list-all python | grep '^3.6' | grep -v 'dev' | tail -1)"
+
+
+export PIP_REQUIRE_VIRTUALENV=false
+
+my_step_begin "update pip"
+pip install --upgrade pip
+my_step_end
+
+my_step_begin "install ipython"
+pip install --user ipython
+my_step_end
+
+my_step_begin "install virtual envs"
+pip install --user pipenv
+pip install --user virtualenv
 my_step_end
