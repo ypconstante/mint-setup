@@ -1,5 +1,3 @@
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-
 #nav-bar {
     --toolbar-field-focus-border-color: var(--lwt-toolbar-field-border-color);
 }
@@ -43,10 +41,9 @@
     border-radius: var(--toolbarbutton-border-radius) var(--toolbarbutton-border-radius) 0 0 !important;
 }
 
-
 /* hide 'search with' text */
-.ac-separator[actiontype="searchengine"],
-.ac-action[actiontype="searchengine"] {
+.urlbarView-results > [type="search"] .urlbarView-title-separator,
+.urlbarView-results > [type="search"] .urlbarView-action {
     visibility: collapse !important;
 }
 
