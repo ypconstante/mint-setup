@@ -15,6 +15,7 @@ source "$(dirname "$0")/_base.sh"
 ./events-monitor.sh
 ./file-browser.sh
 ./git.sh
+./graphics.sh
 ./network.sh
 ./peripherals.sh
 ./sound.sh
