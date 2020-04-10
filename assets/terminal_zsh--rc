@@ -285,7 +285,7 @@ step_completion() {
 step_load_asdf() {
     if [[ -d "$XDG_DATA_HOME/asdf" ]]; then
         source "$XDG_DATA_HOME/asdf/asdf.sh"
-        source "$XDG_DATA_HOME/asdf/completions/asdf.bash"
+        fpath=($XDG_DATA_HOME/asdf/completions $fpath)
     fi
 }
 
