@@ -251,17 +251,16 @@ step_completion() {
     local ZSH_COMPDUMP_CUSTOM=$ZDOTDIR/.zcompdump-custom
 
     __is_cache_outdated() {
-        if [[ ! -f $ZSH_COMPDUMP_CUSTOM ]]; then
-            return 0
-        fi
-
-        if [[ $ZDOTDIR/.zshrc -nt $ZSH_COMPDUMP_CUSTOM ]]; then
-            return 0
-        fi
-
+        local compdump_file_time=$(date -r $ZSH_COMPDUMP_CUSTOM +%s 2> /dev/null || echo 0)
         local max_cache_file_time=$(date -d '12 hours ago' +%s)
-        local file_time=$(date -r $ZSH_COMPDUMP_CUSTOM +%s)
-        if (( file_time < max_cache_file_time )); then
+
+        if (( compdump_file_time < max_cache_file_time )); then
+            return 0
+        fi
+
+        local zshrc_file_time=$(date -r $ZDOTDIR/.zshrc +%s)
+
+        if (( compdump_file_time < zshrc_file_time )); then
             return 0
         else
             return 1
