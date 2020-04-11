@@ -277,12 +277,11 @@ step_completion() {
         # if file isn't modified, update modified time so the check doesn't run every time
         if __is_cache_outdated; then
             touch -d 'now' "$ZSH_COMPDUMP_CUSTOM"
-        else
-            zrecompile "$ZSH_COMPDUMP_CUSTOM"
         fi
+
+        zrecompile "$ZSH_COMPDUMP_CUSTOM"
     else
         compinit -C -d "$ZSH_COMPDUMP_CUSTOM"
-        zrecompile "$ZSH_COMPDUMP_CUSTOM"
     fi
 }
 
