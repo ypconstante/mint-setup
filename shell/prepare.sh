@@ -14,7 +14,6 @@ my_apt_uninstall ndiswrappe*
 my_apt_uninstall pix
 my_apt_uninstall rhythmbox*
 my_apt_uninstall thunderbird
-my_apt_uninstall xserver-xorg-video-intel
 sudo rm -rf /usr/lib/mono
 my_step_end
 
