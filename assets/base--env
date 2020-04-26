@@ -20,6 +20,7 @@ export ASDF_CONFIG_FILE="${XDG_CONFIG_HOME}/asdf"
 export ASDF_DATA_DIR="${XDG_LIB_HOME}/asdf"
 export AUTOSWITCH_VIRTUAL_ENV_DIR="${XDG_CACHE_HOME}/virtualenvs"
 export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
+export GOPATH=${XDG_DATA_HOME}/go
 export GRADLE_USER_HOME="${XDG_DATA_HOME}/gradle"
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 export LESSHISTFILE=-
