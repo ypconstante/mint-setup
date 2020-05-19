@@ -271,13 +271,8 @@ step_completion() {
     fpath=($ZGEN_DIR $fpath)
 
     if __is_cache_outdated; then
+        rm -f "$ZSH_COMPDUMP_CUSTOM"
         compinit -d "$ZSH_COMPDUMP_CUSTOM"
-
-        # if file isn't modified, update modified time so the check doesn't run every time
-        if __is_cache_outdated; then
-            touch -d 'now' "$ZSH_COMPDUMP_CUSTOM"
-        fi
-
         zrecompile "$ZSH_COMPDUMP_CUSTOM"
     else
         compinit -C -d "$ZSH_COMPDUMP_CUSTOM"
