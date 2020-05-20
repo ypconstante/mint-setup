@@ -159,10 +159,6 @@ step_alias() {
     alias d='dirs -v | head -10'
     alias x='exit'
 
-    if command -v podman &> /dev/null; then
-        alias docker='podman'
-    fi
-
     alias -- g-='git checkout -'
     alias -- gco-='git checkout -'
     alias gcom='git checkout $(git_default_branch)'
