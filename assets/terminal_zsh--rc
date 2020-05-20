@@ -264,7 +264,7 @@ step_completion() {
     }
 
     autoload -Uz compinit
-    fpath=($ZGEN_DIR $fpath)
+    fpath=($ZGEN_DIR $fpath /usr/share/zsh/site-functions)
 
     if __is_cache_outdated; then
         rm -f "$ZSH_COMPDUMP_CUSTOM"
