@@ -27,7 +27,7 @@ my_link_file() {
         to="${to}${filename}"
     fi
     rm -f "$to"
-    ln -s "$from" "$to"
+    ln -s "$from" "$to" 2> /dev/null || sudo ln -s "$from" "$to"
 }
 
 my_create_file_if_not_exists() {

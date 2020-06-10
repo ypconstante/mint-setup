@@ -11,6 +11,10 @@ sudo groupadd docker
 sudo usermod -aG docker "$USER"
 my_step_end
 
+my_step_begin "config docker"
+my_link_file "$ASSETS_DIR/dev_containers--docker-daemon.json" /etc/docker/daemon.json
+my_step_end
+
 my_step_begin "install podman"
 my_apt_add_key https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_18.04/Release.key
 my_apt_add_repository libcontainers "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_18.04/ /"
