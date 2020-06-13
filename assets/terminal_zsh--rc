@@ -70,6 +70,7 @@ step_plugins() {
         zgen oh-my-zsh lib/clipboard.zsh
         zgen oh-my-zsh plugins/autojump
         zgen oh-my-zsh plugins/docker
+        zgen oh-my-zsh plugins/docker-compose
         zgen oh-my-zsh plugins/git
         zgen oh-my-zsh plugins/gitfast
         zgen oh-my-zsh plugins/npm
