@@ -26,7 +26,7 @@ my_link_file() {
         local filename="$(basename "$from")"
         to="${to}${filename}"
     fi
-    rm -f "$to"
+    rm -f "$to" 2> /dev/null || sudo rm -f "$to"
     ln -s "$from" "$to" 2> /dev/null || sudo ln -s "$from" "$to"
 }
 
