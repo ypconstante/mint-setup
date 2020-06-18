@@ -8,6 +8,9 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 
 export PIP_REQUIRE_VIRTUALENV=true
 
+# Docker compose buildkit
+export COMPOSE_DOCKER_CLI_BUILD=1
+
 # Karma test runner
 export CHROME_BIN=/usr/bin/chromium-browser
 
