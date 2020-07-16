@@ -52,6 +52,30 @@
     border: none !important;
 }
 
+/* reduce bookmarks bar size */
+#PersonalToolbar {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* reduce search bar size */
+.findbar-container {
+    padding-block: 0 !important;
+}
+
+.findbar-textbox,
+.findbar-find-previous,
+.findbar-find-next {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    border-radius: 0 !important;
+}
+
+.findbar-button {
+    padding: 4px 4px 4px 4px !important;
+    border-radius: 0 !important;
+}
+
 /* change browser frame color */
 window:not([privatebrowsingmode]) .browserContainer {
     background-color: #323234;
