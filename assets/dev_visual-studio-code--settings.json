@@ -1,3 +1,4 @@
 {
-    "telemetry.enableTelemetry": false
+    "telemetry.enableTelemetry": false,
+    "window.zoomLevel": 0
 }
