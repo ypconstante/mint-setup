@@ -19,4 +19,8 @@ body * {
     .top-site-outer .title.pinned span {
         padding: 0 !important;
     }
+
+    [data-section-id="topstories"] {
+        display: none !important;
+    }
 }
