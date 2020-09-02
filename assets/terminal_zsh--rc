@@ -299,13 +299,7 @@ step_terminal_title() {
         __window_title "%~"
     }
 
-    __preexec() {
-        local cmd="$1"
-        __window_title "%100>...>$cmd%<<"
-    }
-
     precmd_functions+=(__precmd)
-    preexec_functions+=(__preexec)
 }
 
 #################################### START ####################################
