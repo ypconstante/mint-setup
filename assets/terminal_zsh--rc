@@ -48,7 +48,7 @@ zgen() {
 
 #################################### STEPS ####################################
 step_theme() {
-    source <("/home/ypconstante/.local/bin/starship" init zsh --print-full-init)
+    source <("$HOME/.local/bin/starship" init zsh --print-full-init)
 }
 
 step_plugins() {
