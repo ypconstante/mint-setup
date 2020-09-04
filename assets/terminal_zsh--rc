@@ -80,6 +80,9 @@ step_plugins() {
     __config() {
         zgen reset
 
+        # needs to be loaded before zsh-history-substring-search
+        zgen load zdharma/fast-syntax-highlighting
+
         zgen load zsh-users/zsh-autosuggestions
         zgen load zsh-users/zsh-completions
         zgen load zsh-users/zsh-history-substring-search
@@ -96,7 +99,6 @@ step_plugins() {
 
         zgen load djui/alias-tips
         zgen load MichaelAquilina/zsh-autoswitch-virtualenv
-        zgen load zdharma/fast-syntax-highlighting
 
         zgen save
 
