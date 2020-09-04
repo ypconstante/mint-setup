@@ -302,3 +302,16 @@ setopt pushd_silent
 if [[ $PROFILE_STARTUP == true ]]; then
     zprof
 fi
+
+unset -f zrecompile
+unset -f batch_zrecompile
+unset -f step_theme
+unset -f step_load_asdf
+unset -f step_plugins
+unset -f step_alias
+unset -f step_style
+unset -f step_history
+unset -f step_keybinding
+unset -f step_completion
+unset -f step_compile_zsh_files
+unset -f step_terminal_title
