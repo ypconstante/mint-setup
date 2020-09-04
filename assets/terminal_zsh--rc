@@ -121,6 +121,9 @@ step_plugins() {
     if ! __source; then
         __config
     fi
+
+    unset -f __source
+    unset -f __config
 }
 
 step_alias() {
@@ -276,6 +279,8 @@ step_completion() {
     else
         compinit -C -d "$ZSH_COMPDUMP_CUSTOM"
     fi
+
+    unset -f __is_cache_outdated
 }
 
 step_compile_zsh_files() {
