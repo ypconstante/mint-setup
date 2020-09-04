@@ -37,6 +37,15 @@ git_default_branch() {
     git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
 }
 
+# From https://github.com/yramagicman/zsh-aliases/blob/master/functions/json
+json() {
+  if [ -t 0 ]; then
+    python -mjson.tool <<<"$*" | pygmentize -l javascript
+  else # pipe
+    python -mjson.tool | pygmentize -l javascript
+  fi
+}
+
 mkcd() {
     mkdir -p "$1" && cd "$1"
 }
