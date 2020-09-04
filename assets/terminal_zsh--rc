@@ -51,6 +51,13 @@ step_theme() {
     source <("$HOME/.local/bin/starship" init zsh --print-full-init)
 }
 
+step_load_asdf() {
+    if [[ -d "$XDG_DATA_HOME/asdf" ]]; then
+        source "$XDG_DATA_HOME/asdf/asdf.sh"
+        fpath=($XDG_DATA_HOME/asdf/completions $fpath)
+    fi
+}
+
 step_plugins() {
     __source() {
         if [[ -s $ZDOTDIR/.zshrc.zwc && $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]]; then
@@ -249,13 +256,6 @@ step_completion() {
         zrecompile "$ZSH_COMPDUMP_CUSTOM"
     else
         compinit -C -d "$ZSH_COMPDUMP_CUSTOM"
-    fi
-}
-
-step_load_asdf() {
-    if [[ -d "$XDG_DATA_HOME/asdf" ]]; then
-        source "$XDG_DATA_HOME/asdf/asdf.sh"
-        fpath=($XDG_DATA_HOME/asdf/completions $fpath)
     fi
 }
 
