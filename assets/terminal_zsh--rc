@@ -118,6 +118,7 @@ step_plugins() {
 
     # autosuggestions
     export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+    export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
     export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
     if ! __source; then
