@@ -7,7 +7,7 @@ fi
 ################################## FUNCTIONS ##################################
 zrecompile() {
     local file="$1"
-    if [[ -s "$file" && ( ! -s "$file.zwc" || "$file" -nt "$file.zwc") ]]; then
+    if [[ -a "$file" && ( ! -a "$file.zwc" || "$file" -nt "$file.zwc") ]]; then
         zcompile "$file"
     fi
 }
@@ -69,7 +69,7 @@ step_load_asdf() {
 
 step_plugins() {
     __source() {
-        if [[ -s $ZDOTDIR/.zshrc.zwc && $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]]; then
+        if [[ -a $ZDOTDIR/.zshrc.zwc && $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]]; then
             return 1
         fi
 
