@@ -10,11 +10,19 @@ Restart computer
 
 Choose drivers
 
+Install and configure git:
 ```sh
 sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update -y -qq
 sudo apt install -y -qq git
-git clone https://github.com/ypconstante/mint-setup.git ~/projects/personal/mint-setup
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
+
+[Create git key](https://github.com/ypconstante/mint-setup/wiki#create-ssh-key)
+
+```sh
+git clone git@github.com:ypconstante/mint-setup.git ~/projects/personal/mint-setup
 find ./projects/personal/mint-setup/. -name "*.sh" -exec chmod +x {} \;
 ./projects/personal/mint-setup/shell/prepare.sh
 ```
@@ -39,12 +47,6 @@ Sign in or add license to:
 Install:
 - IntelliJ
 - DataGrip
-
-
-Configure git:
-- `git config --global user.email "you@example.com"`
-- `git config --global user.name "Your Name"`
-- [Create key](https://github.com/ypconstante/mint-setup/wiki#create-ssh-key)
 
 Configure Firefox:
 - Change theme to dark compact
