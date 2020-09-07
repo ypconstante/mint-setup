@@ -70,3 +70,5 @@ Configure packages:
 - npm
 
 [Install video drivers](https://github.com/lutris/docs/blob/master/InstallingDrivers.md)
+
+Create Timeshift snapshot
