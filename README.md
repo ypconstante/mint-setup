@@ -46,7 +46,6 @@ Sign in or add license to:
 
 Install:
 - IntelliJ
-- DataGrip
 
 Configure Firefox:
 - Change theme to dark compact
