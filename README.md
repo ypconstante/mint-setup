@@ -67,3 +67,5 @@ Configure packages:
 - gradle
 - maven
 - npm
+
+[Install video drivers](https://github.com/lutris/docs/blob/master/InstallingDrivers.md)
