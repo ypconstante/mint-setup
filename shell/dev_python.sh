@@ -11,7 +11,7 @@ my_apt_install python-openssl
 my_apt_install zlib1g-dev
 my_step_end
 
-my_asdf_install_and_set_global python "$(asdf list-all python | grep '^3.6' | grep -v 'dev' | tail -1)"
+my_asdf_install_and_set_global python "$(asdf list-all python | grep '^3.7' | grep -v 'dev' | tail -1)"
 
 
 export PIP_REQUIRE_VIRTUALENV=false
