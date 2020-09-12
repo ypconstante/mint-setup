@@ -18,7 +18,7 @@ asdf plugin-update --all
 my_step_end
 
 my_step_begin "import nodejs keys"
-source "$ASDF_DATA_DIR/plugins/nodejs/bin/import-release-team-keyring" &> /dev/null
+$ASDF_DATA_DIR/plugins/nodejs/bin/import-release-team-keyring &> /dev/null
 my_step_end
 
 my_asdf_install_and_set_global golang "$(asdf list-all golang | grep -v '[a-z]' | tail -1)"
