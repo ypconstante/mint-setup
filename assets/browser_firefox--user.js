@@ -1747,6 +1747,7 @@ user_pref("browser.tabs.drawInTitlebar", true);
 
 // theme
 user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
+user_pref("devtools.theme", "dark");
 
 // allow custom css files
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
