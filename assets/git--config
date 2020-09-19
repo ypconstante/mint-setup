@@ -24,6 +24,8 @@
     pruneTags = true
 [gc]
     writeCommitGraph = true
+[init]
+    defaultBranch = main
 [log]
     abbrevCommit = true
 [merge]
