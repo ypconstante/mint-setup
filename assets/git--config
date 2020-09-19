@@ -14,11 +14,12 @@
     whitespace = red reverse
 [core]
     commitGraph = true
-    untrackedCache = true
 [diff]
     mnemonicprefix = true
     algorithm = patience
     compactionHeuristic = true
+[feature]
+    manyFiles = true
 [fetch]
     prune = true
     pruneTags = true
