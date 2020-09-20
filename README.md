@@ -51,6 +51,7 @@ Configure Firefox:
 - Change theme to dark compact
 - Extensions:
     - Auto Discard Tabs
+    - Cookie AutoDelete
     - Stylus
     - Temporary Containers
     - Tree Style Tab
