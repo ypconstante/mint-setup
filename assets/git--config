@@ -1,3 +1,9 @@
+[feature]
+    manyFiles = true
+[core]
+    commitGraph = true
+    multiPackIndex = true
+
 [color]
     ui = true
 [color "diff-highlight"]
@@ -12,15 +18,10 @@
     old = red bold
     new = green bold
     whitespace = red reverse
-[core]
-    commitGraph = true
-    multiPackIndex = true
 [diff]
     mnemonicprefix = true
     algorithm = patience
     compactionHeuristic = true
-[feature]
-    manyFiles = true
 [fetch]
     prune = true
     pruneTags = true
