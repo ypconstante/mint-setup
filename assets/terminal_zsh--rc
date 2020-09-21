@@ -326,6 +326,7 @@ if [[ $PROFILE_STARTUP == true ]]; then
     zprof
 fi
 
+unset PROFILE_STARTUP
 unset -f zrecompile
 unset -f batch_zrecompile
 unset -f step_theme
