@@ -252,16 +252,15 @@ step_keybinding() {
 }
 
 step_completion() {
-    local ZSH_COMPDUMP=$ZDOTDIR/.zcompdump
+    local ZSH_COMPDUMP_CUSTOM=$ZDOTDIR/.zcompdump-custom
     local ZSH_COMPDUMP_MAX_TIME=$ZDOTDIR/.zcompdump-max-time
 
     __is_cache_outdated() {
         touch -d '12 hours ago' "$ZSH_COMPDUMP_MAX_TIME"
 
         if [[
-            -a  "$ZSH_COMPDUMP"
-            && "$ZSH_COMPDUMP" -nt "$ZSH_COMPDUMP_MAX_TIME"
-            && "$ZSH_COMPDUMP" -nt "$ZDOTDIR/.zshrc"
+            "$ZSH_COMPDUMP_CUSTOM" -nt "$ZSH_COMPDUMP_MAX_TIME"
+            && "$ZSH_COMPDUMP_CUSTOM" -nt "$ZDOTDIR/.zshrc"
         ]]; then
             return 1
         else
@@ -273,11 +272,11 @@ step_completion() {
     fpath=($ZGEN_DIR $fpath /usr/share/zsh/site-functions)
 
     if __is_cache_outdated; then
-        rm -f "$ZSH_COMPDUMP" "${ZSH_COMPDUMP}.zwc"
-        compinit -d
+        rm -f "$ZSH_COMPDUMP_CUSTOM" "${ZSH_COMPDUMP_CUSTOM}.zwc"
+        compinit -d "$ZSH_COMPDUMP_CUSTOM"
         zrecompile "$ZSH_COMPDUMP_CUSTOM"
     else
-        compinit -C
+        compinit -C -d "$ZSH_COMPDUMP_CUSTOM"
     fi
 
     unset -f __is_cache_outdated
