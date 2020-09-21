@@ -4,6 +4,12 @@ if [[ $PROFILE_STARTUP == true ]]; then
     zmodload zsh/zprof
 fi
 
+if [[ $ZDOTDIR/.zshrc.zwc -nt $ZDOTDIR/.zshrc ]]; then
+    ZSHRC_MODIFIED=false
+else
+    ZSHRC_MODIFIED=true
+fi
+
 ################################## FUNCTIONS ##################################
 zrecompile() {
     local file="$1"
@@ -16,6 +22,14 @@ batch_zrecompile() {
     while read file; do
         zrecompile "$file"
     done
+}
+
+zshrc_modified() {
+    if [[ $ZSHRC_MODIFIED == true ]]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 ############################## EXPOSED FUNCTIONS ##############################
@@ -69,7 +83,7 @@ step_load_asdf() {
 
 step_plugins() {
     __source() {
-        if [[ -a $ZDOTDIR/.zshrc.zwc && $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]]; then
+        if zshrc_modified; then
             return 1
         fi
 
@@ -258,13 +272,10 @@ step_completion() {
     __is_cache_outdated() {
         touch -d '12 hours ago' "$ZSH_COMPDUMP_MAX_TIME"
 
-        if [[
-            "$ZSH_COMPDUMP_CUSTOM" -nt "$ZSH_COMPDUMP_MAX_TIME"
-            && "$ZSH_COMPDUMP_CUSTOM" -nt "$ZDOTDIR/.zshrc"
-        ]]; then
-            return 1
-        else
+        if zshrc_modified || [[ "$ZSH_COMPDUMP_CUSTOM" -ot "$ZSH_COMPDUMP_MAX_TIME" ]]; then
             return 0
+        else
+            return 1
         fi
     }
 
@@ -283,8 +294,10 @@ step_completion() {
 }
 
 step_compile_zsh_files() {
-    zrecompile "$ZDOTDIR/.zshrc"
-    zrecompile "$ZDOTDIR/.zcompdump"
+    if zshrc_modified; then
+        zrecompile "$ZDOTDIR/.zshrc"
+        zrecompile "$ZDOTDIR/.zcompdump"
+    fi
 }
 
 step_terminal_title() {
@@ -327,8 +340,10 @@ if [[ $PROFILE_STARTUP == true ]]; then
 fi
 
 unset PROFILE_STARTUP
+unset ZSHRC_MODIFIED
 unset -f zrecompile
 unset -f batch_zrecompile
+unset -f zshrc_modified
 unset -f step_theme
 unset -f step_load_asdf
 unset -f step_plugins
