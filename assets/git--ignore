@@ -1,4 +1,6 @@
 # custom
 .local
 .tool-versions
+!lib
+!Lib
 TODO.md
