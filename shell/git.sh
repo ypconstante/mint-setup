@@ -33,7 +33,7 @@ my_create_file_if_not_exists "$config_file"
 my_step_end
 
 my_step_begin "create gitignore"
-curl -sS https://www.toptal.com/developers/gitignore/api/dotenv,git,linux,jetbrains+all,sublimetext,virtualenv,visualstudiocode -o "$git_ignore_file"
+curl -sS https://www.toptal.com/developers/gitignore/api/dotenv,git,linux,jetbrains+all,sublimetext,visualstudiocode -o "$git_ignore_file"
 echo -e "\n" >> "$git_ignore_file"
 cat "$ASSETS_DIR/git--ignore" >> "$git_ignore_file"
 git config --global core.excludesfile "$git_ignore_file"

@@ -1,6 +1,5 @@
 # custom
+.venv
 .local
 .tool-versions
-!lib
-!Lib
 TODO.md
