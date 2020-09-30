@@ -1,21 +1,21 @@
-prompt_order = [
-    "username",
-    "hostname",
-    "directory",
-    "git_branch",
-    "git_commit",
-    "git_state",
-    "git_status",
-    "docker_context",
-    "golang",
-    "java",
-    "nodejs",
-    "python",
-    "cmd_duration",
-    "jobs",
-    "line_break",
-    "character",
-]
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$docker_context\
+$golang\
+$java\
+$nodejs\
+$python\
+$cmd_duration\
+$jobs\
+$line_break\
+$character\
+"""
 
 [directory]
 truncation_length = 0
