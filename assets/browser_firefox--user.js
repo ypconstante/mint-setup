@@ -1782,6 +1782,10 @@ user_pref("findbar.entireword", false);
 user_pref("layers.acceleration.disabled", false);
 user_pref("gfx.webrender.all", true);
 
+// disable media keys integration
+user_pref("media.hardwaremediakeys.enabled", false);
+
+
 // reset options
 
 user_pref("_user.js.parrot", "user.js finished");
