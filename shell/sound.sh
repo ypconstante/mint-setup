@@ -11,6 +11,9 @@ dconf write /org/cinnamon/sounds/plug-enabled false
 dconf write /org/cinnamon/sounds/switch-enabled false
 my_step_end
 
-my_step_begin "avoid hissing sound when not playing audio"
+my_step_begin "setup pulse audio"
+# avoid hissing sound when not playing audio
 sudo sed -Ei "s/^load-module module-suspend-on-idle$/#load-module module-suspend-on-idle/" /etc/pulse/default.pa
+# avoid playing music after skype call
+sudo sed -Ei "s/^load-module module-role-cork$/#load-module module-role-cork/" /etc/pulse/default.pa
 my_step_end
