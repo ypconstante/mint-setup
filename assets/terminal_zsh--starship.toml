@@ -25,5 +25,5 @@ symbol = ""
 
 [git_status]
 ahead = "Λ${count}"
-diverged = "Λ${ahead_count}V${behind_count}"
+diverged = "Λ${ahead_count} V${behind_count}"
 behind = "V${count}"
