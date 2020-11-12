@@ -64,6 +64,10 @@ find ~/.gnupg -type d -exec chmod 700 {} \;
 find ~/.gnupg -type f -exec chmod 600 {} \;
 my_step_end
 
+my_step_begin "disable network auto mount"
+sudo sed -Ei 's/AutoMount=true/AutoMount=false/' /usr/share/gvfs/mounts/network.mount
+my_step_end
+
 my_step_begin "temporary files only in memory"
 sudo cp /usr/share/systemd/tmp.mount /etc/systemd/system/
 sudo systemctl enable tmp.mount
