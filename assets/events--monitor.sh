@@ -90,17 +90,11 @@ on_headphone_unplug() {
 
 on_startup
 
-dbus-monitor --session "interface='org.cinnamon.ScreenSaver',member='Lock'" |
-    while read line; do
-        case "$line" in
-            *"Lock"*)
-                on_lock;;
-        esac
-    done &
-
 dbus-monitor --session "type='signal',interface='org.cinnamon.ScreenSaver',member='ActiveChanged'" |
     while read line; do
         case "$line" in
+            *"true"*)
+                on_lock;;
             *"false"*)
                 on_unlock;;
         esac
