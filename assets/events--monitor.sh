@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILE_PLAYER_PAUSED=/tmp/events-monitor--player-paused
+PAUSED_PLAYER="none"
 
 kill_previous_events_monitor() {
     pgrep events-monitor | grep -v "$$" | xargs kill -9
@@ -48,18 +48,12 @@ pause() {
         PAUSED_PLAYER=$player
       fi
     done
-
-    if [ "$PAUSED_PLAYER" != "none" ]; then
-        echo "$PAUSED_PLAYER" > $FILE_PLAYER_PAUSED
-    fi
 }
 
 play() {
-    if [[ -f $FILE_PLAYER_PAUSED ]]; then
-        PAUSED_PLAYER="$(cat $FILE_PLAYER_PAUSED)"
-        rm $FILE_PLAYER_PAUSED
-
+    if [ "$PAUSED_PLAYER" != "none" ]; then
         playerctl --player="$PAUSED_PLAYER" play
+        PAUSED_PLAYER="none"
     fi
 }
 
