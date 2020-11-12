@@ -21,8 +21,9 @@ mkdir -p ~/projects/personal
 mkdir -p ~/projects/sandbox
 my_step_end
 
-my_step_begin "rename templates to projects"
-xdg-user-dirs-update --set TEMPLATES "$HOME/projects"
+my_step_begin "move templates folder"
+mkdir "${HOME}/.local/template-files"
+xdg-user-dirs-update --set TEMPLATES "${HOME}/.local/template-files"
 rm -rf ~/Templates
 my_step_end
 
