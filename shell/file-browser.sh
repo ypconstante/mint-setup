@@ -39,6 +39,10 @@ dconf write /org/nemo/preferences/show-image-thumbnails "'never'"
 dconf write /org/nemo/preferences/show-directory-item-counts "'never'"
 my_step_end
 
+my_step_begin "set disabled nemo actions"
+dconf write /org/nemo/plugins/disabled-actions "['new-launcher.nemo_action', 'set-as-background.nemo_action', 'add-desklets.nemo_action', 'change-background.nemo_action', 'send-by-mail.nemo_action']"
+my_step_end
+
 my_step_begin "fix opening nemo from terminal"
 sudo mkdir -p /var/lib/samba/usershares/
 my_step_end
