@@ -1655,6 +1655,9 @@ user_pref(
     '{"version":1,"ids":["bookmark","bookmarkSeparator","copyURL","emailLink","sendToDevice","pocket","jid1-xufzosoflzsoxg_jetpack","addSearchEngine","_c607c8df-14a7-4f28-894f-29e8722976af_","webcompat-reporter_mozilla_org","screenshots_mozilla_org","pinTab","_testpilot-containers"],"idsInUrlbar":["pocket","_c607c8df-14a7-4f28-894f-29e8722976af_","bookmark"]}'
 );
 
+// disable ctrl+enter as url canonizing
+user_pref("browser.urlbar.ctrlCanonizesURLs", false);
+
 // disable pocket
 user_pref("extensions.pocket.enabled", false);
 
