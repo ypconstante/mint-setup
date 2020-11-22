@@ -1,7 +1,7 @@
 /******
 * name: arkenfox user.js
-* date: 11 Nov 2020
-* version 82-beta
+* date: 22 Nov 2020
+* version 83
 * url: https://github.com/arkenfox/user.js
 * license: MIT: https://github.com/arkenfox/user.js/blob/master/LICENSE.txt
 
@@ -730,7 +730,7 @@ user_pref("security.mixed_content.block_object_subrequest", true);
  * When "https_only_mode" (all windows) is true, "https_only_mode_pbm" (private windows only) is ignored
  * [WARNING] This is experimental [1] and you can't set exceptions if FPI is enabled [2] (fixed in FF83)
  * [SETTING] to add site exceptions: Page Info>Permissions>Use insecure HTTP (FF80+)
- * [SETTING] Privacy & Security>HTTPS-Only Mode (FF80+ with browser.preferences.exposeHTTPSOnly = true)
+ * [SETTING] Privacy & Security>HTTPS-Only Mode
  * [1] https://bugzilla.mozilla.org/1613063 [META]
  * [2] https://bugzilla.mozilla.org/1647829 ***/
    // user_pref("dom.security.https_only_mode", true); // [FF76+]
@@ -800,8 +800,8 @@ user_pref("gfx.font_rendering.opentype_svg.enabled", false);
 user_pref("gfx.font_rendering.graphite.enabled", false);
 /* 1409: limit system font exposure to a whitelist [FF52+] [RESTART]
  * If the whitelist is empty, then whitelisting is considered disabled and all fonts are allowed
- * [WARNING] **DO NOT USE**: in FF80+ RFP covers this, and non-RFP users should use font vis (4618)
  * [NOTE] In FF81+ the whitelist **overrides** RFP's font visibility (see 4618)
+ * [WARNING] **DO NOT USE**: in FF80+ RFP covers this, and non-RFP users should use font vis (4618)
  * [1] https://bugzilla.mozilla.org/1121643 ***/
    // user_pref("font.system.whitelist", ""); // [HIDDEN PREF]
 
