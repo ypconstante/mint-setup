@@ -208,7 +208,7 @@ my_git_clone() {
         echo "Updating repo '$directory'"
         git remote set-url origin "$repository"
         if [ "$(git symbolic-ref --short -q HEAD)" ]; then
-            git pull
+            git pull --rebase
         else
             git fetch
         fi
