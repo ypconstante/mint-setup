@@ -31,7 +31,7 @@ installer_url=$( \
     | jq '[ .[] | select(endswith(".deb")) ]' \
     | jq -r 'first' \
 )
-installer_file=$(basename "$installer_url")
+installer_file="/tmp/$(basename "$installer_url")"
 curl -L "$installer_url" -o "$installer_file"
 sudo dpkg --install "$installer_file"
 rm "$installer_file"
