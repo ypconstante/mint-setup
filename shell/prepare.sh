@@ -17,11 +17,6 @@ my_apt_uninstall thunderbird
 sudo rm -rf /usr/lib/mono
 my_step_end
 
-my_step_begin "remove and disable snap install"
-my_apt_uninstall snapd
-sudo apt-mark hold snapd
-my_step_end
-
 my_step_begin "update packages"
 sudo apt clean -y -qq
 sudo apt update -y -qq
