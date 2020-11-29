@@ -47,6 +47,10 @@ Sign in or add license to:
 Install:
 - IntelliJ
 
+
+Configure Chromium:
+- Enable system titlebar
+
 Configure Firefox:
 - Change theme to dark compact
 - Extensions:
