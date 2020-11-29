@@ -81,6 +81,10 @@ my_append_to_file_if_not_contains() {
     fi
 }
 
+my_run_files() {
+    sort -zn | xargs -0 -I '{}' bash '{}' \;
+}
+
 ################################### OUTPUT ####################################
 my_echo_without_line_break() {
     local message="$1"
