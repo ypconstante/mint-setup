@@ -2,10 +2,6 @@
 
 source "$(dirname "$0")/_base.sh"
 
-#!/bin/bash
-
-source "$(dirname "$0")/_base.sh"
-
 install_certificate() {
     local url="$1"
     local name=$(basename "$url")
