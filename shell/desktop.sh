@@ -82,7 +82,7 @@ my_wait_file $menu_config_file
 jq 'setpath(["search-filesystem", "value"]; true)' < "$menu_config_file" \
     | jq 'setpath(["menu-custom", "value"]; true)' \
     | jq 'setpath(["menu-label", "value"]; "")' \
-    | jq 'setpath(["menu-icon", "value"]; "'"$ASSETS_DIR"'/desktop--menu-icon.svg")' \
+    | jq 'setpath(["menu-icon", "value"]; "start-here-symbolic")' \
     > "$menu_config_file.tmp"
 mv "$menu_config_file.tmp" "$menu_config_file"
 my_step_end
