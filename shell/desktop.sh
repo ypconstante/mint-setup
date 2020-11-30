@@ -60,9 +60,7 @@ my_step_end
 my_step_begin "config workspaces"
 dconf write /org/cinnamon/desktop/wm/preferences/num-workspaces 3
 dconf write /org/cinnamon/muffin/workspace-cycle true
-dconf write /org/cinnamon/workspace-osd-duration 300
-dconf write /org/cinnamon/workspace-osd-x 95
-dconf write /org/cinnamon/workspace-osd-y 95
+dconf write /org/cinnamon/workspace-osd-visible false
 my_step_end
 
 my_step_begin "config screen lock"
