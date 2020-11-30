@@ -42,7 +42,15 @@ certificate_chain_p7b_file=$(find $certificate_chain_dir -name '*.p7b')
 certificate_chain_crt_file="$certificate_chain_dir/caixa-economica-chain.crt"
 
 openssl pkcs7 -print_certs -in "$certificate_chain_p7b_file" -out "$certificate_chain_crt_file"
-sudo cp "$certificate_chain_crt_file" "/usr/local/share/ca-certificates/"
+csplit \
+    -f "$certificate_chain_dir/caixa-economica--" -b "%02d.crt" \
+    --quiet \
+    "$certificate_chain_crt_file" \
+    "/-----END CERTIFICATE-----/+1" \
+    '{*}'
+rm "$certificate_chain_p7b_file" "$certificate_chain_crt_file"
+rm "$(find $certificate_chain_dir | sort | tail -n 1)"
+sudo mv "$certificate_chain_dir"/* "/usr/local/share/ca-certificates"
 my_step_end
 
 my_step_begin "update certificates"
