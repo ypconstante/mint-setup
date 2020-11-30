@@ -40,8 +40,8 @@ dconf write /org/cinnamon/panels-autohide "['1:intel']"
 my_step_end
 
 my_step_begin "modify background"
-dconf write /org/cinnamon/desktop/background/picture-uri "'file:///usr/share/backgrounds/linuxmint-tara/whmii_toy_store.jpg'"
-dconf write /org/cinnamon/desktop/background/picture-options "'zoom'"
+dconf write /org/cinnamon/desktop/background/picture-uri "'file:///usr/share/backgrounds/linuxmint-ulyana/vovalente_brazilian_winter.jpg'"
+dconf write /org/cinnamon/desktop/background/picture-options "'centered'"
 my_step_end
 
 my_step_begin "modify windows"
