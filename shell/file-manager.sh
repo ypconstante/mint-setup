@@ -7,7 +7,7 @@ nemo -q
 my_step_end
 
 my_step_begin "set disabled nemo extensions"
-dconf write /org/nemo/plugins/disabled-extensions "['NemoShare', 'EmblemPropertyPage+NemoPython', 'ChangeColorFolder+NemoPython']"
+dconf write /org/nemo/plugins/disabled-extensions "['ChangeFolderColor+NemoPython', 'EmblemPropertyPage+NemoPython', 'NemoShare']"
 my_step_end
 
 my_step_begin "ignore folder view config"
