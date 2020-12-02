@@ -13,7 +13,7 @@ source "$(dirname "$0")/_base.sh"
 ./dev.sh
 ./environment.sh
 ./events-monitor.sh
-./file-browser.sh
+./file-manager.sh
 ./git.sh
 ./graphics.sh
 ./memory.sh
