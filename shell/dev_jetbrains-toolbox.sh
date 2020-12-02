@@ -30,7 +30,9 @@ my_step_end
 my_step_begin "install toolbox"
 $installer_dir/jetbrains-toolbox
 
-sleep 2
+my_wait_file "$install_dir/bin/jetbrains-toolbox"
+sleep 5
+
 pkill jetbrains-toolb
 my_step_end
 
