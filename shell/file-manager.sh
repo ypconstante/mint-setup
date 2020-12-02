@@ -39,6 +39,13 @@ dconf write /org/nemo/preferences/show-image-thumbnails "'never'"
 dconf write /org/nemo/preferences/show-directory-item-counts "'never'"
 my_step_end
 
+my_step_begin "configure context menu"
+dconf write /org/nemo/preferences/enable-delete
+dconf write /org/nemo/preferences/menu-config/selection-menu-scripts false
+dconf write /org/nemo/preferences/menu-config/selection-menu-pin false
+dconf write /org/nemo/preferences/menu-config/background-menu-scripts false
+my_step_end
+
 my_step_begin "set disabled nemo actions"
 dconf write /org/nemo/plugins/disabled-actions "['new-launcher.nemo_action', 'set-as-background.nemo_action', 'add-desklets.nemo_action', 'change-background.nemo_action', 'send-by-mail.nemo_action']"
 my_step_end
