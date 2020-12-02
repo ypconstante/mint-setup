@@ -12,7 +12,7 @@ my_apt_install tig
 my_step_end
 
 my_step_begin "create ssh folder"
-mkdir -p -m 700 ~/.ssh
+mkdir -m 700 ~/.ssh
 my_step_end
 
 my_step_begin "add known ssh hosts"
