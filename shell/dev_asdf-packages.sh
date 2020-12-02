@@ -26,5 +26,6 @@ my_asdf_install_and_set_global gradle "$(asdf list-all gradle | grep -v '[a-z]' 
 my_asdf_install_and_set_global java "$(asdf list-all java | grep openjdk-8 | grep -v 'openj9' | tail -1)"
 my_asdf_install_and_set_global maven "$(asdf list-all maven | grep -v '[a-z]' | tail -1)"
 my_asdf_install_and_set_global nodejs "$(asdf list-all nodejs | grep '^12' | tail -1)"
+my_asdf_install_and_set_global nodejs "$(asdf list-all nodejs | grep '^14' | tail -1)"
 my_asdf_install_and_set_global shellcheck "$(asdf list-all shellcheck | tail -1)"
 my_asdf_install_and_set_global yarn "$(asdf list-all yarn | grep '^1' | tail -1)"
