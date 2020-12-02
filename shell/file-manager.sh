@@ -40,7 +40,7 @@ dconf write /org/nemo/preferences/show-directory-item-counts "'never'"
 my_step_end
 
 my_step_begin "configure context menu"
-dconf write /org/nemo/preferences/enable-delete
+dconf write /org/nemo/preferences/enable-delete false
 dconf write /org/nemo/preferences/menu-config/selection-menu-scripts false
 dconf write /org/nemo/preferences/menu-config/selection-menu-pin false
 dconf write /org/nemo/preferences/menu-config/background-menu-scripts false
