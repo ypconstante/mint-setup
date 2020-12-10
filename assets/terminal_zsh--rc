@@ -78,6 +78,7 @@ step_load_asdf() {
     if [[ -d "$XDG_DATA_HOME/asdf" ]]; then
         source "$XDG_DATA_HOME/asdf/asdf.sh"
         fpath=($XDG_DATA_HOME/asdf/completions $fpath)
+        source "$ASDF_DATA_DIR/plugins/java/set-java-home.zsh"
     fi
 }
 
