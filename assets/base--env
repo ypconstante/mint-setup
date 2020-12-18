@@ -46,4 +46,4 @@ export ADB_VENDOR_KEY="${XDG_DATA_HOME}/android-adb-vendor"
 
 # Path
 export DEFAULT_PATH="${PATH}"
-export PATH="${ASDF_DATA_DIR}/shims:${XDG_DATA_HOME}/asdf/bin:${DEFAULT_PATH}:${HOME}/.local/bin:${ANDROID_SDK_HOME}/emulator:${ANDROID_SDK_HOME}/platform-tools:${ANDROID_SDK_HOME}/tools:./node_modules/.bin"
+export PATH="${ASDF_DATA_DIR}/shims:${XDG_DATA_HOME}/asdf/bin:${DEFAULT_PATH}:${HOME}/.local/bin:${ANDROID_SDK_HOME}/emulator:${ANDROID_SDK_HOME}/platform-tools:${ANDROID_SDK_HOME}/tools:${ANDROID_SDK_HOME}/tools/bin:./node_modules/.bin"
