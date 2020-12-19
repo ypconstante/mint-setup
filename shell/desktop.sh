@@ -73,7 +73,7 @@ my_step_end
 
 my_step_begin "change menu config"
 my_wait_file $menu_config_file
-jq 'setpath(["search-filesystem", "value"]; true)' < "$menu_config_file" \
+jq 'setpath(["search-filesystem", "value"]; false)' < "$menu_config_file" \
     | jq 'setpath(["menu-custom", "value"]; true)' \
     | jq 'setpath(["menu-label", "value"]; "")' \
     | jq 'setpath(["menu-icon", "value"]; "start-here-symbolic")' \
