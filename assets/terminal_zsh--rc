@@ -64,6 +64,10 @@ mkcd() {
     mkdir -p "$1" && cd "$1"
 }
 
+title() {
+  echo -en "\e]2;$@\a"
+}
+
 zgen() {
     source "$ZGEN_DIR/zgen.zsh"
     zgen "$*"
