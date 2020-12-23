@@ -3,9 +3,10 @@
 source "$(dirname "$0")/_base.sh"
 
 my_step_begin "install zoom"
-my_flatpak_install us.zoom.Zoom
-flatpak override --user us.zoom.Zoom --reset
-flatpak override --user us.zoom.Zoom \
+APP_NAME=us.zoom.Zoom
+my_flatpak_install $APP_NAME
+flatpak override --user $APP_NAME --reset
+flatpak override --user $APP_NAME \
     --nofilesystem=~/.zoom \
     --nofilesystem=~/Documents/Zoom \
     --nofilesystem=xdg-documents \
