@@ -8,10 +8,8 @@ my_flatpak_install $APP_NAME
 flatpak override --user $APP_NAME --reset
 flatpak override --user $APP_NAME \
     --nofilesystem=~/.zoom \
+    --persist=.zoom \
     --nofilesystem=~/Documents/Zoom \
-    --nofilesystem=xdg-documents \
-    --persist=~/.zoom \
-    --persist=~/Documents \
-    --persist=xdg-documents
+    --persist=Documents
 my_step_end
 
