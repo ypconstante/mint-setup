@@ -1562,12 +1562,6 @@ user_pref("keyword.enabled", true); // 0801
 user_pref("browser.search.suggest.enabled", true); // 0807
 user_pref("browser.urlbar.suggest.searches", true); // 0808
 user_pref("browser.formfill.enable", true); // 0860
-user_pref("browser.cache.disk.enable", true); // 1001
-user_pref("browser.cache.disk.capacity", 500000); // 1001
-user_pref("browser.cache.disk.smart_size.enabled", true); // 1001
-user_pref("browser.cache.disk.smart_size.first_run", false); // 1001
-user_pref("browser.cache.disk_cache_ssl", true); // 1002
-user_pref("browser.sessionstore.privacy_level", 0); // 1021
 user_pref("browser.sessionstore.interval", 120000); // 1023
 user_pref("browser.shell.shortcutFavicons", true); // 1030
 user_pref("browser.display.use_document_fonts", 1); // 1401
