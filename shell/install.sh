@@ -13,9 +13,15 @@ os_root_partition_size='100%FREE'
 capitalized_os_install_id=$(echo $os_install_id | sed 's/[^ _-]*/\u&/g')
 uefi_id="${PRETTY_NAME} ${capitalized_os_install_id}"
 
-main_device_path='/dev/sda'
-efi_partition_path='/dev/sda1'
-main_partition_path='/dev/sda2'
+main_device_path='/dev/nvme0n1'
+efi_partition_path="${main_device_path}p1"
+main_partition_path="${main_device_path}p2"
+
+if [ ! -e $main_device_path ]; then
+    main_device_path='/dev/sda'
+    efi_partition_path="${main_device_path}1"
+    main_partition_path="${main_device_path}2"
+fi
 
 main_vg='main_vg'
 main_vg_os_boot="${os_install_id}_boot_lv"
