@@ -1,4 +1,16 @@
-# Steps
+# Install
+
+```sh
+curl -L 'https://github.com/ypconstante/mint-setup/archive/master.zip' -o 'mint-setup.zip'
+unzip 'mint-setup.zip'
+find mint-setup-master/. -name "*.sh" -exec chmod +x {} \;
+sudo ./mint-setup-master/shell/install.sh
+```
+
+After installing, select 'Continue Testing'.
+
+
+# After install
 
 Setup Timeshift
 

@@ -2,9 +2,17 @@
 
 set -o nounset
 
-if [[ $EUID -eq 0 ]]; then
-    echo "This script must NOT be run as root"
-    exit 1
+
+if [[ -z ${FORCE_RUN_AS_ROOT+x} ]]; then
+    if [[ $EUID -eq 0 ]]; then
+        echo "This script must NOT be run as root"
+        exit 1
+    fi
+else
+    if [[ $EUID -ne 0 ]]; then
+        echo "This script MUST BE run as root"
+        exit 1
+    fi
 fi
 
 set -e
