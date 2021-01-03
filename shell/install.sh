@@ -125,7 +125,7 @@ setup_os_startup() {
 
     main_vg_os_id="$(cryptsetup luksUUID ${main_vg_os_path})"
 
-    content="${crypt_partition_name} UUID=${main_vg_os_id} none luks,discard\n"
+    content="${crypt_partition_name} UUID=${main_vg_os_id} none luks,discard"
 
     my_append_to_file_if_not_contains '/mnt/etc/crypttab' "$content"
 
