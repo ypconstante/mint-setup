@@ -23,5 +23,4 @@ source "$(dirname "$0")/_base.sh"
 ./sound.sh
 ./system-monitor.sh
 ./update-manager.sh
-./user.sh
 ./utilities.sh
