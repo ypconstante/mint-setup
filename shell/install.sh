@@ -48,7 +48,7 @@ if [ -z "$os_root_partition_size" ]; then
 fi
 
 setup_disk_partitions() {
-    if [ -e /dev/sda1 ]; then
+    if [ -e $efi_partition_path ]; then
         echo 'disk partition already created, skipping'
         return 0
     fi
