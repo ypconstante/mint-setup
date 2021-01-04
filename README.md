@@ -60,7 +60,8 @@ Install:
 
 
 Configure Chromium:
-- Enable system titlebar
+- Disable system titlebar
+- Change search engine to DDG
 
 Configure Firefox:
 - Change theme to dark compact
