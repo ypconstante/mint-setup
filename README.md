@@ -48,22 +48,16 @@ Create Timeshift snapshot
 ```
 
 Sign in or add license to:
-- Chromium
-- Firefox
-- JetBrains Toolbox
-- Spotify
 - Sublime Merge
 - Sublime Text
 
-Install:
-- IntelliJ
-
-
 Configure Chromium:
+- Sign in
 - Disable system titlebar
 - Change search engine to DDG
 
 Configure Firefox:
+- Sign in
 - Change theme to dark compact
 - Extensions:
     - Auto Discard Tabs
@@ -76,7 +70,12 @@ Configure Firefox:
     - Violentmonkey
 - Add certificates from /usr/local/share/ca-certificates
 
+Configure JetBrains Toolbox:
+- Sign in
+- Install IntelliJ
+
 Configure Spotify
+- Sign in
 - Download liked songs
 - In 'Settings > Display Options', disable notifications
 - In 'Settings > Privacy', disable cookies
