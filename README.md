@@ -50,7 +50,6 @@ Create Timeshift snapshot
 Sign in or add license to:
 - Chromium
 - Firefox
-- Franz
 - JetBrains Toolbox
 - Spotify
 - Sublime Merge
