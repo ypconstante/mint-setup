@@ -52,6 +52,10 @@ git-default-branch() {
     git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
 }
 
+git-clean-branches() {
+    git branch --merged | egrep -v "(^\*|master|main|dev|develop)" | xargs -r git branch -d
+}
+
 # From https://github.com/yramagicman/zsh-aliases/blob/master/functions/json
 json() {
   if [ -t 0 ]; then
