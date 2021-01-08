@@ -69,6 +69,9 @@ Configure Firefox:
     - uMatrix
     - Violentmonkey
 - Add certificates from /usr/local/share/ca-certificates
+- Change sync config
+    - Enable Add-ons
+    - Disable credit cards
 
 Configure JetBrains Toolbox:
 - Sign in
