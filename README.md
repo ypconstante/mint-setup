@@ -91,3 +91,7 @@ Configure packages:
 [Install video drivers](https://github.com/lutris/docs/blob/master/InstallingDrivers.md)
 
 Create Timeshift snapshot
+
+Optional - Gaming:
+- Run `~/projects/personal/mint-setup/shell/gaming.sh`
+- Configure Steam to download into `~/Gaming/Steam`
