@@ -75,3 +75,7 @@ my_step_end
 my_step_begin "disable writing file access time"
 sudo sed -Ei '/noatime/!s|(/ *\w* * [^ ]*)|\1,noatime|' /etc/fstab
 my_step_end
+
+my_step_begin "disable recent files"
+dconf write /org/cinnamon/desktop/privacy/remember-recent-files false
+my_step_end
