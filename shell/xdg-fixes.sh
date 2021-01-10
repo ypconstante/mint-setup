@@ -3,7 +3,7 @@
 source "$(dirname "$0")/_base.sh"
 
 my_step_begin "xdg tig"
-mkdir "$XDG_DATA_HOME/tig"
+mkdir -p "$XDG_DATA_HOME/tig"
 my_step_end
 
 my_step_begin "xdg wget"
