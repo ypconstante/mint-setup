@@ -70,7 +70,7 @@ mkcd() {
 }
 
 title() {
-  echo -en "\e]2;$@\a"
+  print -Pn "\e]2;${@:q}\a"
 }
 
 zgen() {
@@ -311,13 +311,8 @@ step_compile_zsh_files() {
 
 step_terminal_title() {
     # based on https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/termsupport.zsh
-    __window_title() {
-        local title="$1"
-        print -Pn "\e]2;$title:q\a"
-    }
-
     __precmd() {
-        __window_title "%~"
+        title "%~"
     }
 
     precmd_functions+=(__precmd)
