@@ -11,9 +11,6 @@ export PIP_REQUIRE_VIRTUALENV=true
 # Autoswitch Python Virtualenv
 export AUTOSWITCH_VIRTUAL_ENV_DIR=".local/venv"
 
-# Docker compose buildkit
-export COMPOSE_DOCKER_CLI_BUILD=1
-
 # Karma test runner
 export CHROME_BIN=/usr/bin/chromium-browser
 
