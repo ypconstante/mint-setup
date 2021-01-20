@@ -15,7 +15,7 @@ export AUTOSWITCH_VIRTUAL_ENV_DIR=".local/venv"
 export COMPOSE_DOCKER_CLI_BUILD=1
 
 # Karma test runner
-export CHROME_BIN=/usr/bin/chromium
+export CHROME_BIN=/usr/bin/chromium-browser
 
 # Non standard
 export XDG_LIB_HOME="${HOME}/.local/lib"
