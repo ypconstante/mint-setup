@@ -30,6 +30,7 @@ if [ -f $default_config_file ]; then
 fi
 
 my_create_file_if_not_exists "$config_file"
+my_create_file_if_not_exists "$config_dir/credentials"
 my_step_end
 
 my_step_begin "create gitignore"
