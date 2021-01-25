@@ -32,6 +32,26 @@ zshrc_modified() {
     fi
 }
 
+create-custom-make-function() {
+    local function_name="$1"
+    local dir="$2"
+
+    eval "${function_name}() {
+        local task=\"\$1\"
+        title \"\$task\"
+        make --directory \"$dir\" \"\$task\"
+    }"
+
+    eval "_${function_name}() {
+        cd \"$dir\"
+        _make
+        cd - &> /dev/null
+    }"
+
+    compdef "_$function_name" "$function_name"
+
+}
+
 ############################## EXPOSED FUNCTIONS ##############################
 man() {
     env \
@@ -348,6 +368,7 @@ unset ZSHRC_MODIFIED
 unset -f zrecompile
 unset -f batch_zrecompile
 unset -f zshrc_modified
+unset -f create-custom-make-function
 unset -f step_theme
 unset -f step_load_asdf
 unset -f step_plugins
