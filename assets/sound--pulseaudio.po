@@ -1,7 +1,4 @@
 .include /etc/pulse/default.pa
 
-# avoid hissing sound when not playing audio
-unload-module module-suspend-on-idle
-
 # avoid playing music after skype call
 unload-module module-role-cork
