@@ -42,6 +42,10 @@
     rebase = true
 [push]
     followTags = true
+[rebase]
+    abbreviateCommands = true
+    autoSquash = true
+    autoStash = true
 [rerere]
     enabled = true
     autoUpdate = true
