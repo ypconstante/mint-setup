@@ -197,7 +197,7 @@ step_alias() {
     alias cdg='grt'
     alias cdf='grt'
 
-    alias copy='xclip -selection clipboard'
+    alias copy='clipcopy'
     alias open='xdg-open'
 
     alias d='dirs -v | head -10'
