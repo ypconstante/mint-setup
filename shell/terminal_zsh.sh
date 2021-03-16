@@ -12,7 +12,7 @@ starship_file=$HOME/.local/bin/starship
 starship_url=$( \
     curl -sS https://api.github.com/repos/starship/starship/releases/latest \
     | jq '[ .assets[].browser_download_url ]' \
-    | jq '[ .[] | select(endswith("linux-gnu.tar.gz")) ]' \
+    | jq '[ .[] | select(endswith("starship-x86_64-unknown-linux-musl.tar.gz")) ]' \
     | jq -r 'first' \
 )
 
