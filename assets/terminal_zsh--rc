@@ -308,15 +308,19 @@ step_completion() {
         fi
     }
 
-    autoload -Uz compinit
-    fpath=($ZGEN_DIR $fpath /usr/share/zsh/site-functions)
-
-    if __is_cache_outdated; then
+    __update_cache() {
+        sleep 5
         rm -f "$ZSH_COMPDUMP_CUSTOM" "${ZSH_COMPDUMP_CUSTOM}.zwc"
         compinit -d "$ZSH_COMPDUMP_CUSTOM"
         zrecompile "$ZSH_COMPDUMP_CUSTOM"
-    else
-        compinit -C -d "$ZSH_COMPDUMP_CUSTOM"
+    }
+
+    autoload -Uz compinit
+    fpath=($ZGEN_DIR $fpath /usr/share/zsh/site-functions)
+
+    compinit -C -d "$ZSH_COMPDUMP_CUSTOM"
+    if __is_cache_outdated; then
+        (__update_cache &)
     fi
 
     unset -f __is_cache_outdated
