@@ -14,3 +14,7 @@ my_step_end
 my_step_begin "setup pulseaudio"
 my_link_file "$ASSETS_DIR/sound--pulseaudio.po" "$XDG_CONFIG_HOME/pulse/default.po"
 my_step_end
+
+my_step_begin "configure sound kernel module"
+sudo cp "$ASSETS_DIR/sound--kernel-module.conf" /etc/modprobe.d/sound.conf
+my_step_end
