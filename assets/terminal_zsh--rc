@@ -100,7 +100,7 @@ zgen() {
 
 #################################### STEPS ####################################
 step_theme() {
-    source <("$HOME/.local/bin/starship" init zsh --print-full-init)
+    source <(starship init zsh --print-full-init)
 }
 
 step_load_asdf() {
@@ -124,16 +124,7 @@ step_plugins() {
     __config() {
         zgen reset
 
-        # needs to be loaded before zsh-history-substring-search
-        zgen load zdharma/fast-syntax-highlighting
-
-        zgen load zsh-users/zsh-autosuggestions
-        zgen load zsh-users/zsh-completions
-        zgen load zsh-users/zsh-history-substring-search
-
-        zgen oh-my-zsh lib/git.zsh
-        zgen oh-my-zsh lib/clipboard.zsh
-        zgen oh-my-zsh plugins/autojump
+        zgen oh-my-zsh
         zgen oh-my-zsh plugins/docker
         zgen oh-my-zsh plugins/docker-compose
         zgen oh-my-zsh plugins/git
@@ -141,6 +132,14 @@ step_plugins() {
         zgen oh-my-zsh plugins/npm
         zgen oh-my-zsh plugins/yarn
 
+        # needs to be loaded before zsh-history-substring-search
+        zgen load zdharma/fast-syntax-highlighting
+
+        zgen load zsh-users/zsh-autosuggestions
+        zgen load zsh-users/zsh-completions
+        zgen load zsh-users/zsh-history-substring-search
+
+        zgen load agkozak/zsh-z
         zgen load djui/alias-tips
         # zgen load MichaelAquilina/zsh-autoswitch-virtualenv
 
@@ -160,10 +159,18 @@ step_plugins() {
 
     export ZGEN_DIR=$ZDOTDIR/zgen
 
+    # oh-my-zsh
+    export DISABLE_AUTO_UPDATE=true
+
     # autosuggestions
     export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
     export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
     export ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+    # zsh-z
+    export ZSHZ_CMD=j
+    export ZSHZ_CASE=ignore
+    export ZSHZ_DATA="$ZDOTDIR/.zsh-z-data"
 
     if ! __source; then
         __config
@@ -212,6 +219,8 @@ step_alias() {
     alias tis='tig status'
     alias til='tig log'
     alias tib='tig blame -C'
+
+    alias codium="flatpak run com.vscodium.codium"
 }
 
 step_style() {
@@ -294,38 +303,6 @@ step_keybinding() {
     bindkey '^R' history-incremental-search-backward
 }
 
-step_completion() {
-    local ZSH_COMPDUMP_CUSTOM=$ZDOTDIR/.zcompdump-custom
-    local ZSH_COMPDUMP_MAX_TIME=$ZDOTDIR/.zcompdump-max-time
-
-    __is_cache_outdated() {
-        touch -d '12 hours ago' "$ZSH_COMPDUMP_MAX_TIME"
-
-        if zshrc_modified || [[ "$ZSH_COMPDUMP_CUSTOM" -ot "$ZSH_COMPDUMP_MAX_TIME" ]]; then
-            return 0
-        else
-            return 1
-        fi
-    }
-
-    __update_cache() {
-        sleep 5
-        rm -f "$ZSH_COMPDUMP_CUSTOM" "${ZSH_COMPDUMP_CUSTOM}.zwc"
-        compinit -d "$ZSH_COMPDUMP_CUSTOM"
-        zrecompile "$ZSH_COMPDUMP_CUSTOM"
-    }
-
-    autoload -Uz compinit
-    fpath=($ZGEN_DIR $fpath /usr/share/zsh/site-functions)
-
-    compinit -C -d "$ZSH_COMPDUMP_CUSTOM"
-    if __is_cache_outdated; then
-        (__update_cache &)
-    fi
-
-    unset -f __is_cache_outdated
-}
-
 step_compile_zsh_files() {
     if zshrc_modified; then
         zrecompile "$ZDOTDIR/.zshrc"
@@ -350,7 +327,6 @@ step_alias
 step_style
 step_history
 step_keybinding
-step_completion
 step_compile_zsh_files
 step_terminal_title
 
@@ -380,6 +356,5 @@ unset -f step_alias
 unset -f step_style
 unset -f step_history
 unset -f step_keybinding
-unset -f step_completion
 unset -f step_compile_zsh_files
 unset -f step_terminal_title
